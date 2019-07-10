@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import es.gobcan.istac.sie.SieApp;
+import es.gobcan.istac.sie.StatisticalOperationsExternalApp;
 
 /**
  * Test class for the ExceptionTranslator controller advice.
@@ -25,7 +25,7 @@ import es.gobcan.istac.sie.SieApp;
  * @see ExceptionTranslator
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SieApp.class)
+@SpringBootTest(classes = StatisticalOperationsExternalApp.class)
 public class ExceptionTranslatorIntTest {
 
     @Autowired

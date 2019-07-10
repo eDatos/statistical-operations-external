@@ -146,18 +146,5 @@ application:
         showHeader: false
         showRightsHolder: false
     metadata:
-        statisticalResourcesInternalKey: metamac.statistical_resources.rest.internal
-        statisticalResourcesExternalKey: metamac.statistical_resources.rest.external
-        structuralResourcesInternalKey: metamac.srm.rest.internal
-        structuralResourcesExternalKey: metamac.srm.rest.external
-        indicatorsInternalKey: indicators.rest.internal
-        indicatorsExternalKey: indicators.rest.external
-        statisticalVisualizerKey: metamac.portal.web.external
-        statisticalVisualizerApiKey: metamac.portal.rest.external.base
-        permalinksEndpointKey: metamac.portal.rest.external.permalinks
-        exportEndpointKey: metamac.portal.rest.external.export
-        googleTrackingIdKey: metamac.analytics.google.tracking_id
         navbarPathKey: sie.style.header.url
         footerPathKey: sie.style.footer.url
-        organisationUrnKey: metamac.organisation.urn
-        geographicalGranularityUrnKey: metamac.default.codelist.geographical_granularity.urn

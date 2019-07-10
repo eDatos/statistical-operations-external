@@ -10,22 +10,7 @@ export interface GenericConfig {
         showRightsHolder
     };
 
-    metadata: {
-        endpoint,
-        installationType,
-        statisticalResourcesKey,
-        structuralResourcesKey,
-        indicatorsKey,
-        statisticalVisualizerKey,
-        statisticalVisualizerApiKey,
-        permalinksEndpointKey,
-        exportEndpointKey,
-        googleTrackingIdKey,
-        navbarPathKey,
-        footerPathKey,
-        organisationUrnKey,
-        geographicalGranularityUrnKey
-    };
+    metadata: any;
 
     baseUrl
 };

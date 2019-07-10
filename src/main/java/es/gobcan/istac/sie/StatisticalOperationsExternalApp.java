@@ -27,13 +27,13 @@ import io.github.jhipster.config.JHipsterConstants;
 @ComponentScan
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
 @EnableConfigurationProperties({LiquibaseProperties.class, ApplicationProperties.class})
-public class SieApp {
+public class StatisticalOperationsExternalApp {
 
-    private static final Logger log = LoggerFactory.getLogger(SieApp.class);
+    private static final Logger log = LoggerFactory.getLogger(StatisticalOperationsExternalApp.class);
 
     private final Environment env;
 
-    public SieApp(Environment env) {
+    public StatisticalOperationsExternalApp(Environment env) {
         this.env = env;
     }
 
@@ -55,7 +55,7 @@ public class SieApp {
     }
 
     public static void main(String[] args) throws UnknownHostException {
-        SpringApplication app = new SpringApplication(SieApp.class);
+        SpringApplication app = new SpringApplication(StatisticalOperationsExternalApp.class);
         DefaultProfileUtil.addDefaultProfile(app);
         Environment env = app.run(args).getEnvironment();
         String protocol = "http";

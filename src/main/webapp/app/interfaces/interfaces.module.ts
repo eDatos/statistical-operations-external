@@ -4,13 +4,9 @@ import { SieSharedModule } from '../shared';
 import { RouterModule } from '@angular/router';
 import { lugarRoute, LugarComponent } from './lugar';
 import { SieDocumentoModule } from '../documento/documento.module';
-import { evolucionElectoralRoute, EvolucionElectoralComponent } from './evolucion-electoral';
-import { procesoElectoralRoute, ProcesoElectoralComponent } from './proceso-electoral';
 
 const ENTITY_STATES = [
-    ...lugarRoute,
-    ...evolucionElectoralRoute,
-    ...procesoElectoralRoute
+    ...lugarRoute
 ];
 
 @NgModule({
@@ -21,9 +17,7 @@ const ENTITY_STATES = [
     ],
     declarations: [
         TitleBarComponent,
-        LugarComponent,
-        EvolucionElectoralComponent,
-        ProcesoElectoralComponent
+        LugarComponent
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
