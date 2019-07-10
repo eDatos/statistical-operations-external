@@ -1,0 +1,59 @@
+@import '~scss/variables';
+
+.metamac-container {
+    min-width: 760px;
+
+    /* Override primeng classes */ 
+    /deep/ .ui-state-default {
+        border: none;
+        background: none;
+    }
+
+    /deep/ .ui-icon {
+        display: inline;
+    }
+
+    /deep/ .ui-widget {
+        font-family:"Helvetica Neue", Arial, sans-serif;
+    }
+
+    /deep/ .ui-accordion .ui-accordion-header {
+        cursor: default;
+    }
+
+    /deep/ .ui-accordion .ui-accordion-header:not(.ui-state-active):not(.ui-state-disabled):hover {
+        border: none;
+        background: none;
+        color: #222222;;
+    }
+
+    /deep/ .ui-accordion .ui-accordion-content {
+        padding: 0;
+        border: none;
+    }
+
+    /deep/ .ui-helper-reset {
+        line-height: normal;
+    }
+
+    /deep/ ol, /deep/ ul, /deep/ dl {
+        margin-bottom: 11px;
+    }
+
+    /deep/ .btn {
+        transition: none;
+    }
+}
+
+.div-margin {
+    padding-bottom: 2rem;
+}
+
+.section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}

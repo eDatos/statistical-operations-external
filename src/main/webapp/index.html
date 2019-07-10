@@ -1,0 +1,74 @@
+<!doctype html>
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <script>
+        function executeGoogleAnalyticsInlineCode(trackingId) {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', trackingId);
+        }
+    </script>
+    <base href="/" th:href="@{/}" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Sie</title>
+    <meta name="description" content="" />
+    <meta name="google" value="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.webapp" />
+    <script type="text/javascript" src="./visualizer-static/metamac.js"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-501fc6f600bacbe9"></script>
+</head>
+
+<body>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        window.CONFIGURATION = {};
+
+        window.CONFIGURATION.dataset = {};
+        window.CONFIGURATION.dataset.evolucionElectoralKey = 'EVOLUCION_ELECTORAL';
+        window.CONFIGURATION.dataset.metadata = '?fields=-data&lang=es';
+        window.CONFIGURATION.dataset.data = '?fields=-metadata&lang=es&dim=TERRITORIO:';
+
+        window.CONFIGURATION.visualizer = {};
+        window.CONFIGURATION.visualizer.showHeader = /*[[${visualizer.getShowHeader()}]]*/ false;
+        window.CONFIGURATION.visualizer.showRightsHolder = /*[[${visualizer.getShowRightsHolder()}]]*/ false;
+
+        window.CONFIGURATION.metadata = {};
+        window.CONFIGURATION.metadata.endpoint = /*[[${metadata.getEndpoint()}]]*/ 'http://estadisticas.arte-consultores.com/cmetadata/v1.0';
+        window.CONFIGURATION.metadata.installationType = /*[[${metadata.getInstallationType()}]]*/ 'EXTERNAL';
+        window.CONFIGURATION.metadata.statisticalResourcesKey = /*[[${metadata.getStatisticalResourcesKey()}]]*/ 'metamac.statistical_resources.rest.external';
+        window.CONFIGURATION.metadata.structuralResourcesKey = /*[[${metadata.getStructuralResourcesKey()}]]*/ 'metamac.srm.rest.external';
+        window.CONFIGURATION.metadata.indicatorsKey = /*[[${metadata.getIndicatorsKey()}]]*/ 'indicators.rest.external';
+        window.CONFIGURATION.metadata.statisticalVisualizerKey = /*[[${metadata.getStatisticalVisualizerKey()}]]*/ 'metamac.portal.web.external';
+        window.CONFIGURATION.metadata.statisticalVisualizerApiKey = /*[[${metadata.getStatisticalVisualizerApiKey()}]]*/ 'metamac.portal.rest.external.base';
+        window.CONFIGURATION.metadata.permalinksEndpointKey = /*[[${metadata.getPermalinksEndpointKey()}]]*/ 'metamac.portal.rest.external.permalinks';
+        window.CONFIGURATION.metadata.exportEndpointKey = /*[[${metadata.getExportEndpointKey()}]]*/ 'metamac.portal.rest.external.export';
+        window.CONFIGURATION.metadata.googleTrackingIdKey = /*[[${metadata.getGoogleTrackingIdKey()}]]*/ 'metamac.analytics.google.tracking_id';
+        window.CONFIGURATION.metadata.navbarPathKey = /*[[${metadata.getNavbarPathKey()}]]*/ 'sie.style.header.url';
+        window.CONFIGURATION.metadata.footerPathKey = /*[[${metadata.getFooterPathKey()}]]*/ 'sie.style.footer.url';
+        window.CONFIGURATION.metadata.organisationUrnKey = /*[[${metadata.getOrganisationUrnKey()}]]*/ 'metamac.organisation.urn';
+        window.CONFIGURATION.metadata.geographicalGranularityUrnKey = /*[[${metadata.getGeographicalGranularityUrnKey()}]]*/ 'metamac.default.codelist.geographical_granularity.urn';
+
+        var requestURL = /*[[${#httpServletRequest.getRequestURL().toString()}]]*/ 'http://localhost:8080';
+        var requestURI = /*[[${#httpServletRequest.getRequestURI().toString()}]]*/ '';
+        var contextPath = /*[[${#httpServletRequest.getContextPath().toString()}]]*/ '';
+        window.CONFIGURATION.baseUrl = requestURL.replace(requestURI, contextPath) + "/";
+       	/*]]>*/
+    </script>
+
+    <!--[if lt IE 9]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <jhi-main></jhi-main>
+    <noscript>
+        <h1>You must enable javascript to view this page.</h1>
+    </noscript>
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<jhi-title-bar></jhi-title-bar>
+
+<div class="section">
+    <h2 jhiTranslate="lugar.header">¿De qué lugar deseas conocer su evolución en materia electoral?</h2>
+
+    <div class="form-group">
+        <ac-autocomplete-short-list name="lugar" [(ngModel)]="lugar" [suggestions]="lugares" [properties]="['nombreConGranularidad']" [disabled]="!lugares"></ac-autocomplete-short-list>
+        <div *ngIf="!lugares" class="loader first-loader"></div>
+    </div>
+
+    <button class="btn btn-primary" (click)="transition()" [disabled]="!lugar">
+        <span jhiTranslate="lugar.continuar">continuar</span>
+    </button>
+</div>

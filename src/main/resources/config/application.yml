@@ -1,0 +1,163 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration will be overridden by the Spring profile you use,
+# for example application-dev.yml if you use the "dev" profile.
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+spring:
+    application:
+        name: sie
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:postgresql://FILL_HOST:FILL_PORT/FILL_DATABASE
+        username: FILL_USER
+        password: FILL_PASS
+        hikari:
+            maximumPoolSize: 5
+    devtools:
+        restart:
+            enabled: false
+        livereload:
+            enabled: false
+    jackson:
+        serialization.write_dates_as_timestamps: false
+    jpa:
+        open-in-view: false
+        hibernate:
+            ddl-auto: none
+            naming:
+                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+                implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
+        database: POSTGRESQL
+        show-sql: false
+        properties:
+            hibernate.id.new_generator_mappings: true
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: false
+# spring.jmx.default-domain y spring.hikari.pool-name evitan que al levantar dos aplicaciones con un spring boot similar al template
+# (con beans de jmx configurado) la primera registre sus beans impidiendo a las siguientes registrar los suyos
+    jmx:
+      default-domain: FILL_APP_NAME # Ejemplo: ebandeja
+    hikari:
+        pool-name: FILL_APP_NAME_WITH_POOL # ebandejapool
+    messages:
+        basename: i18n/messages
+    mvc:
+        favicon:
+            enabled: false
+    profiles:
+        # The commented value for `active` can be replaced with valid Spring profiles to load.
+        # Otherwise, it will be filled in by maven when building the WAR file
+        # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
+        active: #spring.profiles.active#
+    thymeleaf:
+        cache: true
+        mode: XHTML
+        prefix: /
+
+security:
+    basic:
+        enabled: false
+
+info:
+    project:
+        version: #project.version#
+
+
+# ===================================================================
+# Liquidbase specific properties
+# ===================================================================
+
+liquibase:
+    contexts: prod
+
+
+# ===================================================================
+# To enable SSL, generate a certificate using:
+# keytool -genkey -alias sie -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore keystore.p12 -validity 3650
+#
+# You can also use Let's Encrypt:
+# https://maximilian-boehm.com/hp2121/Create-a-Java-Keystore-JKS-from-Let-s-Encrypt-Certificates.htm
+#
+# Then, modify the server.ssl properties so your "server" configuration looks like:
+#
+# server:
+#    port: 443
+#    ssl:
+#        key-store: keystore.p12
+#        key-store-password: <your-password>
+#        keyStoreType: PKCS12
+#        keyAlias: sie
+# ===================================================================
+server:
+    port: 8080
+    compression:
+        enabled: true
+        mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+        min-response-size: 1024
+    session:
+        cookie:
+            http-only: true
+
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://jhipster.github.io/common-application-properties/
+# ===================================================================
+
+jhipster:
+    async:
+        core-pool-size: 2
+        max-pool-size: 50
+        queue-capacity: 10000
+    http:
+        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
+        cache: # Used by the CachingHttpHeadersFilter
+            timeToLiveInDays: 1461
+    ribbon:
+        display-on-active-profiles: dev
+
+
+# ===================================================================
+# Change log levels
+# ===================================================================
+
+logging:
+    level:
+        org.hibernate.orm.deprecation: ERROR
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here
+# ===================================================================
+
+application:
+    visualizer:
+        showHeader: false
+        showRightsHolder: false
+    metadata:
+        statisticalResourcesInternalKey: metamac.statistical_resources.rest.internal
+        statisticalResourcesExternalKey: metamac.statistical_resources.rest.external
+        structuralResourcesInternalKey: metamac.srm.rest.internal
+        structuralResourcesExternalKey: metamac.srm.rest.external
+        indicatorsInternalKey: indicators.rest.internal
+        indicatorsExternalKey: indicators.rest.external
+        statisticalVisualizerKey: metamac.portal.web.external
+        statisticalVisualizerApiKey: metamac.portal.rest.external.base
+        permalinksEndpointKey: metamac.portal.rest.external.permalinks
+        exportEndpointKey: metamac.portal.rest.external.export
+        googleTrackingIdKey: metamac.analytics.google.tracking_id
+        navbarPathKey: sie.style.header.url
+        footerPathKey: sie.style.footer.url
+        organisationUrnKey: metamac.organisation.urn
+        geographicalGranularityUrnKey: metamac.default.codelist.geographical_granularity.urn
