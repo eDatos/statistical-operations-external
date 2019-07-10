@@ -22,7 +22,6 @@ import {
 } from '.';
 
 import { ChartComponent } from './chart/chart.component';
-import { TerritorioAutocompleteComponent } from './territorio-autocomplete/territorio-autocomplete.component';
 
 @NgModule({
     imports: [
@@ -37,7 +36,6 @@ import { TerritorioAutocompleteComponent } from './territorio-autocomplete/terri
         AutocompleteShortListComponent,
         AutocompleteLongListComponent,
         AutocompleteEnumComponent,
-        TerritorioAutocompleteComponent,
         ChartComponent,
         OrderListComponent,
         HelpTooltipComponent,
@@ -65,7 +63,6 @@ import { TerritorioAutocompleteComponent } from './territorio-autocomplete/terri
         AutocompleteShortListComponent,
         AutocompleteLongListComponent,
         AutocompleteEnumComponent,
-        TerritorioAutocompleteComponent,
         ChartComponent,
         OrderListComponent,
         HelpTooltipComponent,

@@ -142,9 +142,6 @@ logging:
 # ===================================================================
 
 application:
-    visualizer:
-        showHeader: false
-        showRightsHolder: false
     metadata:
         navbarPathKey: sie.style.header.url
         footerPathKey: sie.style.footer.url

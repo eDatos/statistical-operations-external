@@ -8,7 +8,6 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
 import { StatisticalOperationsExternalConfigModule } from './config/config.module';
-import { StatisticalOperationsExternalDatasetServiceModule } from './dataset/dataset.module';
 import { StatisticalOperationsExternalInterfacesModule } from './interfaces/interfaces.module';
 import { JhiMainComponent, LayoutRoutingModule, ErrorComponent, notFoundRoute, NavbarComponent, FooterComponent } from './layouts';
 import { StatisticalOperationsExternalSharedModule } from './shared';
@@ -24,7 +23,6 @@ const APP_ROUTES = [
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
 
         StatisticalOperationsExternalConfigModule,
-        StatisticalOperationsExternalDatasetServiceModule,
         StatisticalOperationsExternalInterfacesModule,
         StatisticalOperationsExternalSharedModule,
 

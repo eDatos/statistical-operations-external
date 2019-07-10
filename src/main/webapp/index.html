@@ -29,15 +29,6 @@
         /*<![CDATA[*/
         window.CONFIGURATION = {};
 
-        window.CONFIGURATION.dataset = {};
-        window.CONFIGURATION.dataset.evolucionElectoralKey = 'EVOLUCION_ELECTORAL';
-        window.CONFIGURATION.dataset.metadata = '?fields=-data&lang=es';
-        window.CONFIGURATION.dataset.data = '?fields=-metadata&lang=es&dim=TERRITORIO:';
-
-        window.CONFIGURATION.visualizer = {};
-        window.CONFIGURATION.visualizer.showHeader = /*[[${visualizer.getShowHeader()}]]*/ false;
-        window.CONFIGURATION.visualizer.showRightsHolder = /*[[${visualizer.getShowRightsHolder()}]]*/ false;
-
         window.CONFIGURATION.metadata = {};
         window.CONFIGURATION.metadata.endpoint = /*[[${metadata.getEndpoint()}]]*/ 'http://estadisticas.arte-consultores.com/cmetadata/v1.0';
         window.CONFIGURATION.metadata.installationType = /*[[${metadata.getInstallationType()}]]*/ 'EXTERNAL';

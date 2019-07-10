@@ -8,38 +8,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
 
-    private final Visualizer visualizer = new Visualizer();
-
     private final Metadata metadata = new Metadata();
-
-    public Visualizer getVisualizer() {
-        return visualizer;
-    }
 
     public Metadata getMetadata() {
         return metadata;
-    }
-
-    public static class Visualizer {
-
-        private Boolean showHeader;
-        private Boolean showRightsHolder;
-
-        public Boolean getShowHeader() {
-            return showHeader;
-        }
-
-        public void setShowHeader(Boolean showHeader) {
-            this.showHeader = showHeader;
-        }
-
-        public Boolean getShowRightsHolder() {
-            return showRightsHolder;
-        }
-
-        public void setShowRightsHolder(Boolean showRightsHolder) {
-            this.showRightsHolder = showRightsHolder;
-        }
     }
 
     public static class Metadata {

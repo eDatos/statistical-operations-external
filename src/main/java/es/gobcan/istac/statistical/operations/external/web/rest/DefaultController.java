@@ -18,9 +18,9 @@ import es.gobcan.istac.statistical.operations.external.config.ApplicationPropert
 @Controller
 
 public class DefaultController {
-    
+
     private final Logger log = LoggerFactory.getLogger(DefaultController.class);
-    
+
     @Autowired
     private ApplicationProperties applicationProperties;
 
@@ -29,7 +29,6 @@ public class DefaultController {
     public ModelAndView index(HttpServletRequest request) {
         log.debug("DefaultController index: Contextpath" + request.getContextPath() + "  ServletPath = " + request.getServletPath());
         Map<String, Object> model = new HashMap<>();
-        model.put("visualizer", applicationProperties.getVisualizer());
         model.put("metadata", applicationProperties.getMetadata());
         Map<String, Object> flashMap = (Map<String, Object>) RequestContextUtils.getInputFlashMap(request);
         if (flashMap != null) {
@@ -37,12 +36,11 @@ public class DefaultController {
         }
         return new ModelAndView("index", model);
     }
-    
+
     @RequestMapping(value = {"/widget"})
     public ModelAndView widget(HttpServletRequest request) {
         log.debug("DefaultController widget: Contextpath" + request.getContextPath() + "  ServletPath = " + request.getServletPath());
         Map<String, Object> model = new HashMap<>();
-        model.put("visualizer", applicationProperties.getVisualizer());
         model.put("metadata", applicationProperties.getMetadata());
         return new ModelAndView("widget", model);
     }
