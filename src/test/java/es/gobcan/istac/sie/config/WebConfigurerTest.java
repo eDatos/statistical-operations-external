@@ -1,7 +1,7 @@
-package es.gobcan.istac.sie.config;
+package es.gobcan.istac.statistical.operations.external.config;
 
-import es.gobcan.istac.sie.config.Constants;
-import es.gobcan.istac.sie.config.WebConfigurer;
+import es.gobcan.istac.statistical.operations.external.config.Constants;
+import es.gobcan.istac.statistical.operations.external.config.WebConfigurer;
 import io.github.jhipster.config.JHipsterConstants;
 import io.github.jhipster.config.JHipsterProperties;
 import io.github.jhipster.web.filter.CachingHttpHeadersFilter;

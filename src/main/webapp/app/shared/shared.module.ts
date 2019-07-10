@@ -4,8 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import {
     AcAlertService,
-    SieSharedCommonModule,
-    SieSharedLibsModule,
+    StatisticalOperationsExternalSharedCommonModule,
+    StatisticalOperationsExternalSharedLibsModule,
     CalendarComponent,
     CSRFService,
     EntityListEmptyComponent,
@@ -18,8 +18,8 @@ import {
 
 @NgModule({
     imports: [
-        SieSharedLibsModule,
-        SieSharedCommonModule,
+        StatisticalOperationsExternalSharedLibsModule,
+        StatisticalOperationsExternalSharedCommonModule,
         RouterModule
     ],
     declarations: [
@@ -38,7 +38,7 @@ import {
     ],
     entryComponents: [],
     exports: [
-        SieSharedCommonModule,
+        StatisticalOperationsExternalSharedCommonModule,
         DatePipe,
         EntityListEmptyComponent,
         SplitButtonComponent,
@@ -48,4 +48,4 @@ import {
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
-export class SieSharedModule { }
+export class StatisticalOperationsExternalSharedModule { }

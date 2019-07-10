@@ -1,9 +1,9 @@
 import { platformBrowser } from '@angular/platform-browser';
 import { ProdConfig } from './blocks/config/prod.config';
-import { SieAppModuleNgFactory } from '../../../../target/aot/src/main/webapp/app/app.module.ngfactory';
+import { StatisticalOperationsExternalAppModuleNgFactory } from '../../../../target/aot/src/main/webapp/app/app.module.ngfactory';
 
 ProdConfig();
 
-platformBrowser().bootstrapModuleFactory(SieAppModuleNgFactory)
+platformBrowser().bootstrapModuleFactory(StatisticalOperationsExternalAppModuleNgFactory)
 .then((success) => console.log(`Application started`))
 .catch((err) => console.error(err));

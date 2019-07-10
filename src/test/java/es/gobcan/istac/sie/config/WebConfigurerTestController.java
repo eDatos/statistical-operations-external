@@ -1,4 +1,4 @@
-package es.gobcan.istac.sie.config;
+package es.gobcan.istac.statistical.operations.external.config;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

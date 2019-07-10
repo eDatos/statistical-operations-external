@@ -1,4 +1,4 @@
-package es.gobcan.istac.sie.web.rest.errors;
+package es.gobcan.istac.statistical.operations.external.web.rest.errors;
 
 import java.util.ArrayList;
 import java.util.List;

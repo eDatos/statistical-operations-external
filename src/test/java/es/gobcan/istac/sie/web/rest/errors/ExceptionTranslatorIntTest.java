@@ -1,4 +1,4 @@
-package es.gobcan.istac.sie.web.rest.errors;
+package es.gobcan.istac.statistical.operations.external.web.rest.errors;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasItems;
@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import es.gobcan.istac.sie.StatisticalOperationsExternalApp;
+import es.gobcan.istac.statistical.operations.external.StatisticalOperationsExternalApp;
 
 /**
  * Test class for the ExceptionTranslator controller advice.

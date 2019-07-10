@@ -7,11 +7,11 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 
 import { customHttpProvider } from './blocks/interceptor/http.provider';
 import { PaginationConfig } from './blocks/config/uib-pagination.config';
-import { SieConfigModule } from './config/config.module';
-import { SieDatasetServiceModule } from './dataset/dataset.module';
-import { SieInterfacesModule } from './interfaces/interfaces.module';
+import { StatisticalOperationsExternalConfigModule } from './config/config.module';
+import { StatisticalOperationsExternalDatasetServiceModule } from './dataset/dataset.module';
+import { StatisticalOperationsExternalInterfacesModule } from './interfaces/interfaces.module';
 import { JhiMainComponent, LayoutRoutingModule, ErrorComponent, notFoundRoute, NavbarComponent, FooterComponent } from './layouts';
-import { SieSharedModule } from './shared';
+import { StatisticalOperationsExternalSharedModule } from './shared';
 
 const APP_ROUTES = [
     notFoundRoute
@@ -23,10 +23,10 @@ const APP_ROUTES = [
         LayoutRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
 
-        SieConfigModule,
-        SieDatasetServiceModule,
-        SieInterfacesModule,
-        SieSharedModule,
+        StatisticalOperationsExternalConfigModule,
+        StatisticalOperationsExternalDatasetServiceModule,
+        StatisticalOperationsExternalInterfacesModule,
+        StatisticalOperationsExternalSharedModule,
 
         // jhipster-needle-angular-add-module JHipster will add new module here
         RouterModule.forRoot(APP_ROUTES, { useHash: true })
@@ -43,4 +43,4 @@ const APP_ROUTES = [
     ],
     bootstrap: [JhiMainComponent]
 })
-export class SieAppModule { }
+export class StatisticalOperationsExternalAppModule { }

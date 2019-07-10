@@ -8,4 +8,4 @@ import { MetadataService } from './metadata.service';
         MetadataService
     ],
 })
-export class SieConfigModule { }
+export class StatisticalOperationsExternalConfigModule { }

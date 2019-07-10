@@ -1,13 +1,13 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "es.gobcan.istac.sie",
+      "packageName": "es.gobcan.istac.statistical.operations.external",
       "nativeLanguage": "en"
     },
     "jhipsterVersion": "4.6.2",
-    "baseName": "sie",
-    "packageName": "es.gobcan.istac.sie",
-    "packageFolder": "es/gobcan/istac/sie",
+    "baseName": "statistical_operations_external",
+    "packageName": "es.gobcan.istac.statistical.operations.external",
+    "packageFolder": "es/gobcan/istac/statistical/operations/external",
     "serverPort": "8080",
     "authenticationType": "jwt",
     "hibernateCache": "ehcache",

@@ -6,4 +6,4 @@ import { NgModule } from '@angular/core';
         DocumentoService,
     ]
 })
-export class SieDocumentoModule { }
+export class StatisticalOperationsExternalDocumentoModule { }

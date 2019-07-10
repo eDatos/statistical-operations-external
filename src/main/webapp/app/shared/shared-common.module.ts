@@ -2,7 +2,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 import {
-    SieSharedLibsModule,
+    StatisticalOperationsExternalSharedLibsModule,
     AutocompleteComponent,
     AutocompleteShortListComponent,
     AutocompleteLongListComponent,
@@ -26,7 +26,7 @@ import { TerritorioAutocompleteComponent } from './territorio-autocomplete/terri
 
 @NgModule({
     imports: [
-        SieSharedLibsModule
+        StatisticalOperationsExternalSharedLibsModule
     ],
     declarations: [
         JhiAlertErrorComponent,
@@ -56,7 +56,7 @@ import { TerritorioAutocompleteComponent } from './territorio-autocomplete/terri
         },
     ],
     exports: [
-        SieSharedLibsModule,
+        StatisticalOperationsExternalSharedLibsModule,
         JhiAlertErrorComponent,
         StickyTableHeaderDirective,
         TriInputSwitchComponent,
@@ -76,4 +76,4 @@ import { TerritorioAutocompleteComponent } from './territorio-autocomplete/terri
         StepsComponent,
     ]
 })
-export class SieSharedCommonModule { }
+export class StatisticalOperationsExternalSharedCommonModule { }

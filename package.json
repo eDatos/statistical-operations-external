@@ -1,7 +1,7 @@
 {
-  "name": "sie",
+  "name": "statistical_operations_external",
   "version": "0.0.0",
-  "description": "Description for sie",
+  "description": "Description for statistical_operations_external",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

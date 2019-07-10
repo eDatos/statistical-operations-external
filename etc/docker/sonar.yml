@@ -1,6 +1,6 @@
 version: '2'
 services:
-    sie-sonar:
+    statistical_operations_external-sonar:
         image: sonarqube:6.4-alpine
         ports:
             - 9000:9000

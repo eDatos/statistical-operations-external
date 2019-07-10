@@ -10,4 +10,4 @@ import { TipoEleccionesDatasetUrlService } from './tipo-elecciones-dataset-url.s
         TipoEleccionesDatasetUrlService
     ],
 })
-export class SieDatasetServiceModule { }
+export class StatisticalOperationsExternalDatasetServiceModule { }

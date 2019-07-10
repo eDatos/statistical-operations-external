@@ -69,4 +69,4 @@ import { DEFAULT_LANGUAGE } from './language/language.constants';
         DataTableModule
     ]
 })
-export class SieSharedLibsModule { }
+export class StatisticalOperationsExternalSharedLibsModule { }
