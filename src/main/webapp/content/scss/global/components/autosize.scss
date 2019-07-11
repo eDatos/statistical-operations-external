@@ -1,6 +1,0 @@
-@import '~scss/variables';
-
-textarea[autosize] {
-    // Workaround for https://github.com/stevepapa/ng-autosize/issues/11
-    border-top: $border-width solid transparent;
-}

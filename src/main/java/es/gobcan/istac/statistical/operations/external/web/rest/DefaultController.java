@@ -36,12 +36,4 @@ public class DefaultController {
         }
         return new ModelAndView("index", model);
     }
-
-    @RequestMapping(value = {"/widget"})
-    public ModelAndView widget(HttpServletRequest request) {
-        log.debug("DefaultController widget: Contextpath" + request.getContextPath() + "  ServletPath = " + request.getServletPath());
-        Map<String, Object> model = new HashMap<>();
-        model.put("metadata", applicationProperties.getMetadata());
-        return new ModelAndView("widget", model);
-    }
 }
