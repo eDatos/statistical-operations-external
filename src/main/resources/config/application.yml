@@ -62,7 +62,7 @@ spring:
     thymeleaf:
         cache: true
         mode: XHTML
-        prefix: /
+        prefix: classpath:/templates/views/
 
 security:
     basic:
