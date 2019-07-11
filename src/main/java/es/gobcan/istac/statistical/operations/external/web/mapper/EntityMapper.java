@@ -1,4 +1,4 @@
-package es.gobcan.istac.statistical.operations.external.web.rest.mapper;
+package es.gobcan.istac.statistical.operations.external.web.mapper;
 
 import java.util.List;
 

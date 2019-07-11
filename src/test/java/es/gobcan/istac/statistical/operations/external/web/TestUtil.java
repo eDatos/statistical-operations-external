@@ -1,4 +1,4 @@
-package es.gobcan.istac.statistical.operations.external.web.rest;
+package es.gobcan.istac.statistical.operations.external.web;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;

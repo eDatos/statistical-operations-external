@@ -42,7 +42,7 @@ public class LoggingAspect {
     /**
      * Pointcut that matches all Spring beans in the application's main packages.
      */
-    @Pointcut("within(es.gobcan.istac.statistical.operations.external.repository..*)" + " || within(es.gobcan.istac.statistical.operations.external.service..*)" + " || within(es.gobcan.istac.statistical.operations.external.web.rest..*)")
+    @Pointcut("within(es.gobcan.istac.statistical.operations.external.repository..*)" + " || within(es.gobcan.istac.statistical.operations.external.service..*)" + " || within(es.gobcan.istac.statistical.operations.external.web..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the
         // advices.

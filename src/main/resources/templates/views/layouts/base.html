@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Statistical Operations External</title>
+
+        <meta name="description" content="" />
+        <meta name="google" value="notranslate" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+
+        <link th:href="@{/css/base.css}" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div th:utext="${@defaultController.getHeaderHTML()}"></div>
+        <th:block layout:fragment="principal_content"></th:block> 
+        <script th:src="@{/js/base.js}"></script>
+        <noscript>
+            <h1>Usted tiene javascript desactivado por lo que algunos elementos de la página puede que no funcionen correctamente.</h1>
+        </noscript>
+    </body>
+</html>

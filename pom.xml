@@ -90,6 +90,10 @@
         <springfox.version>2.7.0</springfox.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <java.cas.client.version>3.4.1</java.cas.client.version>
+
+        <!-- Thymeleaf -->
+        <thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
+		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
     </properties>
 
 
@@ -265,6 +269,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

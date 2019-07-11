@@ -1,4 +1,4 @@
-package es.gobcan.istac.statistical.operations.external.web.rest.errors;
+package es.gobcan.istac.statistical.operations.external.web.errors;
 
 public final class ErrorConstants {
 
