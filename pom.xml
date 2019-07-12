@@ -92,6 +92,29 @@
 		<metamac-statistical-operations-rest-external-api.version>3.2.1-SNAPSHOT</metamac-statistical-operations-rest-external-api.version>
     </properties>
 
+    <scm>
+		<connection>scm:git:http://git.arte-consultores.com/istac/statistical-operations-external/</connection>
+		<developerConnection>scm:git:http://git.arte-consultores.com/istac/statistical-operations-external/</developerConnection>
+		<tag>HEAD</tag>
+		<url>http://git.arte-consultores.com/istac/statistical-operations-external</url>
+	</scm>
+
+	<issueManagement>
+		<system>Jira</system>
+		<url>http://jira.arte-consultores.com/browse/METAMAC</url>
+	</issueManagement>
+	<distributionManagement>
+		<repository>
+			<id>arte-repository</id>
+			<name>Arte Repository - RELEASE</name>
+			<url>http://repository.arte-consultores.com/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>arte-repository</id>
+			<name>Arte Repository - SNAPSHOT</name>
+			<url>http://repository.arte-consultores.com/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 
     <dependencies>
     	<!-- Metamac -->
