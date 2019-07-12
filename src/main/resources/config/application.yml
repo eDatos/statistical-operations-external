@@ -14,13 +14,6 @@
 spring:
     application:
         name: statistical_operations_external
-    datasource:
-        type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://FILL_HOST:FILL_PORT/FILL_DATABASE
-        username: FILL_USER
-        password: FILL_PASS
-        hikari:
-            maximumPoolSize: 5
     devtools:
         restart:
             enabled: false
@@ -28,27 +21,6 @@ spring:
             enabled: false
     jackson:
         serialization.write_dates_as_timestamps: false
-    jpa:
-        open-in-view: false
-        hibernate:
-            ddl-auto: none
-            naming:
-                physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-                implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-        database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
-        database: POSTGRESQL
-        show-sql: false
-        properties:
-            hibernate.id.new_generator_mappings: true
-            hibernate.cache.use_second_level_cache: false
-            hibernate.cache.use_query_cache: false
-            hibernate.generate_statistics: false
-# spring.jmx.default-domain y spring.hikari.pool-name evitan que al levantar dos aplicaciones con un spring boot similar al template
-# (con beans de jmx configurado) la primera registre sus beans impidiendo a las siguientes registrar los suyos
-    jmx:
-      default-domain: FILL_APP_NAME # Ejemplo: ebandeja
-    hikari:
-        pool-name: FILL_APP_NAME_WITH_POOL # ebandejapool
     messages:
         basename: i18n/messages
     mvc:
@@ -61,7 +33,7 @@ spring:
         active: #spring.profiles.active#
     thymeleaf:
         cache: true
-        mode: XHTML
+        mode: HTML
         prefix: classpath:/templates/views/
 
 security:
@@ -71,14 +43,6 @@ security:
 info:
     project:
         version: #project.version#
-
-
-# ===================================================================
-# Liquidbase specific properties
-# ===================================================================
-
-liquibase:
-    contexts: prod
 
 
 # ===================================================================
@@ -107,34 +71,6 @@ server:
     session:
         cookie:
             http-only: true
-
-
-# ===================================================================
-# JHipster specific properties
-#
-# Full reference is available at: https://jhipster.github.io/common-application-properties/
-# ===================================================================
-
-jhipster:
-    async:
-        core-pool-size: 2
-        max-pool-size: 50
-        queue-capacity: 10000
-    http:
-        version: V_1_1 # To use HTTP/2 you will need SSL support (see above the "server.ssl" configuration)
-        cache: # Used by the CachingHttpHeadersFilter
-            timeToLiveInDays: 1461
-    ribbon:
-        display-on-active-profiles: dev
-
-
-# ===================================================================
-# Change log levels
-# ===================================================================
-
-logging:
-    level:
-        org.hibernate.orm.deprecation: ERROR
 
 # ===================================================================
 # Application specific properties

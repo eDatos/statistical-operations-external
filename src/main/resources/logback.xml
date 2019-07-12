@@ -36,8 +36,6 @@
 
   <logger name="es.gobcan.istac.statistical.operations.external" level="#logback.loglevel#" />
 
-  <logger name="io.github.jhipster" level="#logback.loglevel#" />
-
   <logger name="javax.activation" level="WARN" />
   <logger name="javax.mail" level="WARN" />
   <logger name="javax.xml.bind" level="WARN" />
@@ -53,9 +51,6 @@
   <logger name="org.apache.catalina.startup.DigesterFactory"
     level="OFF" />
   <logger name="org.bson" level="WARN" />
-  <logger name="org.hibernate.validator" level="WARN" />
-  <logger name="org.hibernate" level="WARN" />
-  <logger name="org.hibernate.ejb.HibernatePersistence" level="OFF" />
   <logger name="org.springframework" level="WARN" />
   <logger name="org.springframework.web" level="WARN" />
   <logger name="org.springframework.security" level="WARN" />
@@ -64,12 +59,8 @@
   <logger name="org.xnio" level="WARN" />
   <logger name="springfox" level="WARN" />
   <logger name="sun.rmi" level="WARN" />
-  <logger name="liquibase" level="WARN" />
-  <logger name="LiquibaseSchemaResolver" level="INFO" />
   <logger name="sun.rmi.transport" level="WARN" />
 
-  <!-- <logger name="org.hibernate.SQL" level="DEBUG"/> -->
-  <!-- <logger name="org.hibernate.type" level="TRACE"/> -->
 
   <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
     <resetJUL>true</resetJUL>

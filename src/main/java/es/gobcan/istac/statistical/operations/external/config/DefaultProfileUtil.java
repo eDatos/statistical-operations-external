@@ -11,8 +11,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 
-import io.github.jhipster.config.JHipsterConstants;
-
 /**
  * Utility class to load a Spring profile to be used as default when there is no
  * <code>spring.profiles.active</code> set in the environment or as command line
@@ -49,7 +47,7 @@ public final class DefaultProfileUtil {
          * set in the <code>application.yml</code> file. See
          * https://github.com/spring-projects/spring-boot/issues/1219
          */
-        defProperties.put(SPRING_PROFILE_DEFAULT, JHipsterConstants.SPRING_PROFILE_DEVELOPMENT);
+        defProperties.put(SPRING_PROFILE_DEFAULT, Constants.SPRING_PROFILE_DEVELOPMENT);
 
         // Add other properties defined in file data-location.properties
         defProperties.putAll(defProperties);
