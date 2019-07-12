@@ -512,6 +512,13 @@
                     </plugin>
                 </plugins>
             </build>
+            <properties>
+                <!-- log configuration -->
+                <logback.loglevel>INFO</logback.loglevel>
+                <!-- default Spring profiles -->
+                <spring.profiles.active>env</spring.profiles.active>
+            </properties>
+            
         </profile>
     </profiles>
 </project>
