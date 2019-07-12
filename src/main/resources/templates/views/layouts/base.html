@@ -14,8 +14,10 @@
         <link th:href="@{/css/base.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div th:utext="${@defaultController.getHeaderHTML()}"></div>
+        <div th:utext="${@htmlService.getHeaderHtml()}"></div>
         <th:block layout:fragment="principal_content"></th:block> 
+        <div th:utext="${@htmlService.getFooterHtml()}"></div>
+
         <script th:src="@{/js/base.js}"></script>
         <noscript>
             <h1>Usted tiene javascript desactivado por lo que algunos elementos de la página puede que no funcionen correctamente.</h1>

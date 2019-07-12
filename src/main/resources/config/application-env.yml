@@ -25,9 +25,6 @@ spring:
 # ===================================================================
 
 application:
-    metadata:
-        endpoint: FILL_COMMON_METADATA_ENDPOINT #Required: common metadata endpoint
-        installationType: FILL_INSTALLATION_TYPE #Required: installation type
         
 # ===================================================================        
 # Application debug properties

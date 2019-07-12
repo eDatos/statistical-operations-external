@@ -16,41 +16,32 @@ public class ApplicationProperties {
 
     public static class Metadata {
 
-        private String endpoint;
-        private String installationType;
-        private String navbarPathKey;
-        private String footerPathKey;
+        private String operationsApi;
+        private String navbarTemplateUrl;
+        private String footerTemplateUrl;
 
-        public String getEndpoint() {
-            return endpoint;
+        public String getOperationsApi() {
+            return operationsApi;
         }
 
-        public void setEndpoint(String endpoint) {
-            this.endpoint = endpoint;
+        public void setOperationsApi(String operationsApi) {
+            this.operationsApi = operationsApi;
         }
 
-        public String getInstallationType() {
-            return installationType;
+        public String getNavbarTemplateUrl() {
+            return navbarTemplateUrl;
         }
 
-        public void setInstallationType(String installationType) {
-            this.installationType = installationType;
+        public void setNavbarTemplateUrl(String navbarTemplateUrl) {
+            this.navbarTemplateUrl = navbarTemplateUrl;
         }
 
-        public String getNavbarPathKey() {
-            return navbarPathKey;
+        public String getFooterTemplateUrl() {
+            return footerTemplateUrl;
         }
 
-        public void setNavbarPathKey(String navbarPathKey) {
-            this.navbarPathKey = navbarPathKey;
-        }
-
-        public String getFooterPathKey() {
-            return footerPathKey;
-        }
-
-        public void setFooterPathKey(String footerPathKey) {
-            this.footerPathKey = footerPathKey;
+        public void setFooterTemplateUrl(String footerTemplateUrl) {
+            this.footerTemplateUrl = footerTemplateUrl;
         }
     }
 }

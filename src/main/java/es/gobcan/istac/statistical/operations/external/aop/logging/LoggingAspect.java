@@ -1,6 +1,6 @@
 package es.gobcan.istac.statistical.operations.external.aop.logging;
 
-import io.github.jhipster.config.JHipsterConstants;
+import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 
-import java.util.Arrays;
+import io.github.jhipster.config.JHipsterConstants;
 
 /**
  * Aspect for logging execution of service and repository Spring components.
@@ -32,8 +32,9 @@ public class LoggingAspect {
     /**
      * Pointcut that matches all repositories, services and Web REST endpoints.
      */
-    @Pointcut("within(@org.springframework.stereotype.Repository *)" + " || within(@org.springframework.stereotype.Service *)"
-            + " || within(@org.springframework.web.bind.annotation.RestController *)")
+    @Pointcut("(within(@org.springframework.stereotype.Repository *)" + " || within(@org.springframework.stereotype.Service *)"
+            + " || within(@org.springframework.web.bind.annotation.RestController *)) && !@annotation(es.gobcan.istac.statistical.operations.external.annotation.NotLogging)"
+            + " && !@target(es.gobcan.istac.statistical.operations.external.annotation.NotLogging)")
     public void springBeanPointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the
         // advices.
@@ -42,7 +43,9 @@ public class LoggingAspect {
     /**
      * Pointcut that matches all Spring beans in the application's main packages.
      */
-    @Pointcut("within(es.gobcan.istac.statistical.operations.external.repository..*)" + " || within(es.gobcan.istac.statistical.operations.external.service..*)" + " || within(es.gobcan.istac.statistical.operations.external.web..*)")
+    @Pointcut("(within(es.gobcan.istac.statistical.operations.external.repository..*)" + " || within(es.gobcan.istac.statistical.operations.external.service..*)"
+            + " || within(es.gobcan.istac.statistical.operations.external.web..*))"
+            + " && !@annotation(es.gobcan.istac.statistical.operations.external.annotation.NotLogging) && !@target(es.gobcan.istac.statistical.operations.external.annotation.NotLogging)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the
         // advices.
