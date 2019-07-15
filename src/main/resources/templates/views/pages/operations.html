@@ -1,0 +1,27 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+    layout:decorate="~{layouts/base}">
+
+    <body>
+        <th:block layout:fragment="principal_content">
+            <div class="container">
+                <section class="search-container">
+                    <h1 class="search-container-title title title1">Operaciones Estadísticas</h1>
+                    <div class="search-group">
+                        <div class="search-control">
+                            <input class="search-input ac-search" type="text" placeholder="Buscar" autocomplete="off">
+                            <button class="btn-show-results"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="ac-search-results-panel"></div>
+                    </div>
+                </section>
+            </div>
+        </th:block>
+
+        <th:block layout:fragment="scripts">
+            <script th:src="@{/js/operations.js}"></script>
+        </th:block>
+    </body>
+
+</html>

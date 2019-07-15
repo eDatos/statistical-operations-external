@@ -10,15 +10,24 @@
         <meta name="google" value="notranslate" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link th:href="@{/css/roboto.css}" rel="stylesheet" type="text/css"/>
         <link th:href="@{/css/base.css}" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div th:utext="${@htmlService.getHeaderHtml()}"></div>
-        <th:block layout:fragment="principal_content"></th:block> 
+        <div class="statistical-operations-external-content">
+            <th:block layout:fragment="principal_content"></th:block> 
+        </div>
         <div th:utext="${@htmlService.getFooterHtml()}"></div>
 
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
         <script th:src="@{/js/base.js}"></script>
+
+        <th:block layout:fragment="scripts"></th:block> 
         <noscript>
             <h1>Usted tiene javascript desactivado por lo que algunos elementos de la página puede que no funcionen correctamente.</h1>
         </noscript>

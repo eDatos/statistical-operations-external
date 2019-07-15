@@ -1,0 +1,112 @@
+body {
+    font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+}
+.statistical-operations-external-content * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.statistical-operations-external-content button {
+    box-shadow: none;
+    border: 0;
+    cursor: pointer;
+}
+.statistical-operations-external-content a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.title {
+    font-weight: 300;
+}
+
+.title1 {
+    font-size: 1.8rem;
+}
+
+/* Begin search */
+.search-container {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.search-container .search-container-title {
+    margin: 10px 0 15px;
+}
+
+.search-container .search-group {
+    position: relative;
+    width: 500px;
+    display: inline-block;
+}
+.search-container .search-control {
+    position: relative;
+    width: 100%;
+    height: 33px;
+    padding-right: 28px;
+    border: 1px solid #c4c4c4;
+}
+.search-container .search-input {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border: 0;
+    padding-left: 10px;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.search-container .btn-show-results {
+    position: absolute;
+    height: 100%;
+    width: 28px;
+    top: 0;
+    right: 0;
+    background-color: #e7e7e7;
+    border: 0;
+}
+
+.search-container .ac-search-results-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: white;
+}
+.search-container .ac-search-results {
+    padding: .4em;
+    border: 1px solid #c4c4c4;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: left;
+    
+}
+.search-container .ac-search-results .search-results-item {
+    margin: 1px 0;
+    cursor: pointer;
+    font-size: .95rem;
+}
+.search-container .ac-search-results .search-results-item a {
+    display: block;
+    padding: .1em 4px;
+    width: 100%;
+    height: 100%;
+}
+.search-container .ac-search-results .search-results-item:hover {
+    background-color: #2c7bd0;
+    color: white;
+}
+/*End search */
