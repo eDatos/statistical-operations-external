@@ -16,6 +16,17 @@
     </head>
     <body>
         <div th:utext="${@htmlService.getHeaderHtml()}"></div>
+        <div class="statistical-operations-external-content header-module">
+            <a href="/">
+                <h1 class="header-module-title">
+                    <span class="title-icon">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                    <span>Metadatos de operaciones estadísticas</span>
+                </h1>
+            </a>
+            
+        </div>
         <div class="statistical-operations-external-content">
             <th:block layout:fragment="principal_content"></th:block> 
         </div>

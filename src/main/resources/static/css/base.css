@@ -1,3 +1,6 @@
+html {
+    font-size: 14px;
+}
 body {
     font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;
     font-size: 1rem;
@@ -32,8 +35,49 @@ body {
 }
 
 .title1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
 }
+
+.title3 {
+    font-size: 1.6rem;
+}
+
+.text-align-left {
+    text-align: left;
+} 
+
+/* Begin Header module */
+
+.header-module {
+    padding: 15px 36px;
+    border-bottom: 2px solid #59656e;
+    background-color: #fff;
+}
+
+.header-module .header-module-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #59656e;
+    display: flex;
+    align-items: center;
+}
+
+.header-module .header-module-title .title-icon {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: inherit;
+    font-size: 1.2rem;
+    width: 23px;
+    height: 23px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6px;
+}
+
+/* End Header module */
+
+
 
 /* Begin search */
 .search-container {
@@ -97,11 +141,11 @@ body {
 .search-container .ac-search-results .search-results-item {
     margin: 1px 0;
     cursor: pointer;
-    font-size: .95rem;
+    font-size: 1rem;
 }
 .search-container .ac-search-results .search-results-item a {
     display: block;
-    padding: .1em 4px;
+    padding: .2em 4px;
     width: 100%;
     height: 100%;
 }
@@ -110,3 +154,18 @@ body {
     color: white;
 }
 /*End search */
+
+/* Begin table metadata */
+
+.table-metadata {
+    margin-top: 10px;
+}
+
+.table-metadata th, .table-metadata td {
+    padding: 5px;
+}
+
+.table-metadata .metadata-group {
+    background-color: #dadada;
+}
+/* End table metadata */

@@ -5,8 +5,309 @@
 
     <body>
         <th:block layout:fragment="principal_content">
-            <h1>Operación</h1>
-            <span th:text="${operation.id}"></span>
+            <div class="container">
+                <h1 class="title title1">
+                    <span>
+                        Operación
+                    </span>
+                    <span th:text="${operation.id}"></span>
+                </h1>
+                <table class="table-metadata text-align-left">
+
+                    <tr class="metadata-group">
+                        <th colspan="2">Identificadores</th>
+                    </tr>
+                    <tr>
+                        <th>Código</th>
+                        <td th:text="${operation.id}"></td>
+                    </tr>
+                    <tr>
+                        <th>Título</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.name)}"></td>
+                    </tr>
+                    <tr th:if="${operation.acronym != null}"> <!-- Opcional -->
+                        <th>Acrónimo</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.acronym)}"></td>
+                    </tr>
+                    <tr>
+                        <th>URN</th>
+                        <td th:text="${operation.urn}"></td>
+                    </tr>
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2">Clasificadores de contenido</th>
+                    </tr>
+                    <tr>
+                        <th>Area</th>
+                        <td >
+                            <!-- Verify correct link -->
+                            <a target="_blank" th:href="${operation.subjectArea.selfLink.href}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.secondarySubjectAreas != null}"> <!-- Opcional -->
+                        <th>Áreas temáticas secundarias</th>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Identificador</th>
+                                        <th>Título</th>
+                                        <th>URN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="ssa: ${operation.secondarySubjectAreas.secondarySubjectAreas}">
+                                        <td th:text="${ssa.id}"></td>
+                                        <td th:text="${@languageUtil.getTraduction(ssa.name)}"></td>
+                                        <td th:text="${ssa.urn}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2">Descripción del contenido</th>
+                    </tr>
+                    <tr>
+                        <th>Objetivo</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.objective)}"></td>
+                    </tr>
+                    <tr th:if="${operation.description != null}"> <!-- Opcional -->
+                        <th>Descripción</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.description)}"></td>
+                    </tr>
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2">Descriptores del clase</th>
+                    </tr>
+                    <tr>
+                        <th>Tipo de encuesta</th>
+                        <td th:text="${operation.statisticalOperationType.id}"></td>
+                    </tr>
+                    <tr>
+                        <th>Tipo de oficialidad</th>
+                        <td th:text="${operation.officialityType.id}"></td>
+                    </tr>
+                    <tr>
+                        <th>Sistema de indicadores</th>
+                        <td th:text="${operation.indicatorSystem}"></td>
+                    </tr>
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2">Descriptores de producción</th>
+                    </tr>
+                    <tr>
+                        <th>Responsable de producción</th>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Identificador</th>
+                                        <th>Título</th>
+                                        <th>URN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="tmp: ${operation.producers.producers}">
+                                        <td th:text="${tmp.id}"></td>
+                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
+                                        <td th:text="${tmp.urn}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Responsable regionales</th>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Identificador</th>
+                                        <th>Título</th>
+                                        <th>URN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="tmp: ${operation.regionalResponsibles.regionalResponsibles}">
+                                        <td th:text="${tmp.id}"></td>
+                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
+                                        <td th:text="${tmp.urn}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.regionalContributors != null}"> <!-- Opcional -->
+                        <th>Colaboradores regionales</th>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Identificador</th>
+                                        <th>Título</th>
+                                        <th>URN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="tmp: ${operation.regionalContributors.regionalContributors}">
+                                        <td th:text="${tmp.id}"></td>
+                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
+                                        <td th:text="${tmp.urn}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Actualmente activa</th>
+                        <td th:text="${operation.currentlyActive}"></td>
+                    </tr>
+                    <tr>
+                        <th>Estado</th>
+                        <td th:text="${operation.status}"></td>
+                    </tr>
+
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2">Difusión y publicación</th>
+                    </tr>
+                    <tr>
+                        <th>Difusor</th>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Identificador</th>
+                                        <th>Título</th>
+                                        <th>URN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="tmp: ${operation.publishers.publishers}">
+                                        <td th:text="${tmp.id}"></td>
+                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
+                                        <td th:text="${tmp.urn}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- TODO: Falta metadatos comunes -->
+                    <tr th:if="${operation.relPolUsAc != null}"> <!-- Opcional -->
+                        <th>Política de difusión</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
+                    </tr>
+                    <tr th:if="${operation.releaseCalendar != null}"> <!-- Opcional -->
+                        <th>Calendario de publicación</th>
+                        <td th:text="${operation.releaseCalendar}"></td>
+                    </tr>
+                    <tr th:if="${operation.releaseCalendarAccess  != null}"> <!-- Opcional -->
+                        <th>Acceso al calendario de publicación</th>
+                        <td th:text="${operation.releaseCalendarAccess }"></td>
+                    </tr>
+                    <tr th:if="${operation.updateFrequencies  != null}"> <!-- Opcional -->
+                        <th>Frecuencia de actualización</th>
+                        <td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Identificador</th>
+                                        <th>Título</th>
+                                        <th>URN</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="tmp: ${operation.updateFrequencies.updateFrequencies}">
+                                        <td th:text="${tmp.id}"></td>
+                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
+                                        <td th:text="${tmp.urn}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.currentInstance != null}"> <!-- Opcional -->
+                        <th>Instancia actual</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.currentInstance.name)}"></td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de publicación externa</th>
+                        <td th:text="${operation.inventoryDate}"></td>
+                    </tr>
+                    <tr th:if="${operation.revPolicy != null}"> <!-- Opcional -->
+                        <th>Política de revisión</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.revPolicy)}"></td>
+                    </tr>
+                    <tr th:if="${operation.revPractice != null}"> <!-- Opcional -->
+                        <th>Procedimiento de revisión</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.revPractice)}"></td>
+                    </tr>
+                    <tr>
+                        <th>Contacto</th>
+                        <td th:text="${@languageUtil.getTraduction(operation.contact.name)}"></td>
+                    </tr>
+
+
+
+
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2">Marco legal</th>
+                    </tr>
+                    <tr th:if="${operation.legalActs != null}"> <!-- Opcional -->
+                        <th>Legislación</th>
+                        <td>
+                            <ul>
+                                <li th:each="tmp: ${operation.legalActs.legalActs}">
+                                    <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.dataSharings != null}"> <!-- Opcional -->
+                        <th>Compartición de datos</th>
+                        <td>
+                            <ul>
+                                <li th:each="tmp: ${operation.dataSharings.dataSharings}">
+                                    <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.confidentialityPolicy != null}"> <!-- Opcional -->
+                        <th>Política de confidencialidad</th>
+                        <td th:utext="${@languageUtil.getTraduction(operation.confidentialityPolicy)}"></td>
+                    </tr>
+                    <tr th:if="${operation.confidentialityDataTreatment != null}"> <!-- Opcional -->
+                        <th>Tratamiento de los datos</th>
+                        <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
+                    </tr>
+                </table>
+            </div>
         </th:block>
     </body>
 
