@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Statistical Operations External</title>
+        <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE" th:text="#{global.title}"></title>
 
         <meta name="description" content="" />
         <meta name="google" value="notranslate" />
@@ -22,7 +22,7 @@
                     <span class="title-icon">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </span>
-                    <span>Metadatos de operaciones estadísticas</span>
+                    <span th:text="#{global.title}"></span>
                 </h1>
             </a>
             
@@ -40,7 +40,7 @@
 
         <th:block layout:fragment="scripts"></th:block> 
         <noscript>
-            <h1>Usted tiene javascript desactivado por lo que algunos elementos de la página puede que no funcionen correctamente.</h1>
+            <h1 th:text="#{global.jsDisabled}"></h1>
         </noscript>
     </body>
 </html>
