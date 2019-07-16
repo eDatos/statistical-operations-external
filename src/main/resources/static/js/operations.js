@@ -1,23 +1,5 @@
 'use strict';
 
-var lang = 'es';
-
-function getTranslatedText(texts) {
-    if (Array.isArray(texts)) {
-        for(var i=0; i<texts.length; i++) {
-            if (texts[i].lang == lang) {
-                return texts[i].value;
-            }
-        }
-    }
-    else {
-        console.error('No se ha proporcionado un array');
-    }
-
-    console.error('Sin traducción');
-    return '';
-}
-
 (function() {
 
     function clickOutsideSearchHandler() {
@@ -64,7 +46,7 @@ function getTranslatedText(texts) {
                     for (var i=0; i < total; i++) {
                         var operation = response.operation[i];
                         htmlContent += '<li class="search-results-item" data-iresult="' + i + '">';
-                            htmlContent += '<a href="./operations/'+ operation.id + '">' + getTranslatedText(operation.name.text) + '</a>';
+                            htmlContent += '<a href="./operations/'+ operation.id + '">' + getTranslatedText(operation.name) + '</a>';
                         htmlContent += '</li>'
                     }
                     
