@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <table th:fragment="organization_unit">
+        <thead>
+            <tr>
+                <th th:text="#{operationField.name}"></th>
+                <th th:text="#{operationField.urn}"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="ele: ${elements}">
+                <td th:text="${@languageUtil.getTraduction(ele.name)}"></td>
+                <td th:text="${ele.urn}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -27,7 +27,9 @@
                     <span class="header-title" th:text="#{global.title}"></span>
                 </h1>
             </a>
-            
+            <div class="header-module-content">
+                <th:block layout:fragment="header_page_content"></th:block>
+            </div>
         </div>
         <div class="statistical-operations-external-content">
             <th:block layout:fragment="principal_content"></th:block> 

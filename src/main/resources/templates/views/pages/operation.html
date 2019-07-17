@@ -4,33 +4,43 @@
     layout:decorate="~{layouts/base}">
 
     <body>
+        <th:block layout:fragment="header_page_content">
+            <div class="header-search">
+                <div class="searcher">
+                    <div class="search-control">
+                        <input class="search-input" type="text" th:placeholder="#{actions.search}" autocomplete="off">
+                        <button class="btn-show-results"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                    </div>
+                    <div class="search-results-panel"></div>
+                </div>
+            </div>
+        </th:block>
+
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <h1 class="title title1 main-title">
-                    <span>
-                        Operación
-                    </span>
+                    <span th:text="#{global.operation}"></span>
                     <span th:text="${@languageUtil.getTraduction(operation.name)}"></span>
                 </h1>
                 <table class="table-metadatas text-align-left">
 
                     <tr class="metadata-group">
-                        <th colspan="2">Identificadores</th>
+                        <th colspan="2" th:text="#{operationField.group.identifiers}"></th>
                     </tr>
                     <tr>
-                        <th>Código</th>
+                        <th th:text="#{operationField.id}"></th>
                         <td th:text="${operation.id}"></td>
                     </tr>
                     <tr>
-                        <th>Título</th>
+                        <th th:text="#{operationField.name}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.name)}"></td>
                     </tr>
                     <tr th:if="${operation.acronym != null}"> <!-- Opcional -->
-                        <th>Acrónimo</th>
+                        <th th:text="#{operationField.acronym}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.acronym)}"></td>
                     </tr>
                     <tr>
-                        <th>URN</th>
+                        <th th:text="#{operationField.urn}"></th>
                         <td th:text="${operation.urn}"></td>
                     </tr>
 
@@ -39,32 +49,18 @@
 
 
                     <tr class="metadata-group">
-                        <th colspan="2">Clasificadores de contenido</th>
+                        <th colspan="2" th:text="#{operationField.group.contentClassifiers}"></th>
                     </tr>
                     <tr>
-                        <th>Area</th>
+                        <th th:text="#{operationField.subjectArea}"></th>
                         <td >
                             <!-- Verify correct link -->
                             <a target="_blank" th:href="${operation.subjectArea.selfLink.href}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
                         </td>
                     </tr>
                     <tr th:if="${operation.secondarySubjectAreas != null}"> <!-- Opcional -->
-                        <th>Áreas temáticas secundarias</th>
-                        <td>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Título</th>
-                                        <th>URN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="ssa: ${operation.secondarySubjectAreas.secondarySubjectAreas}">
-                                        <td th:text="${@languageUtil.getTraduction(ssa.name)}"></td>
-                                        <td th:text="${ssa.urn}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <th th:text="#{operationField.secondarySubjectAreas}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.secondarySubjectAreas.secondarySubjectAreas})">
                         </td>
                     </tr>
 
@@ -72,14 +68,14 @@
 
 
                     <tr class="metadata-group">
-                        <th colspan="2">Descripción del contenido</th>
+                        <th colspan="2" th:text="#{operationField.group.contentDescription}"></th>
                     </tr>
                     <tr>
-                        <th>Objetivo</th>
+                        <th th:text="#{operationField.objetive}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.objective)}"></td>
                     </tr>
                     <tr th:if="${operation.description != null}"> <!-- Opcional -->
-                        <th>Descripción</th>
+                        <th th:text="#{operationField.description}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.description)}"></td>
                     </tr>
 
@@ -87,19 +83,22 @@
 
 
                     <tr class="metadata-group">
-                        <th colspan="2">Descriptores del clase</th>
+                        <th colspan="2" th:text="#{operationField.group.classDescriptors}"></th>
                     </tr>
                     <tr>
-                        <th>Tipo de encuesta</th>
+                        <th th:text="#{operationField.statisticalOperationType}"></th>
                         <td th:text="${operation.statisticalOperationType.id}"></td>
                     </tr>
                     <tr>
-                        <th>Tipo de oficialidad</th>
+                        <th th:text="#{operationField.officialityType}"></th>
                         <td th:text="${operation.officialityType.id}"></td>
                     </tr>
                     <tr>
-                        <th>Sistema de indicadores</th>
-                        <td th:text="${operation.indicatorSystem}"></td>
+                        <th th:text="#{operationField.indicatorSystem}"></th>
+                        <td th:switch="${operation.indicatorSystem}">
+                            <span th:case="true" th:text="#{boolean.true}"></span>
+                            <span th:case="false" th:text="#{boolean.false}"></span>
+                        </td>
                     </tr>
 
 
@@ -107,71 +106,33 @@
 
 
                     <tr class="metadata-group">
-                        <th colspan="2">Descriptores de producción</th>
+                        <th colspan="2" th:text="#{operationField.group.productionDescriptors}"></th>
                     </tr>
                     <tr>
-                        <th>Responsable de producción</th>
-                        <td>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Título</th>
-                                        <th>URN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="tmp: ${operation.producers.producers}">            
-                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
-                                        <td th:text="${tmp.urn}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <th th:text="#{operationField.producers}"></th>
+
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.producers.producers})">
                         </td>
                     </tr>
                     <tr>
-                        <th>Responsable regionales</th>
-                        <td>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Título</th>
-                                        <th>URN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="tmp: ${operation.regionalResponsibles.regionalResponsibles}">            
-                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
-                                        <td th:text="${tmp.urn}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <th th:text="#{operationField.regionalResponsibles}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.regionalResponsibles.regionalResponsibles})">
                         </td>
                     </tr>
                     <tr th:if="${operation.regionalContributors != null}"> <!-- Opcional -->
-                        <th>Colaboradores regionales</th>
-                        <td>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Título</th>
-                                        <th>URN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="tmp: ${operation.regionalContributors.regionalContributors}">            
-                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
-                                        <td th:text="${tmp.urn}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <th th:text="#{operationField.regionalContributors}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.regionalContributors.regionalContributors})">
                         </td>
                     </tr>
                     <tr>
-                        <th>Actualmente activa</th>
-                        <td th:text="${operation.currentlyActive}"></td>
+                        <th th:text="#{operationField.currentlyActive}"></th>
+                        <td th:switch="${operation.currentlyActive}">
+                            <span th:case="true" th:text="#{boolean.true}"></span>
+                            <span th:case="false" th:text="#{boolean.false}"></span>
+                        </td>
                     </tr>
                     <tr>
-                        <th>Estado</th>
+                        <th th:text="#{operationField.status}"></th>
                         <td th:text="${operation.status}"></td>
                     </tr>
 
@@ -181,77 +142,52 @@
 
 
                     <tr class="metadata-group">
-                        <th colspan="2">Difusión y publicación</th>
+                        <th colspan="2" th:text="#{operationField.group.disseminationPublication}"></th>
                     </tr>
                     <tr>
-                        <th>Difusor</th>
-                        <td>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Título</th>
-                                        <th>URN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="tmp: ${operation.publishers.publishers}">            
-                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
-                                        <td th:text="${tmp.urn}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <th th:text="#{operationField.publishers}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.publishers.publishers})">
                         </td>
                     </tr>
                     <!-- TODO: Falta metadatos comunes -->
                     <tr th:if="${operation.relPolUsAc != null}"> <!-- Opcional -->
-                        <th>Política de difusión</th>
+                        <th th:text="#{operationField.relPolUsAc}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
                     </tr>
                     <tr th:if="${operation.releaseCalendar != null}"> <!-- Opcional -->
-                        <th>Calendario de publicación</th>
-                        <td th:text="${operation.releaseCalendar}"></td>
+                        <th th:text="#{operationField.releaseCalendar}"></th>
+                        <td th:switch="${operation.releaseCalendar}">
+                            <span th:case="true" th:text="#{boolean.true}"></span>
+                            <span th:case="false" th:text="#{boolean.false}"></span>
+                        </td>
                     </tr>
                     <tr th:if="${operation.releaseCalendarAccess  != null}"> <!-- Opcional -->
-                        <th>Acceso al calendario de publicación</th>
+                        <th th:text="#{operationField.releaseCalendarAccess}"></th>
                         <td th:text="${operation.releaseCalendarAccess }"></td>
                     </tr>
                     <tr th:if="${operation.updateFrequencies  != null}"> <!-- Opcional -->
-                        <th>Frecuencia de actualización</th>
-                        <td>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Título</th>
-                                        <th>URN</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="tmp: ${operation.updateFrequencies.updateFrequencies}">            
-                                        <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
-                                        <td th:text="${tmp.urn}"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <th th:text="#{operationField.updateFrequencies}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.updateFrequencies.updateFrequencies})">
                         </td>
                     </tr>
                     <tr th:if="${operation.currentInstance != null}"> <!-- Opcional -->
-                        <th>Instancia actual</th>
+                        <th th:text="#{operationField.currentInstance}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.currentInstance.name)}"></td>
                     </tr>
                     <tr>
-                        <th>Fecha de publicación externa</th>
+                        <th th:text="#{operationField.inventoryDate}"></th>
                         <td th:text="${operation.inventoryDate}"></td>
                     </tr>
                     <tr th:if="${operation.revPolicy != null}"> <!-- Opcional -->
-                        <th>Política de revisión</th>
+                        <th th:text="#{operationField.revPolicy}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.revPolicy)}"></td>
                     </tr>
                     <tr th:if="${operation.revPractice != null}"> <!-- Opcional -->
-                        <th>Procedimiento de revisión</th>
+                        <th th:text="#{operationField.revPractice}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.revPractice)}"></td>
                     </tr>
                     <tr>
-                        <th>Contacto</th>
+                        <th th:text="#{operationField.contact}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.contact.name)}"></td>
                     </tr>
 
@@ -264,10 +200,10 @@
 
 
                     <tr class="metadata-group">
-                        <th colspan="2">Marco legal</th>
+                        <th colspan="2" th:text="#{operationField.group.legalActs}"></th>
                     </tr>
                     <tr th:if="${operation.legalActs != null}"> <!-- Opcional -->
-                        <th>Legislación</th>
+                        <th th:text="#{operationField.legalActs}"></th>
                         <td>
                             <ul>
                                 <li th:each="tmp: ${operation.legalActs.legalActs}">
@@ -277,7 +213,7 @@
                         </td>
                     </tr>
                     <tr th:if="${operation.dataSharings != null}"> <!-- Opcional -->
-                        <th>Compartición de datos</th>
+                        <th th:text="#{operationField.dataSharings}"></th>
                         <td>
                             <ul>
                                 <li th:each="tmp: ${operation.dataSharings.dataSharings}">
@@ -287,15 +223,19 @@
                         </td>
                     </tr>
                     <tr th:if="${operation.confidentialityPolicy != null}"> <!-- Opcional -->
-                        <th>Política de confidencialidad</th>
+                        <th th:text="#{operationField.confidentialityPolicy}"></th>
                         <td th:utext="${@languageUtil.getTraduction(operation.confidentialityPolicy)}"></td>
                     </tr>
                     <tr th:if="${operation.confidentialityDataTreatment != null}"> <!-- Opcional -->
-                        <th>Tratamiento de los datos</th>
+                        <th th:text="#{operationField.confidentialityDataTreatment}"></th>
                         <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
                     </tr>
                 </table>
             </div>
+        </th:block>
+
+        <th:block layout:fragment="scripts">
+            <script th:src="@{/js/searcher.js}"></script>
         </th:block>
     </body>
 

@@ -109,7 +109,7 @@ function initSearch($searcher) {
                     for (var i=0; i < totalSearchResult; i++) {
                         var operation = response.operation[i];
                         htmlContent += '<li class="search-results-item" data-iresult="' + i + '">';
-                            htmlContent += '<a class="link" href="./operations/'+ operation.id + '">' + getTranslatedText(operation.name) + '</a>';
+                            htmlContent += '<a class="link" href="/operations/'+ operation.id + '">' + getTranslatedText(operation.name) + '</a>';
                         htmlContent += '</li>'
                     }
                     
