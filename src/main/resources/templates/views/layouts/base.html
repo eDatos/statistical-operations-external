@@ -19,12 +19,12 @@
     <body>
         <div th:utext="${@htmlService.getHeaderHtml()}"></div>
         <div class="statistical-operations-external-content header-module">
-            <a href="/">
+            <a class="header-link-root" href="/">
                 <h1 class="header-module-title">
                     <span class="title-icon">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </span>
-                    <span th:text="#{global.title}"></span>
+                    <span class="header-title" th:text="#{global.title}"></span>
                 </h1>
             </a>
             

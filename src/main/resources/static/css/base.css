@@ -5,6 +5,7 @@ body {
     font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;
     font-size: 1rem;
     font-weight: 300;
+    color: #3c3c3c;
 }
 .statistical-operations-external-content * {
     padding: 0;
@@ -18,18 +19,26 @@ body {
     cursor: pointer;
 }
 .statistical-operations-external-content a {
-    text-decoration: none;
     color: inherit;
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
+    /*
     padding-left: 15px;
     padding-right: 15px;
+    */
 }
 
+.main-content {
+    margin-top: 48px;
+    padding-bottom: 2rem;
+}
+.main-title {
+    margin-bottom: 1rem;
+}
 .title {
     font-weight: 300;
 }
@@ -54,6 +63,16 @@ body {
     background-color: #fff;
 }
 
+.header-module .header-link-root {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.header-module .header-link-root:focus .header-title,
+.header-module .header-link-root:hover .header-title {
+    text-decoration: underline;
+}
+
 .header-module .header-module-title {
     font-size: 1.5rem;
     font-weight: 500;
@@ -74,7 +93,6 @@ body {
     align-items: center;
     margin-right: 6px;
 }
-
 /* End Header module */
 
 
@@ -157,15 +175,22 @@ body {
 
 /* Begin table metadata */
 
-.table-metadata {
+.table-metadatas {
     margin-top: 10px;
 }
 
-.table-metadata th, .table-metadata td {
+.table-metadatas th, .table-metadatas td {
     padding: 5px;
 }
 
-.table-metadata .metadata-group {
-    background-color: #dadada;
+.table-metadatas .metadata-group {
+    background-color: #008bd0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .8rem;
+}
+.table-metadata a {
+    text-decoration: underline;
 }
 /* End table metadata */

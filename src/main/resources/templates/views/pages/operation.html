@@ -5,14 +5,14 @@
 
     <body>
         <th:block layout:fragment="principal_content">
-            <div class="container">
-                <h1 class="title title1">
+            <div class="container main-content">
+                <h1 class="title title1 main-title">
                     <span>
                         Operación
                     </span>
-                    <span th:text="${operation.id}"></span>
+                    <span th:text="${@languageUtil.getTraduction(operation.name)}"></span>
                 </h1>
-                <table class="table-metadata text-align-left">
+                <table class="table-metadatas text-align-left">
 
                     <tr class="metadata-group">
                         <th colspan="2">Identificadores</th>
@@ -54,14 +54,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Identificador</th>
                                         <th>Título</th>
                                         <th>URN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="ssa: ${operation.secondarySubjectAreas.secondarySubjectAreas}">
-                                        <td th:text="${ssa.id}"></td>
                                         <td th:text="${@languageUtil.getTraduction(ssa.name)}"></td>
                                         <td th:text="${ssa.urn}"></td>
                                     </tr>
@@ -117,14 +115,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Identificador</th>
                                         <th>Título</th>
                                         <th>URN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="tmp: ${operation.producers.producers}">
-                                        <td th:text="${tmp.id}"></td>
+                                    <tr th:each="tmp: ${operation.producers.producers}">            
                                         <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
                                         <td th:text="${tmp.urn}"></td>
                                     </tr>
@@ -138,14 +134,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Identificador</th>
                                         <th>Título</th>
                                         <th>URN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="tmp: ${operation.regionalResponsibles.regionalResponsibles}">
-                                        <td th:text="${tmp.id}"></td>
+                                    <tr th:each="tmp: ${operation.regionalResponsibles.regionalResponsibles}">            
                                         <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
                                         <td th:text="${tmp.urn}"></td>
                                     </tr>
@@ -159,14 +153,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Identificador</th>
                                         <th>Título</th>
                                         <th>URN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="tmp: ${operation.regionalContributors.regionalContributors}">
-                                        <td th:text="${tmp.id}"></td>
+                                    <tr th:each="tmp: ${operation.regionalContributors.regionalContributors}">            
                                         <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
                                         <td th:text="${tmp.urn}"></td>
                                     </tr>
@@ -197,14 +189,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Identificador</th>
                                         <th>Título</th>
                                         <th>URN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="tmp: ${operation.publishers.publishers}">
-                                        <td th:text="${tmp.id}"></td>
+                                    <tr th:each="tmp: ${operation.publishers.publishers}">            
                                         <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
                                         <td th:text="${tmp.urn}"></td>
                                     </tr>
@@ -231,14 +221,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Identificador</th>
                                         <th>Título</th>
                                         <th>URN</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="tmp: ${operation.updateFrequencies.updateFrequencies}">
-                                        <td th:text="${tmp.id}"></td>
+                                    <tr th:each="tmp: ${operation.updateFrequencies.updateFrequencies}">            
                                         <td th:text="${@languageUtil.getTraduction(tmp.name)}"></td>
                                         <td th:text="${tmp.urn}"></td>
                                     </tr>
