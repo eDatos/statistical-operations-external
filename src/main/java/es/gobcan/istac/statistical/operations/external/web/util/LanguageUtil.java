@@ -8,10 +8,10 @@ import org.siemac.metamac.rest.common.v1_0.domain.LocalisedString;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Component;
 
+import es.gobcan.istac.statistical.operations.external.config.Constants;
+
 @Component("languageUtil")
 public class LanguageUtil {
-
-    public static final String defaultLang = "es";
 
     public String getTraduction(InternationalString traductions) {
         Locale locale = LocaleContextHolder.getLocale();
@@ -26,7 +26,7 @@ public class LanguageUtil {
                 return traduction.getValue();
             }
 
-            if (traduction.getLang().equals(defaultLang)) {
+            if (traduction.getLang().equals(Constants.DEFAULT_LANG)) {
                 defaultLangIndex = i;
             }
 

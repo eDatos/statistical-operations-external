@@ -16,7 +16,7 @@ public class LocaleConfiguration extends WebMvcConfigurerAdapter {
     @Bean(name = "localeResolver")
     public LocaleResolver localeResolver() {
         CookieLocaleResolver r = new CookieLocaleResolver();
-        r.setDefaultLocale(new Locale("es"));
+        r.setDefaultLocale(new Locale(Constants.DEFAULT_LANG));
         r.setCookieName("lang");
         r.setCookieMaxAge(86400); // 24 * 60 * 60
 
