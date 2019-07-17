@@ -13,17 +13,17 @@
                     <h1 class="search-container-title title title1" th:text="#{operations.title}"></h1>
                     <div class="searcher search-group">
                         <div class="search-control">
-                            <input class="search-input ac-search" type="text" placeholder="Buscar" autocomplete="off">
+                            <input class="search-input" type="text" placeholder="Buscar" autocomplete="off">
                             <button class="btn-show-results"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
                         </div>
-                        <div class="ac-search-results-panel"></div>
+                        <div class="search-results-panel"></div>
                     </div>
                 </section>
             </div>
         </th:block>
 
         <th:block layout:fragment="scripts">
-            <script th:src="@{/js/operations.js}"></script>
+            <script th:src="@{/js/searcher.js}"></script>
         </th:block>
     </body>
 

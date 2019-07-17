@@ -1,9 +1,12 @@
 'use strict';
 
-(function() {
-
+function initSearch($searcher) {
     var $searchResultFocused;
+    var $searchInput = $searcher.find('.search-input');
+    var $searchResultsPanel = $searcher.find('.search-results-panel');
+
     var totalSearchResult = 0;
+    var isfocusing = false; 
 
     function focusSearchResult($newFocused) {
         $searchResultFocused && $searchResultFocused.removeClass('focused');
@@ -12,23 +15,30 @@
     }
 
     function clickOutsideSearchHandler() {
-        hideSearchResults();
+        if (isfocusing) isfocusing = false;
+        else hideSearchResults();
     }
 
     function addEventClickOutsideSearch() {
         $(document).off('click', clickOutsideSearchHandler);
-        $(document).one('click', clickOutsideSearchHandler);
+        $(document).on('click', clickOutsideSearchHandler);
     }
 
     function hideSearchResults() {
-        $('.ac-search-results-panel').hide();
+        $searchResultsPanel.hide();
         $(document).off('click', clickOutsideSearchHandler);
         document.removeEventListener('keydown', arrowKeyPressHandler);
     }
 
+    function showSearchresults() {
+        $searchResultsPanel.show();
+        addEventClickOutsideSearch();
+        document.addEventListener('keydown', arrowKeyPressHandler);
+    }
+
     function select($result, index) {
         var selected = index;
-        var $searchResults = $('.ac-search-results');
+        var $searchResults = $searcher.find('.search-results');
         
         var elHeight = $result.height();
         var scrollTop = $searchResults.scrollTop();
@@ -60,40 +70,32 @@
             iFocused++;
             
         }
-        select($('.search-results-item[data-iresult="'+ iFocused + '"]'), iFocused);
+        select($searcher.find('.search-results-item[data-iresult="'+ iFocused + '"]'), iFocused);
 
         e.preventDefault();
     }
-
-    function showSearchresults() {
-        $('.ac-search-results-panel').show();
-        addEventClickOutsideSearch();
-        document.addEventListener('keydown', arrowKeyPressHandler);
-    }
-
     
+    $searcher.find('.btn-show-results').on('click', function(e) {
+        $searchInput.focus();
+    });
 
-    $('.searcher').on('click', function(e) {
-        if ($(e.target).closest('a').length == 0) {
-            
+    $searchInput.on('focus', function() {
+        isfocusing = true;
+        showSearchresults();
+    });
+
+    $searcher.on('mouseover', '.search-results-item', function(e) {
+        focusSearchResult($(this));
+    });
+
+    $searcher.on('click', function(e) {
+        if (!isfocusing && $(e.target).closest('a').length == 0) {
             e.preventDefault();
             e.stopPropagation();
         }
     })
 
-    $('.btn-show-results').on('click', function(e) {
-        $('.ac-search').focus();
-    });
-
-    $('.ac-search').on('focus', function() {
-        showSearchresults();
-    });
-
-    $('.searcher').on('mouseover', '.search-results-item', function(e) {
-        focusSearchResult($(this));
-    });
-
-    $('.ac-search').on('input', function() {
+    $searchInput.on('input', function() {
         var operationsApiUrl = 'https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations.json';
 
         $.ajax({
@@ -102,7 +104,7 @@
             success: function(response) {
                 $searchResultFocused = null;
                 totalSearchResult = response.total;
-                var htmlContent = '<ul class="ac-search-results">';
+                var htmlContent = '<ul class="search-results">';
                 if (totalSearchResult > 0) {
                     for (var i=0; i < totalSearchResult; i++) {
                         var operation = response.operation[i];
@@ -118,7 +120,7 @@
 
                 htmlContent += '</ul>';
 
-                $('.ac-search-results-panel').html(htmlContent);
+                $searchResultsPanel.html(htmlContent);
             },
             error: function(e) {
                 totalSearchResult = 0;
@@ -127,4 +129,10 @@
             }
         })
     });
-})();
+}
+
+(function() {
+    $('.searcher').each(function(index) {
+        initSearch($(this));
+    });
+})()
