@@ -11,13 +11,7 @@
             <div class="container main-content">
                 <section class="search-container">
                     <h1 class="search-container-title title title1" th:text="#{operations.title}"></h1>
-                    <div class="searcher">
-                        <div class="search-control">
-                            <input class="search-input" type="text" th:placeholder="#{actions.search}" autocomplete="off">
-                            <button class="btn-show-results"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                        </div>
-                        <div class="search-results-panel"></div>
-                    </div>
+                    <th:block th:insert="partials/searcher::searcher"></th:block>
                 </section>
             </div>
         </th:block>

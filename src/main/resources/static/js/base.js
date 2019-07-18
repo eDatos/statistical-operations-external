@@ -3,6 +3,8 @@ var DEFAULT_LANG = 'es';
 var LANG_COOKIE_NAME = 'lang';
 var ALLOWED_LANGS = [DEFAULT_LANG, 'en'];
 
+var OPERATIONS_API_URL = 'https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations.json';
+
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);

@@ -5,15 +5,7 @@
 
     <body>
         <th:block layout:fragment="header_page_content">
-            <div class="header-search">
-                <div class="searcher">
-                    <div class="search-control">
-                        <input class="search-input" type="text" th:placeholder="#{actions.search}" autocomplete="off">
-                        <button class="btn-show-results"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                    </div>
-                    <div class="search-results-panel"></div>
-                </div>
-            </div>
+            <div class="header-search" th:insert="partials/searcher::searcher"></div>
         </th:block>
 
         <th:block layout:fragment="principal_content">

@@ -6,8 +6,9 @@ function initSearch($searcher) {
     var $searchResultsPanel = $searcher.find('.search-results-panel');
 
     var totalSearchResult = 0;
-    var isfocusing = false; 
+    var isfocusing = false;
 
+    var searchResultsTemplate = Handlebars.compile($("#search-results-template").html());
     function focusSearchResult($newFocused) {
         $searchResultFocused && $searchResultFocused.removeClass('focused');
         $newFocused.addClass('focused');
@@ -88,38 +89,39 @@ function initSearch($searcher) {
         focusSearchResult($(this));
     });
 
+    $searcher.on('click', '.search-results-item', function(e) {
+        hideSearchResults();
+    });
+
     $searcher.on('click', function(e) {
-        if (!isfocusing && $(e.target).closest('a').length == 0) {
-            e.preventDefault();
+        if (!isfocusing) {
             e.stopPropagation();
         }
     })
 
     $searchInput.on('input', function() {
-        var operationsApiUrl = 'https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations.json';
-
         $.ajax({
             method: 'GET',
-            url: operationsApiUrl + '?query=' + (this.value? 'TITLE ILIKE "' + this.value + '"': '') ,
+            url: OPERATIONS_API_URL,
+            data: {
+                query: this.value? 'TITLE ILIKE "' + this.value + '"': ''
+            },
             success: function(response) {
                 $searchResultFocused = null;
                 totalSearchResult = response.total;
-                var htmlContent = '<ul class="search-results">';
+                var results;
+                
                 if (totalSearchResult > 0) {
-                    for (var i=0; i < totalSearchResult; i++) {
-                        var operation = response.operation[i];
-                        htmlContent += '<li class="search-results-item" data-iresult="' + i + '">';
-                            htmlContent += '<a class="link" href="/operations/'+ operation.id + '">' + getTranslatedText(operation.name) + '</a>';
-                        htmlContent += '</li>'
-                    }
+                    results =  response.operation.map(function(operation, index) {
+                        return {
+                            iResult: index,
+                            name: getTranslatedText(operation.name),
+                            id: operation.id
+                        }
+                    });
                     
                 }
-                else {
-                    htmlContent += '<li>' + 'No se han encontrado resultados' + '</li>'; 
-                }
-
-                htmlContent += '</ul>';
-
+                var htmlContent = searchResultsTemplate({results, emptyMessage: 'No se han encontrado resultados'});
                 $searchResultsPanel.html(htmlContent);
             },
             error: function(e) {
