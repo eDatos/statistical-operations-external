@@ -25,17 +25,13 @@ public class OperationController {
     @RequestMapping(value = {"", "/index.html"})
     public ModelAndView index() {
         log.debug("Operaciones");
-        ModelAndView modelAndView = new ModelAndView("pages/operations");
-        return modelAndView;
+        return new ModelAndView("pages/operations");
     }
 
     @GetMapping("/operations/{operationId}")
     public ModelAndView operation(@PathVariable String operationId) {
         log.debug("Operación {}", operationId);
         Operation operation = operationService.findOperation(operationId);
-        ModelAndView modelAndView = new ModelAndView("pages/operation");
-
-        modelAndView.addObject("operation", operation);
-        return modelAndView;
+        return new ModelAndView("pages/operation", "operation", operation);
     }
 }

@@ -6,14 +6,14 @@ var ALLOWED_LANGS = [DEFAULT_LANG, 'en'];
 function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-        c = c.substring(1);
+    var cookies = decodedCookie.split(';');
+    for (var i = 0; i <cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
         }
-        if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
+        if (cookie.indexOf(name) == 0) {
+            return cookie.substring(name.length, cookie.length);
         }
     }
     return "";

@@ -10,9 +10,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="ele: ${elements}">
-                <td th:text="${@languageUtil.getTraduction(ele.name)}"></td>
-                <td th:text="${ele.urn}"></td>
+            <tr th:each="resource: ${elements}">
+                <td th:text="${@languageUtil.getTraduction(resource.name)}"></td>
+                <td th:text="${resource.urn}"></td>
             </tr>
         </tbody>
     </table>
