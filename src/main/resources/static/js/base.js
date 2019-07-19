@@ -1,9 +1,4 @@
 'use strict';
-var DEFAULT_LANG = 'es';
-var LANG_COOKIE_NAME = 'lang';
-var ALLOWED_LANGS = [DEFAULT_LANG, 'en'];
-
-var OPERATIONS_API_URL = 'https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations.json';
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -23,9 +18,9 @@ function getCookie(cname) {
 
 function getLang() {
     try {
-        var lang = getCookie(LANG_COOKIE_NAME);
+        var lang = getCookie(CONFIGURATION.NAME_ATTRIBUTE_LANG);
 
-        if (lang && ALLOWED_LANGS.indexOf(lang) != -1) {
+        if (lang && CONFIGURATION.AVAILABLE_LANGS.indexOf(lang) != -1) {
             return lang;
         }
     }
@@ -33,7 +28,7 @@ function getLang() {
         console.log('Ha habido un error al obtener el lenguaje en la cookie');
     }
 
-    return DEFAULT_LANG;
+    return CONFIGURATION.DEFAULT_LANG;
 }
 
 function getTranslatedText(traductions) {
@@ -46,7 +41,7 @@ function getTranslatedText(traductions) {
                 return texts[i].value;
             }
 
-            if (texts[i].lang == DEFAULT_LANG) {
+            if (texts[i].lang == CONFIGURATION.DEFAULT_LANG) {
                 defaultLangIndex = i;
             }
         }

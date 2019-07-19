@@ -17,7 +17,7 @@ public class LocaleConfiguration extends WebMvcConfigurerAdapter {
     public LocaleResolver localeResolver() {
         CookieLocaleResolver r = new CookieLocaleResolver();
         r.setDefaultLocale(new Locale(Constants.DEFAULT_LANG));
-        r.setCookieName("lang");
+        r.setCookieName(Constants.NAME_ATTRIBUTE_LANG);
         r.setCookieMaxAge(86400); // 24 * 60 * 60
 
         return r;
@@ -26,7 +26,7 @@ public class LocaleConfiguration extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-        localeChangeInterceptor.setParamName("lang");
+        localeChangeInterceptor.setParamName(Constants.NAME_ATTRIBUTE_LANG);
         registry.addInterceptor(localeChangeInterceptor);
     }
 }

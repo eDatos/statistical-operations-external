@@ -102,7 +102,7 @@ function initSearch($searcher) {
     $searchInput.on('input', function() {
         $.ajax({
             method: 'GET',
-            url: OPERATIONS_API_URL,
+            url: CONFIGURATION.OPERATIONS_API_URL + '/operations.json',
             data: {
                 query: this.value? 'TITLE ILIKE "' + this.value + '"': ''
             },

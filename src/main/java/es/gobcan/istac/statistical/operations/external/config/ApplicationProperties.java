@@ -1,10 +1,12 @@
 package es.gobcan.istac.statistical.operations.external.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 /**
  * Properties are configured in the application.yml file.
  */
+@Component("applicationProperties")
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
 
