@@ -79,6 +79,6 @@ server:
 
 application:
     metadata:
-        operationsApi: EXTERNAL_API_ENDPOINT
-        navbarTemplateUrl: NAVBAR_TEMPLATE_URL
-        footerTemplateUrl: FOOTER_TEMPLATE_URL
+        navbarPathKey: sie.style.header.url
+        footerPathKey: sie.style.footer.url
+        operationsApiKey: EXTERNAL_API_ENDPOINT

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import es.gobcan.istac.statistical.operations.external.annotation.NotLogging;
-import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties;
 import es.gobcan.istac.statistical.operations.external.service.HtmlService;
+import es.gobcan.istac.statistical.operations.external.service.MetadataService;
 
 @Service("htmlService")
 @NotLogging
@@ -17,16 +17,16 @@ public class HtmlServiceImpl implements HtmlService {
     private final Logger logs = LoggerFactory.getLogger(HtmlServiceImpl.class);
 
     @Autowired
-    private ApplicationProperties applicationProperties;
+    private MetadataService metadataService;
 
     @Override
     public String getHeaderHtml() {
-        return getHtml(applicationProperties.getMetadata().getNavbarTemplateUrl());
+        return getHtml(metadataService.getNavbarUrl());
     }
 
     @Override
     public String getFooterHtml() {
-        return getHtml(applicationProperties.getMetadata().getFooterTemplateUrl());
+        return getHtml(metadataService.getFooterUrl());
     }
 
     private String getHtml(String urlToRead) {

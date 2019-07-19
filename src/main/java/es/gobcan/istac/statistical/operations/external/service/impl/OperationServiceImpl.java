@@ -5,19 +5,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties;
+import es.gobcan.istac.statistical.operations.external.service.MetadataService;
 import es.gobcan.istac.statistical.operations.external.service.OperationService;
 
 @Service
 public class OperationServiceImpl implements OperationService {
 
     @Autowired
-    private ApplicationProperties applicationProperties;
+    private MetadataService metadataService;
 
     @Override
     public Operation findOperation(String operationId) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(applicationProperties.getMetadata().getOperationsApi() + "/operations/" + operationId, Operation.class);
+        return restTemplate.getForObject(metadataService.getOperationsApi() + "/operations/" + operationId, Operation.class);
     }
 
 }
