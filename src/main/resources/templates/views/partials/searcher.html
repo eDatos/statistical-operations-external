@@ -17,7 +17,7 @@
                     <a class="link" href="/operations/{{ id }}"> {{ name }} </a>
                 </li>
                 {{ else }}
-                <li>{{ emptyMessage }}</li>
+                <li th:text="#{message.emptyMessageSearch}"></li>
                 {{/each}}
             </ul>
         </script>

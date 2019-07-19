@@ -121,7 +121,8 @@ function initSearch($searcher) {
                     });
                     
                 }
-                var htmlContent = searchResultsTemplate({results, emptyMessage: 'No se han encontrado resultados'});
+
+                var htmlContent = searchResultsTemplate({results: results});
                 $searchResultsPanel.html(htmlContent);
             },
             error: function(e) {
