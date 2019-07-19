@@ -1,0 +1,234 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+    layout:decorate="~{layouts/base}">
+
+    <body>
+        <th:block layout:fragment="header_page_content">
+            <div class="header-search" th:insert="partials/searcher::searcher"></div>
+        </th:block>
+
+        <th:block layout:fragment="principal_content">
+            <div class="container main-content">
+                <h1 class="title title1 main-title">
+                    <span th:text="#{global.operation}"></span>
+                    <span th:text="${@languageUtil.getTraduction(operation.name)}"></span>
+                </h1>
+                <table class="table-metadatas text-align-left">
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.identifiers}"></th>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.id}"></th>
+                        <td th:text="${operation.id}"></td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.name}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.name)}"></td>
+                    </tr>
+                    <tr th:if="${operation.acronym != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.acronym}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.acronym)}"></td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.urn}"></th>
+                        <td th:text="${operation.urn}"></td>
+                    </tr>
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.contentClassifiers}"></th>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.subjectArea}"></th>
+                        <td >
+                            <!-- Verify correct link -->
+                            <a target="_blank" th:href="${operation.subjectArea.selfLink.href}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.secondarySubjectAreas != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.secondarySubjectAreas}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.secondarySubjectAreas.secondarySubjectAreas})">
+                        </td>
+                    </tr>
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.contentDescription}"></th>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.objetive}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.objective)}"></td>
+                    </tr>
+                    <tr th:if="${operation.description != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.description}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.description)}"></td>
+                    </tr>
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.classDescriptors}"></th>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.statisticalOperationType}"></th>
+                        <td th:text="${operation.statisticalOperationType.id}"></td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.officialityType}"></th>
+                        <td th:text="${operation.officialityType.id}"></td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.indicatorSystem}"></th>
+                        <td th:switch="${operation.indicatorSystem}">
+                            <span th:case="true" th:text="#{boolean.true}"></span>
+                            <span th:case="false" th:text="#{boolean.false}"></span>
+                        </td>
+                    </tr>
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.productionDescriptors}"></th>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.producers}"></th>
+
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.producers.producers})">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.regionalResponsibles}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.regionalResponsibles.regionalResponsibles})">
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.regionalContributors != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.regionalContributors}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.regionalContributors.regionalContributors})">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.currentlyActive}"></th>
+                        <td th:switch="${operation.currentlyActive}">
+                            <span th:case="true" th:text="#{boolean.true}"></span>
+                            <span th:case="false" th:text="#{boolean.false}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.status}"></th>
+                        <td th:text="${operation.status}"></td>
+                    </tr>
+
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.disseminationPublication}"></th>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.publishers}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.publishers.publishers})">
+                        </td>
+                    </tr>
+                    <!-- TODO: Falta metadatos comunes -->
+                    <tr th:if="${operation.relPolUsAc != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.relPolUsAc}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
+                    </tr>
+                    <tr th:if="${operation.releaseCalendar != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.releaseCalendar}"></th>
+                        <td th:switch="${operation.releaseCalendar}">
+                            <span th:case="true" th:text="#{boolean.true}"></span>
+                            <span th:case="false" th:text="#{boolean.false}"></span>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.releaseCalendarAccess  != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.releaseCalendarAccess}"></th>
+                        <td th:text="${operation.releaseCalendarAccess }"></td>
+                    </tr>
+                    <tr th:if="${operation.updateFrequencies  != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.updateFrequencies}"></th>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.updateFrequencies.updateFrequencies})">
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.currentInstance != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.currentInstance}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.currentInstance.name)}"></td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.inventoryDate}"></th>
+                        <td th:text="${operation.inventoryDate}"></td>
+                    </tr>
+                    <tr th:if="${operation.revPolicy != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.revPolicy}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.revPolicy)}"></td>
+                    </tr>
+                    <tr th:if="${operation.revPractice != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.revPractice}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.revPractice)}"></td>
+                    </tr>
+                    <tr>
+                        <th th:text="#{operationField.contact}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.contact.name)}"></td>
+                    </tr>
+
+
+
+
+
+
+
+
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.legalActs}"></th>
+                    </tr>
+                    <tr th:if="${operation.legalActs != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.legalActs}"></th>
+                        <td>
+                            <ul>
+                                <li th:each="tmp: ${operation.legalActs.legalActs}">
+                                    <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.dataSharings != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.dataSharings}"></th>
+                        <td>
+                            <ul>
+                                <li th:each="tmp: ${operation.dataSharings.dataSharings}">
+                                    <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr th:if="${operation.confidentialityPolicy != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.confidentialityPolicy}"></th>
+                        <td th:utext="${@languageUtil.getTraduction(operation.confidentialityPolicy)}"></td>
+                    </tr>
+                    <tr th:if="${operation.confidentialityDataTreatment != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.confidentialityDataTreatment}"></th>
+                        <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
+                    </tr>
+                </table>
+            </div>
+        </th:block>
+
+        <th:block layout:fragment="scripts">
+            <script th:src="@{/js/searcher.js}"></script>
+        </th:block>
+    </body>
+
+</html>

@@ -1,10 +1,12 @@
 package es.gobcan.istac.statistical.operations.external.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 /**
  * Properties are configured in the application.yml file.
  */
+@Component("applicationProperties")
 @ConfigurationProperties(prefix = "application", ignoreUnknownFields = false)
 public class ApplicationProperties {
 
@@ -16,32 +18,42 @@ public class ApplicationProperties {
 
     public static class Metadata {
 
-        private String operationsApi;
-        private String navbarTemplateUrl;
-        private String footerTemplateUrl;
+        private String endpoint;
+        private String navbarPathKey;
+        private String footerPathKey;
+        private String operationsApiKey;
 
-        public String getOperationsApi() {
-            return operationsApi;
+        public String getEndpoint() {
+            return endpoint;
         }
 
-        public void setOperationsApi(String operationsApi) {
-            this.operationsApi = operationsApi;
+        public void setEndpoint(String endpoint) {
+            this.endpoint = endpoint;
         }
 
-        public String getNavbarTemplateUrl() {
-            return navbarTemplateUrl;
+        public String getNavbarPathKey() {
+            return navbarPathKey;
         }
 
-        public void setNavbarTemplateUrl(String navbarTemplateUrl) {
-            this.navbarTemplateUrl = navbarTemplateUrl;
+        public void setNavbarPathKey(String navbarPathKey) {
+            this.navbarPathKey = navbarPathKey;
         }
 
-        public String getFooterTemplateUrl() {
-            return footerTemplateUrl;
+        public String getFooterPathKey() {
+            return footerPathKey;
         }
 
-        public void setFooterTemplateUrl(String footerTemplateUrl) {
-            this.footerTemplateUrl = footerTemplateUrl;
+        public void setFooterPathKey(String footerPathKey) {
+            this.footerPathKey = footerPathKey;
         }
+
+        public String getOperationsApiKey() {
+            return operationsApiKey;
+        }
+
+        public void setOperationsApiKey(String operationsApiKey) {
+            this.operationsApiKey = operationsApiKey;
+        }
+
     }
 }

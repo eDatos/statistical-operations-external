@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <th:block th:fragment="searcher">
+        <div class="searcher" >
+            <div class="search-control">
+                <input class="search-input" type="text" th:placeholder="#{actions.search}" autocomplete="off">
+                <button class="btn-show-results"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+            </div>
+            <div class="search-results-panel"></div>
+        </div>
+        <script id="search-results-template" type="text/x-handlebars-template">
+            <ul class="search-results">
+                {{#each results}}
+                <li class="search-results-item" data-iresult="{{ iResult }}">
+                    <a class="link" href="/operations/{{ id }}"> {{ name }} </a>
+                </li>
+                {{ else }}
+                <li th:text="#{message.emptyMessageSearch}"></li>
+                {{/each}}
+            </ul>
+        </script>
+    </th:block>
+</body>
+</html>

@@ -19,6 +19,8 @@ spring:
 # ===================================================================
 
 application:
+    metadata:
+        endpoint: FILL_COMMON_METADATA_ENDPOINT #Required: common metadata endpoint
         
 # ===================================================================        
 # Application debug properties

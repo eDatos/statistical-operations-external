@@ -1,0 +1,214 @@
+html {
+    font-size: 14px;
+}
+body {
+    font-family: Roboto,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #3c3c3c;
+}
+.statistical-operations-external-content,
+.statistical-operations-external-content * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.statistical-operations-external-content button {
+    box-shadow: none;
+    border: 0;
+    cursor: pointer;
+}
+.statistical-operations-external-content a {
+    color: inherit;
+}
+.statistical-operations-external-content ul {
+    list-style: none;
+}
+.statistical-operations-external-content .link {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    /*
+    padding-left: 15px;
+    padding-right: 15px;
+    */
+}
+
+.main-content {
+    margin-top: 48px;
+    padding-bottom: 2rem;
+}
+.main-title {
+    margin-bottom: 1rem;
+}
+.title {
+    font-weight: 300;
+}
+
+.title1 {
+    font-size: 2rem;
+}
+
+.title3 {
+    font-size: 1.6rem;
+}
+
+.text-align-left {
+    text-align: left;
+} 
+
+/* Begin Header module */
+
+.header-module {
+    padding: 15px 36px;
+    height: 56px;
+    border-bottom: 2px solid #59656e;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-module .header-link-root {
+    text-decoration: none;
+    display: inline-block;
+}
+
+.header-module .header-link-root:focus .header-title,
+.header-module .header-link-root:hover .header-title {
+    text-decoration: underline;
+}
+
+.header-module .header-module-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #59656e;
+    display: flex;
+    align-items: center;
+}
+
+.header-module .header-module-title .title-icon {
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: inherit;
+    font-size: 1.2rem;
+    width: 23px;
+    height: 23px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 6px;
+}
+
+.header-module .header-search .searcher {
+    width: 350px;;
+}
+/* End Header module */
+
+
+
+/* Begin search */
+.search-container {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.search-container .search-container-title {
+    margin: 10px 0 15px;
+}
+
+.search-container .searcher {
+    width: 500px;
+}
+
+.searcher {
+    position: relative;
+    display: inline-block;
+}
+.searcher .search-control {
+    position: relative;
+    width: 100%;
+    height: 33px;
+    padding-right: 28px;
+    border: 1px solid #c4c4c4;
+}
+.searcher .search-input {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border: 0;
+    padding-left: 10px;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.searcher .btn-show-results {
+    position: absolute;
+    height: 100%;
+    width: 28px;
+    top: 0;
+    right: 0;
+    background-color: #e7e7e7;
+    border: 0;
+}
+
+.searcher .search-results-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background-color: white;
+}
+.searcher .search-results {
+    padding: .4em;
+    border: 1px solid #c4c4c4;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: left;
+    list-style: none;
+}
+.searcher .search-results .search-results-item {
+    margin: 1px 0;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.searcher .search-results .search-results-item a {
+    display: block;
+    padding: .2em 4px;
+    width: 100%;
+    height: 100%;
+}
+.searcher .search-results .search-results-item.focused {
+    background-color: #2c7bd0;
+    color: white;
+}
+/*End search */
+
+/* Begin table metadata */
+
+.table-metadatas {
+    margin-top: 10px;
+}
+
+.table-metadatas th, .table-metadatas td {
+    padding: 5px;
+}
+
+.table-metadatas .metadata-group {
+    background-color: #008bd0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .8rem;
+}
+.table-metadata a {
+    text-decoration: underline;
+}
+/* End table metadata */

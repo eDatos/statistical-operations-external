@@ -117,6 +117,24 @@
 	</distributionManagement>
 
     <dependencies>
+    
+    	<!-- Webjars -->
+    	<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>font-awesome</artifactId>
+		    <version>4.7.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars.bower</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.4.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>handlebars</artifactId>
+		    <version>4.0.14</version>
+		</dependency>
+    
     	<!-- Metamac -->
 		<dependency>
 			<groupId>org.siemac.metamac.metamac-statistical-operations</groupId>

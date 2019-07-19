@@ -1,0 +1,24 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+    layout:decorate="~{layouts/base}">
+
+    <head>
+        <title th:text="#{operations.title}"></title>
+    </head>
+    <body>
+        <th:block layout:fragment="principal_content">
+            <div class="container main-content">
+                <section class="search-container">
+                    <h1 class="search-container-title title title1" th:text="#{operations.title}"></h1>
+                    <th:block th:insert="partials/searcher::searcher"></th:block>
+                </section>
+            </div>
+        </th:block>
+
+        <th:block layout:fragment="scripts">
+            <script th:src="@{/js/searcher.js}"></script>
+        </th:block>
+    </body>
+
+</html>
