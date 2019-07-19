@@ -31,7 +31,7 @@ public class MetadataServiceImpl implements MetadataService {
     @PostConstruct
     public void fetchMetadataValues() {
         // Temporal hasta que se actualicen los metadatos
-        this.operationsApi = "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0"; // this.getPropertyById(applicationProperties.getMetadata().getOperationsApiKey());
+        this.operationsApi = "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations"; // this.getPropertyById(applicationProperties.getMetadata().getOperationsApiKey());
         this.navbarUrl = "http://estadisticas.arte-consultores.com/sie/external-static/navbar/navbar.html"; // this.getPropertyById(applicationProperties.getMetadata().getNavbarPathKey());
         this.footerUrl = "http://estadisticas.arte-consultores.com/sie/external-static/footer/footer.html"; // this.getPropertyById(applicationProperties.getMetadata().getFooterPathKey());
 
