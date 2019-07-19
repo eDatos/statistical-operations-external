@@ -212,3 +212,29 @@ body {
     text-decoration: underline;
 }
 /* End table metadata */
+
+/* Begin list icons */
+.list-icons {
+    margin: 2rem auto;
+    max-width: 1400px;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.list-icons .list-icon {
+    width: 9%;
+    padding: 10px 10px 0;
+    
+}
+
+.list-icon .subject-name {
+    display: block;
+    text-align: center;
+}
+/* End list icons */
