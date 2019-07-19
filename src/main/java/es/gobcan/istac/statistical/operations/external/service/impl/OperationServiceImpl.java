@@ -26,7 +26,7 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public Operation findOperation(String operationId) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(this.operationsApiUrl.path("/{operation-id}").buildAndExpand(operationId).toUriString(), Operation.class);
+        return restTemplate.getForObject(this.operationsApiUrl.cloneBuilder().path("/{operation-id}").buildAndExpand(operationId).toUriString(), Operation.class);
     }
 
 }
