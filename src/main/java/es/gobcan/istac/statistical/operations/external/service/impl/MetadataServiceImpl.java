@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties;
 import es.gobcan.istac.statistical.operations.external.service.MetadataService;
@@ -25,12 +26,16 @@ public class MetadataServiceImpl implements MetadataService {
     private String navbarUrl;
     private String footerUrl;
 
+    private UriComponentsBuilder metadataEndpoint;
+
     @PostConstruct
     public void fetchMetadataValues() {
         // Temporal hasta que se actualicen los metadatos
         this.operationsApi = "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0"; // this.getPropertyById(applicationProperties.getMetadata().getOperationsApiKey());
         this.navbarUrl = "http://estadisticas.arte-consultores.com/sie/external-static/navbar/navbar.html"; // this.getPropertyById(applicationProperties.getMetadata().getNavbarPathKey());
         this.footerUrl = "http://estadisticas.arte-consultores.com/sie/external-static/footer/footer.html"; // this.getPropertyById(applicationProperties.getMetadata().getFooterPathKey());
+
+        this.metadataEndpoint = UriComponentsBuilder.fromHttpUrl(applicationProperties.getMetadata().getEndpoint()).path("/properties/{property-id}");
     }
 
     @Override
@@ -53,7 +58,7 @@ public class MetadataServiceImpl implements MetadataService {
         log.debug("Obteniendo valor de metadata: {}", propertyId);
         RestTemplate restTemplate = new RestTemplate();
 
-        Map<String, String> res = restTemplate.getForObject(applicationProperties.getMetadata().getEndpoint() + "/properties/" + propertyId, Map.class);
+        Map<String, String> res = restTemplate.getForObject(metadataEndpoint.buildAndExpand(propertyId).toUriString(), Map.class);
         return res.get("value");
     }
 
