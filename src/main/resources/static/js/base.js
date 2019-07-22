@@ -56,3 +56,10 @@ function getTranslatedText(traductions) {
     }
     return texts[defaultLangIndex].value;
 }
+
+(function() {
+    $('.dropwdown-toggle.language-flag').attr('data-lang', getLang());
+    $('.dropwdown-toggle').on('click', function() {
+        $(this).closest('.dropdown').toggleClass('active');
+    })
+})()
