@@ -29,6 +29,8 @@ public class OperationServiceImpl implements OperationService {
     private ApplicationProperties applicationProperties;
 
     private UriComponentsBuilder operationsApiUrl;
+    private static final String OPERATION_ID_URI_TEMPLATE = "/{operation-id}";
+    private static final String QUERY_TEMPLATE_SUBJECT_AREA = "query=SUBJECT_AREA_URN LIKE \"urn:sdmx:org.sdmx.infomodel.categoryscheme.Category={categorySchemePrefix}.{nestedId}\"";
 
     @PostConstruct
     public void init() {
@@ -38,16 +40,16 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public Operation findOperation(String operationId) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(this.operationsApiUrl.cloneBuilder().path("/{operation-id}").buildAndExpand(operationId).toUriString(), Operation.class);
+        return restTemplate.getForObject(this.operationsApiUrl.cloneBuilder().path(OPERATION_ID_URI_TEMPLATE).buildAndExpand(operationId).toUriString(), Operation.class);
     }
 
     @Override
     public Operations findBySubjectArea(String nestedId) {
         log.debug("Consultando operaciones del area: {}", nestedId);
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate
-                .getForObject(this.operationsApiUrl.cloneBuilder().query("query=SUBJECT_AREA_URN LIKE \"urn:sdmx:org.sdmx.infomodel.categoryscheme.Category={categorySchemePrefix}.{nestedId}\"")
-                        .buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(), Operations.class);
+        return restTemplate.getForObject(
+                this.operationsApiUrl.cloneBuilder().query(QUERY_TEMPLATE_SUBJECT_AREA).buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(),
+                Operations.class);
     }
 
 }
