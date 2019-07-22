@@ -14,7 +14,7 @@
             <ul class="search-results">
                 {{#each results}}
                 <li class="search-results-item" data-iresult="{{ iResult }}">
-                    <a class="link" href="/operations/{{ id }}"> {{ name }} </a>
+                    <a href="/operations/{{ id }}"> {{ name }} </a>
                 </li>
                 {{ else }}
                 <li th:text="#{message.emptyMessageSearch}"></li>

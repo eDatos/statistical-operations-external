@@ -1,5 +1,8 @@
 package es.gobcan.istac.statistical.operations.external.config;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +14,14 @@ import org.springframework.stereotype.Component;
 public class ApplicationProperties {
 
     private final Metadata metadata = new Metadata();
+    private final CategoriesSchemes categoriesSchemes = new CategoriesSchemes();
 
     public Metadata getMetadata() {
         return metadata;
+    }
+
+    public CategoriesSchemes getCategoriesSchemes() {
+        return categoriesSchemes;
     }
 
     public static class Metadata {
@@ -55,5 +63,55 @@ public class ApplicationProperties {
             this.operationsApiKey = operationsApiKey;
         }
 
+    }
+
+    public static class CategoriesSchemes {
+
+        private String schemePrefix;
+        private List<Category> categories = new ArrayList<>();
+
+        public String getSchemePrefix() {
+            return schemePrefix;
+        }
+
+        public void setSchemePrefix(String schemePrefix) {
+            this.schemePrefix = schemePrefix;
+        }
+
+        public List<Category> getCategories() {
+            return categories;
+        }
+
+        public static class Category {
+
+            private String key;
+            private String nestedId;
+            private String iconSrc;
+
+            public String getKey() {
+                return key;
+            }
+
+            public void setKey(String key) {
+                this.key = key;
+            }
+
+            public String getNestedId() {
+                return nestedId;
+            }
+
+            public void setNestedId(String nestedId) {
+                this.nestedId = nestedId;
+            }
+
+            public String getIconSrc() {
+                return iconSrc;
+            }
+
+            public void setIconSrc(String iconSrc) {
+                this.iconSrc = iconSrc;
+            }
+
+        }
     }
 }

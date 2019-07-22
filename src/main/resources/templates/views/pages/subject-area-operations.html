@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+    layout:decorate="~{layouts/base}">
+
+    <head>
+        <title th:text="#{subjectAreaOperations.title}"></title>
+    </head>
+    <body>
+        <th:block layout:fragment="header_page_content">
+            <div class="header-search" th:insert="partials/searcher::searcher"></div>
+        </th:block>
+        <th:block layout:fragment="principal_content">
+            <div class="container main-content">
+                <ul class="links" th:if="${operations.total > 0}">
+                    <li th:each="operation: ${operations.operations}">
+                        <a th:href="@{/operations/{operationId}(operationId=${operation.id})}" th:text="${@languageUtil.getTraduction(operation.name)}"></a>
+                    </li>
+                </ul>
+                <span th:if="${operations.total == 0}" th:text="#{message.emptySubjectAreaOperations}"></span>
+            </div>
+        </th:block>
+
+        <th:block layout:fragment="scripts">
+            <script th:src="@{/js/searcher.js}"></script>
+        </th:block>
+    </body>
+
+</html>
