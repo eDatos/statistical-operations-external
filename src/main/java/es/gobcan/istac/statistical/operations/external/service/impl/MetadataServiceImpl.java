@@ -30,12 +30,14 @@ public class MetadataServiceImpl implements MetadataService {
 
     @PostConstruct
     public void fetchMetadataValues() {
+
+        this.metadataEndpoint = UriComponentsBuilder.fromHttpUrl(applicationProperties.getMetadata().getEndpoint()).path("/properties/{property-id}");
+
         // Temporal hasta que se actualicen los metadatos
-        this.operationsApi = "https://www3.gobiernodecanarias.org/istac/api/operations/v1.0/operations"; // this.getPropertyById(applicationProperties.getMetadata().getOperationsApiKey());
+        this.operationsApi = this.getPropertyById(applicationProperties.getMetadata().getOperationsApiKey()) + "/v1.0/operations";
         this.navbarUrl = "http://estadisticas.arte-consultores.com/sie/external-static/navbar/navbar.html"; // this.getPropertyById(applicationProperties.getMetadata().getNavbarPathKey());
         this.footerUrl = "http://estadisticas.arte-consultores.com/sie/external-static/footer/footer.html"; // this.getPropertyById(applicationProperties.getMetadata().getFooterPathKey());
 
-        this.metadataEndpoint = UriComponentsBuilder.fromHttpUrl(applicationProperties.getMetadata().getEndpoint()).path("/properties/{property-id}");
     }
 
     @Override

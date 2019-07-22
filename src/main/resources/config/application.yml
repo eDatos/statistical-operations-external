@@ -81,4 +81,4 @@ application:
     metadata:
         navbarPathKey: sie.style.header.url
         footerPathKey: sie.style.footer.url
-        operationsApiKey: EXTERNAL_API_ENDPOINT
+        operationsApiKey: metamac.statistical_operations.rest.external
