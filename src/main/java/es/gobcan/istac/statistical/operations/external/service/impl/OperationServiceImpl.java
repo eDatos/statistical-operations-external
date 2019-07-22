@@ -1,7 +1,6 @@
 package es.gobcan.istac.statistical.operations.external.service.impl;
 
 import java.lang.invoke.MethodHandles;
-import java.util.ArrayList;
 
 import javax.annotation.PostConstruct;
 
@@ -14,18 +13,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties;
 import es.gobcan.istac.statistical.operations.external.service.MetadataService;
 import es.gobcan.istac.statistical.operations.external.service.OperationService;
-import net.logstash.logback.encoder.org.apache.commons.lang.StringUtils;
 
 @Service
 public class OperationServiceImpl implements OperationService {
 
     private final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    private UriComponentsBuilder operationsApiUrl;
     @Autowired
     private MetadataService metadataService;
+
+    @Autowired
+    private ApplicationProperties applicationProperties;
+
+    private UriComponentsBuilder operationsApiUrl;
 
     @PostConstruct
     public void init() {
@@ -39,26 +42,12 @@ public class OperationServiceImpl implements OperationService {
     }
 
     @Override
-    public Operations findBySubjectArea(String areaId) {
-        String areaUrn = buildNestedId(areaId);
-        log.debug("Consultando operaciones del area: {} con urn: {}", areaId, areaUrn);
+    public Operations findBySubjectArea(String nestedId) {
+        log.debug("Consultando operaciones del area: {}", nestedId);
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(this.operationsApiUrl.cloneBuilder()
-                .query("query=SUBJECT_AREA_URN LIKE \"urn:sdmx:org.sdmx.infomodel.categoryscheme.Category=ISTAC:TEMAS_CANARIAS(01.000).{q}\"").buildAndExpand(areaUrn).toUriString(), Operations.class);
-    }
-
-    private String buildNestedId(String areaId) {
-        String ids[] = areaId.split("_");
-
-        ArrayList<String> urnSection = new ArrayList<String>();
-        for (int i = 0; i < ids.length; i++) {
-            ArrayList<String> urnChunk = new ArrayList<String>();
-            for (int j = 0; j <= i; j++) {
-                urnChunk.add(ids[j]);
-            }
-            urnSection.add(StringUtils.join(urnChunk, "_"));
-        }
-        return StringUtils.join(urnSection, ".");
+        return restTemplate
+                .getForObject(this.operationsApiUrl.cloneBuilder().query("query=SUBJECT_AREA_URN LIKE \"urn:sdmx:org.sdmx.infomodel.categoryscheme.Category={categorySchemePrefix}.{nestedId}\"")
+                        .buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(), Operations.class);
     }
 
 }

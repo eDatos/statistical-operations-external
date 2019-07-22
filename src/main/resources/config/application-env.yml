@@ -21,6 +21,14 @@ spring:
 application:
     metadata:
         endpoint: FILL_COMMON_METADATA_ENDPOINT #Required: common metadata endpoint
+    categoriesSchemes:
+        schemePrefix: FILL_CATEGORY_SCHEME_PREFIX
+        categories:
+            # FILL ARRAY CATEGORIES
+            -
+                key: FILL_CATEGORY_KEY
+                nestedId: FILL_CATEGORY_NESTED_ID #betweem "" for numeric
+                iconSrc: FILL_CATEGORY_ICON_SRC
         
 # ===================================================================        
 # Application debug properties

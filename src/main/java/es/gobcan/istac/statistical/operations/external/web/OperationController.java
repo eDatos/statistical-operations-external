@@ -35,10 +35,10 @@ public class OperationController {
         return new ModelAndView("pages/operation", "operation", operation);
     }
 
-    @GetMapping("/operations/subject-area/{subjectAreaId}")
-    public ModelAndView subjectOperations(@PathVariable String subjectAreaId) {
-        log.debug("Operaciones de la área temática: {}", subjectAreaId);
-        Operations operations = operationService.findBySubjectArea(subjectAreaId);
+    @GetMapping("/operations/subject-area/{subjectNestedId:.+}")
+    public ModelAndView subjectOperations(@PathVariable String subjectNestedId) {
+        log.debug("Operaciones de la área temática con nestedId: {}", subjectNestedId);
+        Operations operations = operationService.findBySubjectArea(subjectNestedId);
         return new ModelAndView("pages/subject-area-operations", "operations", operations);
     }
 }
