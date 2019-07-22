@@ -20,6 +20,9 @@ import es.gobcan.istac.statistical.operations.external.service.OperationService;
 @Service
 public class OperationServiceImpl implements OperationService {
 
+    private static final String OPERATION_ID_URI_TEMPLATE = "/{operation-id}";
+    private static final String QUERY_TEMPLATE_SUBJECT_AREA = "query=SUBJECT_AREA_URN LIKE \"urn:sdmx:org.sdmx.infomodel.categoryscheme.Category={categorySchemePrefix}.{nestedId}\"";
+
     private final Logger log = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Autowired
@@ -29,8 +32,6 @@ public class OperationServiceImpl implements OperationService {
     private ApplicationProperties applicationProperties;
 
     private UriComponentsBuilder operationsApiUrl;
-    private static final String OPERATION_ID_URI_TEMPLATE = "/{operation-id}";
-    private static final String QUERY_TEMPLATE_SUBJECT_AREA = "query=SUBJECT_AREA_URN LIKE \"urn:sdmx:org.sdmx.infomodel.categoryscheme.Category={categorySchemePrefix}.{nestedId}\"";
 
     @PostConstruct
     public void init() {
