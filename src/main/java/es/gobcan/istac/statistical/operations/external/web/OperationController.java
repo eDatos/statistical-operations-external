@@ -3,13 +3,13 @@ package es.gobcan.istac.statistical.operations.external.web;
 import java.lang.invoke.MethodHandles;
 
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Operation;
+import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Operations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import es.gobcan.istac.statistical.operations.external.service.OperationService;
@@ -22,7 +22,7 @@ public class OperationController {
     @Autowired
     private OperationService operationService;
 
-    @RequestMapping(value = {"", "/index.html"})
+    @GetMapping(value = {"", "/index.html"})
     public ModelAndView index() {
         log.debug("Operaciones");
         return new ModelAndView("pages/operations");
@@ -33,5 +33,12 @@ public class OperationController {
         log.debug("Operación {}", operationId);
         Operation operation = operationService.findOperation(operationId);
         return new ModelAndView("pages/operation", "operation", operation);
+    }
+
+    @GetMapping("/operations/subject-area/{subjectAreaId}")
+    public ModelAndView subjectOperations(@PathVariable String subjectAreaId) {
+        log.debug("Operaciones de la área temática: {}", subjectAreaId);
+        Operations operations = operationService.findBySubjectArea(subjectAreaId);
+        return new ModelAndView("pages/subject-area-operations", "operations", operations);
     }
 }
