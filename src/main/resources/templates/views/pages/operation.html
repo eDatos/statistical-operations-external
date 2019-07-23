@@ -64,11 +64,11 @@
                     </tr>
                     <tr>
                         <th th:text="#{operationField.objetive}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.objective)}"></td>
+                        <td th:utext="${@languageUtil.getTraduction(operation.objective)}"></td>
                     </tr>
                     <tr th:if="${operation.description != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.description}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.description)}"></td>
+                        <td th:utext="${@languageUtil.getTraduction(operation.description)}"></td>
                     </tr>
 
 
@@ -87,10 +87,7 @@
                     </tr>
                     <tr>
                         <th th:text="#{operationField.indicatorSystem}"></th>
-                        <td th:switch="${operation.indicatorSystem}">
-                            <span th:case="true" th:text="#{boolean.true}"></span>
-                            <span th:case="false" th:text="#{boolean.false}"></span>
-                        </td>
+                        <td th:text="${#messages.msg('boolean.' + operation.indicatorSystem)}"></td>
                     </tr>
 
 
@@ -118,10 +115,7 @@
                     </tr>
                     <tr>
                         <th th:text="#{operationField.currentlyActive}"></th>
-                        <td th:switch="${operation.currentlyActive}">
-                            <span th:case="true" th:text="#{boolean.true}"></span>
-                            <span th:case="false" th:text="#{boolean.false}"></span>
-                        </td>
+                        <td th:text="${#messages.msg('boolean.' + operation.currentlyActive)}"></td>
                     </tr>
                     <tr>
                         <th th:text="#{operationField.status}"></th>
@@ -148,10 +142,7 @@
                     </tr>
                     <tr th:if="${operation.releaseCalendar != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.releaseCalendar}"></th>
-                        <td th:switch="${operation.releaseCalendar}">
-                            <span th:case="true" th:text="#{boolean.true}"></span>
-                            <span th:case="false" th:text="#{boolean.false}"></span>
-                        </td>
+                        <td th:text="${#messages.msg('boolean.' + operation.releaseCalendar)}"></td>
                     </tr>
                     <tr th:if="${operation.releaseCalendarAccess  != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.releaseCalendarAccess}"></th>
@@ -168,7 +159,7 @@
                     </tr>
                     <tr>
                         <th th:text="#{operationField.inventoryDate}"></th>
-                        <td th:text="${operation.inventoryDate}"></td>
+                        <td th:text="${#dates.format(operation.inventoryDate,  #messages.msg('global.formatDatetime'))}" ></td>
                     </tr>
                     <tr th:if="${operation.revPolicy != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.revPolicy}"></th>
