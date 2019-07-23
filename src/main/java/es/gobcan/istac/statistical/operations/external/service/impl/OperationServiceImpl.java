@@ -32,7 +32,7 @@ public class OperationServiceImpl implements OperationService {
     @Override
     public Operation findOperation(String operationId) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(getOperationsApiUrl().cloneBuilder().path(OPERATION_ID_URI_TEMPLATE).buildAndExpand(operationId).toUriString(), Operation.class);
+        return restTemplate.getForObject(getOperationsApiUrl().path(OPERATION_ID_URI_TEMPLATE).buildAndExpand(operationId).toUriString(), Operation.class);
     }
 
     @Override
@@ -40,8 +40,7 @@ public class OperationServiceImpl implements OperationService {
         log.debug("Consultando operaciones del area: {}", nestedId);
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
-                getOperationsApiUrl().cloneBuilder().query(QUERY_TEMPLATE_SUBJECT_AREA).buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(),
-                Operations.class);
+                getOperationsApiUrl().query(QUERY_TEMPLATE_SUBJECT_AREA).buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(), Operations.class);
     }
 
     private UriComponentsBuilder getOperationsApiUrl() {
