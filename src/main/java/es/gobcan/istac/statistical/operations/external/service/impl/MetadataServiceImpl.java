@@ -30,27 +30,30 @@ public class MetadataServiceImpl implements MetadataService {
 
     @PostConstruct
     public void fetchMetadataValues() {
-
         this.metadataEndpoint = UriComponentsBuilder.fromHttpUrl(applicationProperties.getMetadata().getEndpoint()).path("/properties/{property-id}");
-
-        this.operationsApi = this.getPropertyById(applicationProperties.getMetadata().getOperationsApiKey()) + "/v1.0/operations";
-        this.navbarUrl = this.getPropertyById(applicationProperties.getMetadata().getNavbarPathKey());
-        this.footerUrl = this.getPropertyById(applicationProperties.getMetadata().getFooterPathKey());
-
     }
 
     @Override
     public String getOperationsApi() {
+        if (operationsApi == null) {
+            operationsApi = this.getPropertyById(applicationProperties.getMetadata().getOperationsApiKey()) + "/v1.0/operations";
+        }
         return operationsApi;
     }
 
     @Override
     public String getNavbarUrl() {
+        if (navbarUrl == null) {
+            navbarUrl = this.getPropertyById(applicationProperties.getMetadata().getNavbarPathKey());
+        }
         return navbarUrl;
     }
 
     @Override
     public String getFooterUrl() {
+        if (footerUrl == null) {
+            footerUrl = this.getPropertyById(applicationProperties.getMetadata().getFooterPathKey());
+        }
         return footerUrl;
     }
 
