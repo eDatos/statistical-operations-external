@@ -12,7 +12,7 @@
         <tbody>
             <tr th:each="resource: ${elements}">
                 <td th:text="${@languageUtil.getTraduction(resource.name)}"></td>
-                <td th:text="${resource.urn}"></td>
+                <td class="big-word" th:text="${resource.urn}"></td>
             </tr>
         </tbody>
     </table>
