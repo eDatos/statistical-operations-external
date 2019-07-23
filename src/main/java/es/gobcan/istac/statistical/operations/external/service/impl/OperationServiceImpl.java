@@ -2,8 +2,6 @@ package es.gobcan.istac.statistical.operations.external.service.impl;
 
 import java.lang.invoke.MethodHandles;
 
-import javax.annotation.PostConstruct;
-
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Operation;
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Operations;
 import org.slf4j.Logger;
@@ -31,17 +29,10 @@ public class OperationServiceImpl implements OperationService {
     @Autowired
     private ApplicationProperties applicationProperties;
 
-    private UriComponentsBuilder operationsApiUrl;
-
-    @PostConstruct
-    public void init() {
-        this.operationsApiUrl = UriComponentsBuilder.fromHttpUrl(metadataService.getOperationsApi());
-    }
-
     @Override
     public Operation findOperation(String operationId) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(this.operationsApiUrl.cloneBuilder().path(OPERATION_ID_URI_TEMPLATE).buildAndExpand(operationId).toUriString(), Operation.class);
+        return restTemplate.getForObject(getOperationsApiUrl().path(OPERATION_ID_URI_TEMPLATE).buildAndExpand(operationId).toUriString(), Operation.class);
     }
 
     @Override
@@ -49,8 +40,11 @@ public class OperationServiceImpl implements OperationService {
         log.debug("Consultando operaciones del area: {}", nestedId);
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
-                this.operationsApiUrl.cloneBuilder().query(QUERY_TEMPLATE_SUBJECT_AREA).buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(),
-                Operations.class);
+                getOperationsApiUrl().query(QUERY_TEMPLATE_SUBJECT_AREA).buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(), Operations.class);
+    }
+
+    private UriComponentsBuilder getOperationsApiUrl() {
+        return UriComponentsBuilder.fromHttpUrl(metadataService.getOperationsApi());
     }
 
 }
