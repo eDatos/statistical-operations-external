@@ -19,7 +19,7 @@ public class LocaleConfiguration extends WebMvcConfigurerAdapter {
         r.setDefaultLocale(new Locale(Constants.DEFAULT_LANG));
         r.setCookieName(Constants.NAME_ATTRIBUTE_LANG);
         r.setCookieMaxAge(86400); // 24 * 60 * 60
-
+        r.setCookieHttpOnly(false);
         return r;
     }
 
