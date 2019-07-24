@@ -34,10 +34,10 @@
                     <button type="button" class="dropwdown-toggle language-flag"></button>
                     <ul class="dropdown-content languages-list">
                         <li class="language-item">
-                            <a class="language-flag" data-lang="es" href="?lang=es" th:text="#{language.es}"></a>
+                            <a class="language-flag" data-lang="es" th:href="@{${#httpServletRequest.servletPath}(lang=es)}" th:text="#{language.es}"></a>
                         </li>
                         <li class="language-item">
-                            <a class="language-flag" data-lang="en" href="?lang=en" th:text="#{language.en}"></a>
+                            <a class="language-flag" data-lang="en" th:href="@{${#httpServletRequest.servletPath}(lang=en)}" th:text="#{language.en}"></a>
                         </li>
                     </ul>
                 </div>
