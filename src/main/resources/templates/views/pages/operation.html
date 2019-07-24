@@ -2,7 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
     layout:decorate="~{layouts/base}">
-
+    <head>
+        <title th:text="#{title.operation}"></title>
+    </head>
     <body>
         <th:block layout:fragment="header_page_content">
             <div class="header-search" th:insert="partials/searcher::searcher"></div>
@@ -27,13 +29,13 @@
                         <th th:text="#{operationField.name}"></th>
                         <td th:text="${@languageUtil.getTraduction(operation.name)}"></td>
                     </tr>
-                    <tr th:if="${operation.acronym != null}"> <!-- Opcional -->
-                        <th th:text="#{operationField.acronym}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.acronym)}"></td>
-                    </tr>
                     <tr>
                         <th th:text="#{operationField.urn}"></th>
                         <td class="big-word" th:text="${operation.urn}"></td>
+                    </tr>
+                    <tr th:if="${operation.acronym != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.acronym}"></th>
+                        <td th:text="${@languageUtil.getTraduction(operation.acronym)}"></td>
                     </tr>
 
 
@@ -47,7 +49,7 @@
                         <th th:text="#{operationField.subjectArea}"></th>
                         <td >
                             <!-- Verify correct link -->
-                            <a target="_blank" th:href="${operation.subjectArea.selfLink.href}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
+                            <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${operation.subjectArea.nestedId})}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
                         </td>
                     </tr>
                     <tr th:if="${operation.secondarySubjectAreas != null}"> <!-- Opcional -->
@@ -213,6 +215,22 @@
                         <th th:text="#{operationField.confidentialityDataTreatment}"></th>
                         <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
                     </tr>
+
+                    <th:block th:unless="${#lists.isEmpty(instances.instances)}">
+                        <tr class="metadata-group">
+                            <th colspan="2" th:text="#{operationField.group.operationInstances}"></th>
+                        </tr>
+                        <tr>
+                            <th th:text="#{operationField.operationInstances}"></th>
+                            <td>
+                                <ul class="list">
+                                    <li th:each="instance: ${instances.instances}">
+                                        <a th:href="@{/operations/{operationId}/instances/{instanceId}(operationId=${operation.id}, instanceId=${instance.id})}" th:text="${@languageUtil.getTraduction(instance.name)}"></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </th:block>
                 </table>
             </div>
         </th:block>
