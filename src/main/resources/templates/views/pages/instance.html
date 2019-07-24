@@ -7,9 +7,6 @@
         <title th:text="#{title.instance}"></title>
     </head>
     <body>
-        <th:block layout:fragment="header_page_content">
-            <div class="header-search" th:insert="partials/searcher::searcher"></div>
-        </th:block>
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <h1 class="title title1 main-title">

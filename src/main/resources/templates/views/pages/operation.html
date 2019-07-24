@@ -6,10 +6,6 @@
         <title th:text="#{title.operation}"></title>
     </head>
     <body>
-        <th:block layout:fragment="header_page_content">
-            <div class="header-search" th:insert="partials/searcher::searcher"></div>
-        </th:block>
-
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <h1 class="title title1 main-title">
@@ -235,9 +231,6 @@
             </div>
         </th:block>
 
-        <th:block layout:fragment="scripts">
-            <script th:src="@{/js/searcher.js}"></script>
-        </th:block>
     </body>
 
 </html>
