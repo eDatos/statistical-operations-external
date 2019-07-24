@@ -37,15 +37,14 @@ function initSearch($searcher) {
         document.addEventListener('keydown', arrowKeyPressHandler);
     }
 
-    function select($result, index) {
-        var selected = index;
+    function select($result) {
         var $searchResults = $searcher.find('.search-results');
         
         var elHeight = $result.height();
         var scrollTop = $searchResults.scrollTop();
         var viewport = scrollTop + $searchResults.height();
-        var elOffset = elHeight * selected;
-        
+        var elOffset = $result[0].offsetTop;
+
         if (elOffset < scrollTop || (elOffset + elHeight) > viewport)
             $searchResults.scrollTop(elOffset);
 
@@ -71,7 +70,7 @@ function initSearch($searcher) {
             iFocused++;
             
         }
-        select($searcher.find('.search-results-item[data-iresult="'+ iFocused + '"]'), iFocused);
+        select($searcher.find('.search-results-item[data-iresult="'+ iFocused + '"]'));
 
         e.preventDefault();
     }
