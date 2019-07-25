@@ -7,9 +7,6 @@
         <title th:text="#{subjectAreaOperations.title}"></title>
     </head>
     <body>
-        <th:block layout:fragment="header_page_content">
-            <div class="header-search" th:insert="partials/searcher::searcher"></div>
-        </th:block>
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <ul class="links" th:if="${operations.total > 0}">
@@ -19,10 +16,6 @@
                 </ul>
                 <span th:if="${operations.total == 0}" th:text="#{message.emptySubjectAreaOperations}"></span>
             </div>
-        </th:block>
-
-        <th:block layout:fragment="scripts">
-            <script th:src="@{/js/searcher.js}"></script>
         </th:block>
     </body>
 

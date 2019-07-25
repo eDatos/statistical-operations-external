@@ -1,5 +1,5 @@
 'use strict';
-
+var APP_LINK = 'statisticalOperationsExternalLink';
 function getLang() {
     var lang = CONFIGURATION.CURRENT_LANG;
     if (lang && CONFIGURATION.AVAILABLE_LANGS.indexOf(lang) != -1) {
@@ -35,6 +35,7 @@ function getTranslatedText(traductions) {
 }
 
 (function() {
+    setActiveLink(APP_LINK);
     $('.dropwdown-toggle.language-flag').attr('data-lang', getLang());
     $('.dropwdown-toggle').on('click', function() {
         $(this).closest('.dropdown').toggleClass('active');

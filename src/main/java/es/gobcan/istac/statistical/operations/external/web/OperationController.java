@@ -2,6 +2,8 @@ package es.gobcan.istac.statistical.operations.external.web;
 
 import java.lang.invoke.MethodHandles;
 
+import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Instance;
+import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Instances;
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Operation;
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Operations;
 import org.slf4j.Logger;
@@ -32,7 +34,12 @@ public class OperationController {
     public ModelAndView operation(@PathVariable String operationId) {
         log.debug("Operación {}", operationId);
         Operation operation = operationService.findOperation(operationId);
-        return new ModelAndView("pages/operation", "operation", operation);
+        Instances operationInstances = operationService.findOperationInstances(operationId);
+
+        ModelAndView model = new ModelAndView("pages/operation");
+        model.addObject("operation", operation);
+        model.addObject("instances", operationInstances);
+        return model;
     }
 
     @GetMapping("/operations/subject-area/{subjectNestedId:.+}")
@@ -40,5 +47,12 @@ public class OperationController {
         log.debug("Operaciones de la área temática con nestedId: {}", subjectNestedId);
         Operations operations = operationService.findBySubjectArea(subjectNestedId);
         return new ModelAndView("pages/subject-area-operations", "operations", operations);
+    }
+
+    @GetMapping("/operations/{operationId}/instances/{instanceId}")
+    public ModelAndView operationInstance(@PathVariable String operationId, @PathVariable String instanceId) {
+        log.debug("Instancia {} de la operación {}", instanceId, operationId);
+        Instance operationInstance = operationService.findOperationInstance(operationId, instanceId);
+        return new ModelAndView("pages/instance", "instance", operationInstance);
     }
 }

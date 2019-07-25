@@ -29,7 +29,7 @@
                 </h1>
             </a>
             <div class="header-module-content">
-                <th:block layout:fragment="header_page_content"></th:block>
+                <div th:unless="${hideSearchHeader}" class="header-search" th:insert="partials/searcher::searcher"></div>
                 <div class="dropdown dropdown-language">
                     <button type="button" class="dropwdown-toggle language-flag"></button>
                     <ul class="dropdown-content languages-list">
@@ -63,6 +63,7 @@
         <script th:src="@{/webjars/jquery/3.4.1/dist/jquery.min.js}"></script>
         <script th:src="@{/webjars/handlebars/4.0.14/handlebars.min.js}"></script>
         <script th:src="@{/js/base.js}"></script>
+        <script th:unless="${hideSearchHeader}" th:src="@{/js/searcher.js}"></script>
 
         <th:block layout:fragment="scripts"></th:block> 
         <noscript>
