@@ -56,149 +56,169 @@
                     </tr>
 
 
-                    <tr class="metadata-group">
-                        <th colspan="2" th:text="#{instanceField.group.contentDescription}"></th>
-                    </tr>
-                    <tr th:if="${instance.dataDescription != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.dataDescription}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.dataDescription)}"></td>
-                    </tr>
-                    <tr th:if="${instance.statisticalPopulation != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.statisticalPopulation}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.statisticalPopulation)}"></td>
-                    </tr>
-                    <tr th:if="${instance.statisticalUnits != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.statisticalUnits}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="statisticalUnit: ${instance.statisticalUnits.statisticalUnits}">
-                                    <span th:text=${@languageUtil.getTraduction(statisticalUnit.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${instance.geographicGranularity != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.geographicGranularity}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="geographicGranularity: ${instance.geographicGranularity.geographicGranularities}">
-                                    <span th:text=${@languageUtil.getTraduction(geographicGranularity.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${instance.geographicComparability != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.geographicComparability}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.geographicComparability)}"></td>
-                    </tr>
-                    <tr th:if="${instance.temporalGranularity != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.temporalGranularity}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="temporalGranularity: ${instance.temporalGranularity.temporalGranularities}">
-                                    <span th:text=${@languageUtil.getTraduction(temporalGranularity.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${instance.temporalComparability != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.temporalComparability}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.temporalComparability)}"></td>
-                    </tr>
-                    <tr th:if="${instance.basePeriod != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.basePeriod}"></th>
-                        <td th:text="${instance.basePeriod}"></td>
-                    </tr>
-                    <tr th:if="${instance.measures != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.measures}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="measure: ${instance.measures.measures}">
-                                    <span th:text=${@languageUtil.getTraduction(measure.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${instance.statConcDefsDescription != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.statConcDefsDescription}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.statConcDefsDescription)}"></td>
-                    </tr>
-                    <tr th:if="${instance.statConcDefs != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.statConcDefs}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="statConcDef: ${instance.statConcDefs.statConcDefs}">
-                                    <span th:text=${@languageUtil.getTraduction(statConcDef.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${instance.classSystemsDescription != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.classSystemsDescription}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.classSystemsDescription)}"></td>
-                    </tr>
-                    <tr th:if="${instance.classSystems != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.classSystems}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="classSystem: ${instance.classSystems.classSystems}">
-                                    <span th:text=${@languageUtil.getTraduction(classSystem.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
+                    <th:block th:if="${instance.dataDescription != null
+                                    OR instance.statisticalPopulation != null
+                                    OR instance.statisticalUnits != null
+                                    OR instance.geographicGranularity != null
+                                    OR instance.geographicComparability != null
+                                    OR instance.temporalGranularity != null
+                                    OR instance.temporalComparability != null
+                                    OR instance.basePeriod != null
+                                    OR instance.measures != null
+                                    OR instance.statConcDefsDescription != null
+                                    OR instance.statConcDefs != null
+                                    OR instance.classSystemsDescription != null
+                                    OR instance.classSystems != null}">
+                        <tr class="metadata-group">
+                            <th colspan="2" th:text="#{instanceField.group.contentDescription}"></th>
+                        </tr>
+                        <tr th:if="${instance.dataDescription != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.dataDescription}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.dataDescription)}"></td>
+                        </tr>
+                        <tr th:if="${instance.statisticalPopulation != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.statisticalPopulation}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.statisticalPopulation)}"></td>
+                        </tr>
+                        <tr th:if="${instance.statisticalUnits != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.statisticalUnits}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="statisticalUnit: ${instance.statisticalUnits.statisticalUnits}">
+                                        <span th:text=${@languageUtil.getTraduction(statisticalUnit.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${instance.geographicGranularity != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.geographicGranularity}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="geographicGranularity: ${instance.geographicGranularity.geographicGranularities}">
+                                        <span th:text=${@languageUtil.getTraduction(geographicGranularity.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${instance.geographicComparability != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.geographicComparability}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.geographicComparability)}"></td>
+                        </tr>
+                        <tr th:if="${instance.temporalGranularity != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.temporalGranularity}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="temporalGranularity: ${instance.temporalGranularity.temporalGranularities}">
+                                        <span th:text=${@languageUtil.getTraduction(temporalGranularity.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${instance.temporalComparability != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.temporalComparability}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.temporalComparability)}"></td>
+                        </tr>
+                        <tr th:if="${instance.basePeriod != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.basePeriod}"></th>
+                            <td th:text="${instance.basePeriod}"></td>
+                        </tr>
+                        <tr th:if="${instance.measures != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.measures}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="measure: ${instance.measures.measures}">
+                                        <span th:text=${@languageUtil.getTraduction(measure.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${instance.statConcDefsDescription != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.statConcDefsDescription}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.statConcDefsDescription)}"></td>
+                        </tr>
+                        <tr th:if="${instance.statConcDefs != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.statConcDefs}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="statConcDef: ${instance.statConcDefs.statConcDefs}">
+                                        <span th:text=${@languageUtil.getTraduction(statConcDef.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${instance.classSystemsDescription != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.classSystemsDescription}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.classSystemsDescription)}"></td>
+                        </tr>
+                        <tr th:if="${instance.classSystems != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.classSystems}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="classSystem: ${instance.classSystems.classSystems}">
+                                        <span th:text=${@languageUtil.getTraduction(classSystem.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </th:block>
 
 
-
-
-                    <tr class="metadata-group">
-                        <th th:text="#{instanceField.group.productionDescriptors}" colspan="2"></th>
-                    </tr>
-                    <tr th:if="${instance.docMethod != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.docMethod}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.docMethod)}"></td>
-                    </tr>
-                    <tr th:if="${instance.statisticalOperationSource != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.statisticalOperationSource}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.statisticalOperationSource.name)}"></td>
-                    </tr>
-                    <tr th:if="${instance.collMethod != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.collMethod}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.collMethod.name)}"></td>
-                    </tr>
-                    <tr th:if="${instance.informationSuppliers != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.informationSuppliers}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="informationSupplier: ${instance.informationSuppliers.informationSuppliers}">
-                                    <span th:text=${@languageUtil.getTraduction(informationSupplier.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${instance.freqColls != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.freqColls}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="freqColl: ${instance.freqColls.freqColls}">
-                                    <span th:text=${@languageUtil.getTraduction(freqColl.name)}></span>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${instance.dataValidation != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.dataValidation}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.dataValidation)}"></td>
-                    </tr>
-                    <tr th:if="${instance.dataCompilation != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.dataCompilation}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.dataCompilation)}"></td>
-                    </tr>
-                    <tr th:if="${instance.adjustment != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.adjustment}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.adjustment)}"></td>
-                    </tr>
-
+                    <th:block th:if="${instance.docMethod != null
+                                    OR instance.statisticalOperationSource != null
+                                    OR instance.collMethod != null
+                                    OR instance.informationSuppliers != null
+                                    OR instance.freqColls != null
+                                    OR instance.dataValidation != null
+                                    OR instance.dataCompilation != null
+                                    OR instance.adjustment != null}">
+                        <tr class="metadata-group">
+                            <th th:text="#{instanceField.group.productionDescriptors}" colspan="2"></th>
+                        </tr>
+                        <tr th:if="${instance.docMethod != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.docMethod}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.docMethod)}"></td>
+                        </tr>
+                        <tr th:if="${instance.statisticalOperationSource != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.statisticalOperationSource}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.statisticalOperationSource.name)}"></td>
+                        </tr>
+                        <tr th:if="${instance.collMethod != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.collMethod}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.collMethod.name)}"></td>
+                        </tr>
+                        <tr th:if="${instance.informationSuppliers != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.informationSuppliers}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="informationSupplier: ${instance.informationSuppliers.informationSuppliers}">
+                                        <span th:text=${@languageUtil.getTraduction(informationSupplier.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${instance.freqColls != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.freqColls}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="freqColl: ${instance.freqColls.freqColls}">
+                                        <span th:text=${@languageUtil.getTraduction(freqColl.name)}></span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${instance.dataValidation != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.dataValidation}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.dataValidation)}"></td>
+                        </tr>
+                        <tr th:if="${instance.dataCompilation != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.dataCompilation}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.dataCompilation)}"></td>
+                        </tr>
+                        <tr th:if="${instance.adjustment != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.adjustment}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.adjustment)}"></td>
+                        </tr>
+                    </th:block>
 
 
                     <tr class="metadata-group">
@@ -211,73 +231,86 @@
 
 
 
+                    <th:block th:if="${instance.qualityDoc != null
+                                    OR instance.qualityAssure != null
+                                    OR instance.qualityAssmnt != null
+                                    OR instance.userNeeds != null
+                                    OR instance.userSat != null
+                                    OR instance.completeness != null
+                                    OR instance.timeliness != null
+                                    OR instance.punctuality != null
+                                    OR instance.accuracyOverall != null
+                                    OR instance.samplingErr != null
+                                    OR instance.nonsamplingErr != null
+                                    OR instance.coherXDom != null
+                                    OR instance.coherInternal != null}">
+                        <tr class="metadata-group">
+                            <th colspan="2" th:text="#{instanceField.group.qualityDescriptors}"></th>
+                        </tr>
+                        <tr th:if="${instance.qualityDoc != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.qualityDoc}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.qualityDoc)}"></td>
+                        </tr>
+                        <tr th:if="${instance.qualityAssure != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.qualityAssure}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.qualityAssure)}"></td>
+                        </tr>
+                        <tr th:if="${instance.qualityAssmnt != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.qualityAssmnt}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.qualityAssmnt)}"></td>
+                        </tr>
+                        <tr th:if="${instance.userNeeds != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.userNeeds}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.userNeeds)}"></td>
+                        </tr>
+                        <tr th:if="${instance.userSat != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.userSat}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.userSat)}"></td>
+                        </tr>
+                        <tr th:if="${instance.completeness != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.completeness}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.completeness)}"></td>
+                        </tr>
+                        <tr th:if="${instance.timeliness != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.timeliness}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.timeliness)}"></td>
+                        </tr>
+                        <tr th:if="${instance.punctuality != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.punctuality}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.punctuality)}"></td>
+                        </tr>
+                        <tr th:if="${instance.accuracyOverall != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.accuracyOverall}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.accuracyOverall)}"></td>
+                        </tr>
+                        <tr th:if="${instance.samplingErr != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.samplingErr}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.samplingErr)}"></td>
+                        </tr>
+                        <tr th:if="${instance.nonsamplingErr != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.nonsamplingErr}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.nonsamplingErr)}"></td>
+                        </tr>
+                        <tr th:if="${instance.coherXDom != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.coherXDom}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.coherXDom)}"></td>
+                        </tr>
+                        <tr th:if="${instance.coherInternal != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.coherInternal}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.coherInternal)}"></td>
+                        </tr>
+                    </th:block>
 
-                    <tr class="metadata-group">
-                        <th colspan="2" th:text="#{instanceField.group.qualityDescriptors}"></th>
-                    </tr>
-                    <tr th:if="${instance.qualityDoc != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.qualityDoc}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.qualityDoc)}"></td>
-                    </tr>
-                    <tr th:if="${instance.qualityAssure != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.qualityAssure}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.qualityAssure)}"></td>
-                    </tr>
-                    <tr th:if="${instance.qualityAssmnt != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.qualityAssmnt}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.qualityAssmnt)}"></td>
-                    </tr>
-                    <tr th:if="${instance.userNeeds != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.userNeeds}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.userNeeds)}"></td>
-                    </tr>
-                    <tr th:if="${instance.userSat != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.userSat}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.userSat)}"></td>
-                    </tr>
-                    <tr th:if="${instance.completeness != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.completeness}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.completeness)}"></td>
-                    </tr>
-                    <tr th:if="${instance.timeliness != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.timeliness}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.timeliness)}"></td>
-                    </tr>
-                    <tr th:if="${instance.punctuality != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.punctuality}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.punctuality)}"></td>
-                    </tr>
-                    <tr th:if="${instance.accuracyOverall != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.accuracyOverall}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.accuracyOverall)}"></td>
-                    </tr>
-                    <tr th:if="${instance.samplingErr != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.samplingErr}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.samplingErr)}"></td>
-                    </tr>
-                    <tr th:if="${instance.nonsamplingErr != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.nonsamplingErr}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.nonsamplingErr)}"></td>
-                    </tr>
-                    <tr th:if="${instance.coherXDom != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.coherXDom}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.coherXDom)}"></td>
-                    </tr>
-                    <tr th:if="${instance.coherInternal != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.coherInternal}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.coherInternal)}"></td>
-                    </tr>
 
-
-
-
-                    <tr class="metadata-group">
-                        <th colspan="2" th:text="#{instanceField.group.annotations}"></th>
-                    </tr>
-                    <tr th:if="${instance.comment != null}"> <!-- Opcional -->
-                        <th th:text="#{instanceField.comment}"></th>
-                        <td th:text="${@languageUtil.getTraduction(instance.comment)}"></td>
-                    </tr>
+                    <th:block th:if="${instance.comment != null}">
+                        <tr class="metadata-group">
+                            <th colspan="2" th:text="#{instanceField.group.annotations}"></th>
+                        </tr>
+                        <tr th:if="${instance.comment != null}"> <!-- Opcional -->
+                            <th th:text="#{instanceField.comment}"></th>
+                            <td th:text="${@languageUtil.getTraduction(instance.comment)}"></td>
+                        </tr>
+                    </th:block>
                 </table>
             </div>    
         </th:block>
