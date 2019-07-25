@@ -20,7 +20,7 @@ public class LocaleConfiguration extends WebMvcConfigurerAdapter {
         @Override
         public Locale resolveLocale(HttpServletRequest request) {
             Locale locale = (Locale) request.getAttribute(LOCALE_REQUEST_ATTRIBUTE_NAME);
-            return (locale != null && Constants.AVAILABLE_LANGS.contains(locale.toString())) ? locale : Locale.getDefault();
+            return (locale != null && Constants.AVAILABLE_LANGS.contains(locale.toString())) ? locale : getDefaultLocale();
         }
     }
 
