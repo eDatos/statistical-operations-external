@@ -212,6 +212,16 @@
                         <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
                     </tr>
 
+
+                    <tr class="metadata-group">
+                        <th colspan="2" th:text="#{operationField.group.operationInstances}"></th>
+                    </tr>
+                    <tr th:if="${operation.comment != null}"> <!-- Opcional -->
+                        <th th:text="#{operationField.comment}"></th>
+                        <td th:utext="${@languageUtil.getTraduction(operation.comment)}"></td>
+                    </tr>
+
+
                     <th:block th:unless="${#lists.isEmpty(instances.instances)}">
                         <tr class="metadata-group">
                             <th colspan="2" th:text="#{operationField.group.operationInstances}"></th>
