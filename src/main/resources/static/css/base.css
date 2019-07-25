@@ -279,6 +279,8 @@ ul.list li:before {
     display: inline-block;
     padding: 2px;
     transform: rotate(45deg);
+    margin-bottom: 2px;
+    margin-left: 6px;
 }
 .dropdown-language.active .dropwdown-toggle:after {
     transform: rotate(-135deg);

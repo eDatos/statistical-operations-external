@@ -136,7 +136,7 @@
                     <!-- TODO: Falta metadatos comunes -->
                     <tr th:if="${operation.relPolUsAc != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.relPolUsAc}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
+                        <td th:utext="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
                     </tr>
                     <tr th:if="${operation.releaseCalendar != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.releaseCalendar}"></th>

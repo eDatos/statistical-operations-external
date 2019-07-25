@@ -31,7 +31,7 @@
             <div class="header-module-content">
                 <div th:unless="${hideSearchHeader}" class="header-search" th:insert="partials/searcher::searcher"></div>
                 <div class="dropdown dropdown-language">
-                    <button type="button" class="dropwdown-toggle language-flag"></button>
+                    <button type="button" class="dropwdown-toggle language-flag" th:attr="data-lang=${#locale.language}" th:text="${#messages.msg('language.' + #locale.language)}"></button>
                     <ul class="dropdown-content languages-list">
                         <li class="language-item">
                             <a class="language-flag" data-lang="es" th:href="@{${#httpServletRequest.servletPath}(lang=es)}" th:text="#{language.es}"></a>
