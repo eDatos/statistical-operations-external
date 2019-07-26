@@ -44,7 +44,7 @@
                     <tr>
                         <th th:text="#{operationField.subjectArea}"></th>
                         <td >
-                            <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${operation.subjectArea.nestedId})}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
+                            <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${operation.subjectArea.nestedId != null? operation.subjectArea.nestedId: operation.subjectArea.id})}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
                         </td>
                     </tr>
                     <tr th:if="${operation.secondarySubjectAreas != null}"> <!-- Opcional -->
