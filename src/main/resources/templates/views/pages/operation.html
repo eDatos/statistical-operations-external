@@ -44,8 +44,7 @@
                     <tr>
                         <th th:text="#{operationField.subjectArea}"></th>
                         <td >
-                            <!-- Verify correct link -->
-                            <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${operation.subjectArea.nestedId})}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
+                            <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${operation.subjectArea.nestedId != null? operation.subjectArea.nestedId: operation.subjectArea.id})}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
                         </td>
                     </tr>
                     <tr th:if="${operation.secondarySubjectAreas != null}"> <!-- Opcional -->
@@ -97,9 +96,7 @@
                     </tr>
                     <tr>
                         <th th:text="#{operationField.producers}"></th>
-
-                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.producers.producers})">
-                        </td>
+                        <td th:insert="partials/organization-unit::organization_unit(elements=${operation.producers.producers})"></td>
                     </tr>
                     <tr>
                         <th th:text="#{operationField.regionalResponsibles}"></th>
@@ -133,10 +130,9 @@
                         <td th:insert="partials/organization-unit::organization_unit(elements=${operation.publishers.publishers})">
                         </td>
                     </tr>
-                    <!-- TODO: Falta metadatos comunes -->
                     <tr th:if="${operation.relPolUsAc != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.relPolUsAc}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
+                        <td th:utext="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
                     </tr>
                     <tr th:if="${operation.releaseCalendar != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.releaseCalendar}"></th>
@@ -179,48 +175,52 @@
 
 
 
+                    <th:block th:if="${operation.legalActs != null
+                                    OR operation.dataSharings != null
+                                    OR operation.confidentialityPolicy != null
+                                    OR operation.confidentialityDataTreatment != null}">
+                        <tr class="metadata-group">
+                            <th colspan="2" th:text="#{operationField.group.legalActs}"></th>
+                        </tr>
+                        <tr th:if="${operation.legalActs != null}"> <!-- Opcional -->
+                            <th th:text="#{operationField.legalActs}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="tmp: ${operation.legalActs.legalActs}">
+                                        <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${operation.dataSharings != null}"> <!-- Opcional -->
+                            <th th:text="#{operationField.dataSharings}"></th>
+                            <td>
+                                <ul>
+                                    <li th:each="tmp: ${operation.dataSharings.dataSharings}">
+                                        <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr th:if="${operation.confidentialityPolicy != null}"> <!-- Opcional -->
+                            <th th:text="#{operationField.confidentialityPolicy}"></th>
+                            <td th:utext="${@languageUtil.getTraduction(operation.confidentialityPolicy)}"></td>
+                        </tr>
+                        <tr th:if="${operation.confidentialityDataTreatment != null}"> <!-- Opcional -->
+                            <th th:text="#{operationField.confidentialityDataTreatment}"></th>
+                            <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
+                        </tr>
+                    </th:block>
 
-                    <tr class="metadata-group">
-                        <th colspan="2" th:text="#{operationField.group.legalActs}"></th>
-                    </tr>
-                    <tr th:if="${operation.legalActs != null}"> <!-- Opcional -->
-                        <th th:text="#{operationField.legalActs}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="tmp: ${operation.legalActs.legalActs}">
-                                    <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${operation.dataSharings != null}"> <!-- Opcional -->
-                        <th th:text="#{operationField.dataSharings}"></th>
-                        <td>
-                            <ul>
-                                <li th:each="tmp: ${operation.dataSharings.dataSharings}">
-                                    <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr th:if="${operation.confidentialityPolicy != null}"> <!-- Opcional -->
-                        <th th:text="#{operationField.confidentialityPolicy}"></th>
-                        <td th:utext="${@languageUtil.getTraduction(operation.confidentialityPolicy)}"></td>
-                    </tr>
-                    <tr th:if="${operation.confidentialityDataTreatment != null}"> <!-- Opcional -->
-                        <th th:text="#{operationField.confidentialityDataTreatment}"></th>
-                        <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
-                    </tr>
-
-
-                    <tr class="metadata-group">
-                        <th colspan="2" th:text="#{operationField.group.operationInstances}"></th>
-                    </tr>
-                    <tr th:if="${operation.comment != null}"> <!-- Opcional -->
-                        <th th:text="#{operationField.comment}"></th>
-                        <td th:utext="${@languageUtil.getTraduction(operation.comment)}"></td>
-                    </tr>
-
+                    <th:block th:if="${operation.comment != null}">
+                        <tr class="metadata-group">
+                            <th colspan="2" th:text="#{operationField.group.annotations}"></th>
+                        </tr>
+                        <tr th:if="${operation.comment != null}"> <!-- Opcional -->
+                            <th th:text="#{operationField.comment}"></th>
+                            <td th:utext="${@languageUtil.getTraduction(operation.comment)}"></td>
+                        </tr>
+                    </th:block>
 
                     <th:block th:unless="${#lists.isEmpty(instances.instances)}">
                         <tr class="metadata-group">

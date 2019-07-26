@@ -129,7 +129,6 @@ ul.list li:before {
 
 /* Begin search */
 .search-container {
-    padding-top: 50px;
     text-align: center;
 }
 
@@ -233,6 +232,14 @@ ul.list li:before {
 .table-metadata a {
     text-decoration: underline;
 }
+
+table.resource-table {
+    margin-left: -5px;
+    margin-right: -5px;
+}
+table.resource-table th, table.resource-table td {
+    padding: 5px;
+}
 /* End table metadata */
 
 /* Begin list icons */
@@ -279,6 +286,8 @@ ul.list li:before {
     display: inline-block;
     padding: 2px;
     transform: rotate(45deg);
+    margin-bottom: 2px;
+    margin-left: 6px;
 }
 .dropdown-language.active .dropwdown-toggle:after {
     transform: rotate(-135deg);

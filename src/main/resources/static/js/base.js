@@ -35,8 +35,7 @@ function getTranslatedText(traductions) {
 }
 
 (function() {
-    setActiveLink(APP_LINK);
-    $('.dropwdown-toggle.language-flag').attr('data-lang', getLang());
+    document.getElementById(APP_LINK) && setActiveLink(APP_LINK);
     $('.dropwdown-toggle').on('click', function() {
         $(this).closest('.dropdown').toggleClass('active');
     })
