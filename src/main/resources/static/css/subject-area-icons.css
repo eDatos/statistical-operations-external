@@ -1,0 +1,65 @@
+.subject-area-icon {
+    font-size: 94px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.subject-area-icon:before{
+	display: inline-block;
+    font-family: 'Glyphter';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+.icon-AdministracionPublica:before {content: '\0059'}
+.icon-CienciaYTecnologia:before {content: '\0058'}
+.icon-Demo_MovimientoNatural:before {content: '\0051'}
+.icon-Demo_MovimientosMigratorios:before {content: '\0052'}
+.icon-Demo_Poblacion:before {content: '\0053'}
+.icon-Economia_CuentasEconomicas:before {content: '\0046'}
+.icon-Economia_EmpresasYCentrosDeTrabajo:before {content: '\0044'}
+.icon-Economia_Precios_ConsumoEInversion:before {content: '\0045'}
+.icon-Empleo:before {content: '\0043'}
+.icon-SectorPrimario_Agricultura_Ganaderia_PescaYCaza:before {content: '\0041'}
+.icon-SectorSecundario_ConstruccionYVivienda:before {content: '\0066'}
+.icon-SectorSecundario_Industria_EnergiaYAgua:before {content: '\0067'}
+.icon-SectorServicios_Comercio:before {content: '\0064'}
+.icon-SectorServicios_HosteleriaYTurismo:before {content: '\0062'}
+.icon-SectorServicios_ServiciosFinancieros_MonetariosYSeguros:before {content: '\005a'}
+.icon-SectorServicios_TransporteYComunicaciones:before {content: '\0061'}
+.icon-Sociedad_CalidadDeVida:before {content: '\004f'}
+.icon-Sociedad_Cultura_DeporteYOcio:before {content: '\004c'}
+.icon-Sociedad_Educacion:before {content: '\004d'}
+.icon-Sociedad_EleccionesYParticipacionCiudadana:before {content: '\004b'}
+.icon-Sociedad_JusticiaYSeguridad:before {content: '\004a'}
+.icon-Sociedad_ProteccionSocial:before {content: '\0048'}
+.icon-Sociedad_Salud:before {content: '\004e'}
+.icon-TTMM_MedioAmbiente:before {content: '\0055'}
+.icon-TTMM_TerritorioYUsosDelSuelo:before {content: '\0056'}
+
+
+@media only screen and (max-width: 1200px) {
+    .subject-area-icon {
+        font-size: 8vw;
+    }
+}
+@media only screen and (max-width: 992px) {
+    
+    .subject-area-icon {
+        font-size: 12vw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .subject-area-icon {
+        font-size: 15vw;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .subject-area-icon {
+        font-size: 26vw;
+    }
+}

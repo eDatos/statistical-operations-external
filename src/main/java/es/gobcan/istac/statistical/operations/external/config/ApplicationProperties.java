@@ -86,7 +86,7 @@ public class ApplicationProperties {
 
             private String key;
             private String nestedId;
-            private String iconSrc;
+            private String color;
 
             public String getKey() {
                 return key;
@@ -104,12 +104,12 @@ public class ApplicationProperties {
                 this.nestedId = nestedId;
             }
 
-            public String getIconSrc() {
-                return iconSrc;
+            public String getColor() {
+                return color;
             }
 
-            public void setIconSrc(String iconSrc) {
-                this.iconSrc = iconSrc;
+            public void setColor(String color) {
+                this.color = color;
             }
 
         }
