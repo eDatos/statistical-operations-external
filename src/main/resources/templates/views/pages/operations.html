@@ -6,6 +6,11 @@
 
     <head>
         <title th:text="#{title.operations}"></title>
+
+        <th:block layout:fragment="styles">
+            <link th:href="@{/fonts/subject-area-icons/css/Glyphter.css}" rel="stylesheet" type="text/css"/>
+            <link th:href="@{/css/subject-area-icons.css}" rel="stylesheet" type="text/css"/>
+        </th:block>
     </head>
     <body>
         <th:block layout:fragment="principal_content">
@@ -19,7 +24,7 @@
             <ul class="list-icons">
                 <li class="list-icon" th:each="category: ${@applicationProperties.categoriesSchemes.categories}">
                     <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${category.nestedId})}">
-                        <img class="list-icon-img" th:src="@{${'/img/iconos/' + category.iconSrc}}" alt="">
+                        <span class="subject-area-icon" th:classappend="${'icon-' + category.key}" th:style="${'color:' + category.color}"></span>
                         <span class="subject-name" th:text="${#messages.msg('subject.' + category.key)}"></span>
                     </a>
                 </li>

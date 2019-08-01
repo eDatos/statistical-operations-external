@@ -265,6 +265,7 @@ table.resource-table th, table.resource-table td {
 .list-icon .subject-name {
     display: block;
     text-align: center;
+    margin-top: 6px;
 }
 /* End list icons */
 

@@ -16,6 +16,7 @@
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}">
         <link th:href="@{/css/roboto.css}" rel="stylesheet" type="text/css"/>
         <link th:href="@{/css/base.css}" rel="stylesheet" type="text/css"/>
+        <th:block layout:fragment="styles"></th:block> 
     </head>
     <body>
         <div th:utext="${@htmlService.getHeaderHtml()}"></div>
