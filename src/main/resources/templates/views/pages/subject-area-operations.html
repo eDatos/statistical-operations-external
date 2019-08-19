@@ -9,6 +9,10 @@
     <body>
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
+                <h1 class="title title1 main-title">
+                    <span th:text="#{title.subjectAreaOperations}"></span>
+                    <span th:if="${category != null}" th:text="${#messages.msg('subject.' + category.key)}"></span>
+                </h1>
                 <ul class="links" th:if="${operations.total > 0}">
                     <li th:each="operation: ${operations.operations}">
                         <a th:href="@{/operations/{operationId}(operationId=${operation.id})}" th:text="${@languageUtil.getTraduction(operation.name)}"></a>

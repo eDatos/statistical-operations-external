@@ -2,19 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <body>
-    <table class="resource-table" th:fragment="organization_unit">
-        <thead>
-            <tr>
-                <th th:text="#{operationField.name}"></th>
-                <th th:text="#{operationField.urn}"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="resource: ${elements}">
-                <td th:text="${@languageUtil.getTraduction(resource.name)}"></td>
-                <td class="big-word" th:text="${resource.urn}"></td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="resource-data" th:fragment="organization_unit">
+        <ul class="resource-items">
+            <li class="resource-item" th:each="resource: ${elements}">
+                <div th:text="${@languageUtil.getTraduction(resource.name)}"></div>
+                <div class="big-word" th:text="${resource.urn}"></div>
+            </li>
+        </ul>
+    </div>
 </body>
 </html>
