@@ -1,6 +1,8 @@
 package es.gobcan.istac.statistical.operations.external.web;
 
 import java.lang.invoke.MethodHandles;
+import java.util.List;
+import java.util.Optional;
 
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Instance;
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Instances;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
+import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties;
+import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties.CategoriesSchemes.Category;
 import es.gobcan.istac.statistical.operations.external.service.OperationService;
 
 @Controller
@@ -23,6 +27,9 @@ public class OperationController {
 
     @Autowired
     private OperationService operationService;
+
+    @Autowired
+    private ApplicationProperties applicationProperties;
 
     @GetMapping(value = {"", "/index.html"})
     public ModelAndView index() {
@@ -46,7 +53,12 @@ public class OperationController {
     public ModelAndView subjectOperations(@PathVariable String subjectNestedId) {
         log.debug("Operaciones de la área temática con nestedId: {}", subjectNestedId);
         Operations operations = operationService.findBySubjectArea(subjectNestedId);
-        return new ModelAndView("pages/subject-area-operations", "operations", operations);
+
+        List<Category> categories = applicationProperties.getCategoriesSchemes().getCategories();
+        Optional<Category> category = categories.stream().filter(c -> c.getNestedId().equals(subjectNestedId)).findFirst();
+        ModelAndView model = new ModelAndView("pages/subject-area-operations", "operations", operations);
+        model.addObject("category", category.isPresent() ? category.get() : null);
+        return model;
     }
 
     @GetMapping("/operations/{operationId}/instances/{instanceId}")

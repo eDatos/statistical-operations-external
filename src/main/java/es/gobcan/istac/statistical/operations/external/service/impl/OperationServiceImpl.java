@@ -41,7 +41,7 @@ public class OperationServiceImpl implements OperationService {
 
     @Override
     public Operations findBySubjectArea(String nestedId) {
-        log.debug("Consultando operaciones del area: {}", nestedId);
+        log.debug("Consultando operaciones del área: {}", nestedId);
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(
                 getOperationsApiUrl().query(QUERY_TEMPLATE_SUBJECT_AREA).buildAndExpand(applicationProperties.getCategoriesSchemes().getSchemePrefix(), nestedId).toUriString(), Operations.class);
