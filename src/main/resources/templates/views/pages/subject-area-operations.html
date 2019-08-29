@@ -4,13 +4,13 @@
     layout:decorate="~{layouts/base}">
 
     <head>
-        <title th:text="#{title.subjectAreaOperations}"></title>
+        <title th:text="#{title.subjectAreaOperations(${category}? ${#messages.msg('subject.' + category.key)} : '')}"></title>
     </head>
     <body>
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <h1 class="title title1 main-title">
-                    <span th:text="#{title.subjectAreaOperations}"></span>
+                    <span th:text="#{subjectAreaOperations.title}"></span>
                     <span th:if="${category != null}" th:text="${#messages.msg('subject.' + category.key)}"></span>
                 </h1>
                 <ul class="links" th:if="${operations.total > 0}">

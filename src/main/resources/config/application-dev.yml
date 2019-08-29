@@ -47,12 +47,107 @@ server:
 
 application:
     metadata:
-        endpoint: FILL_COMMON_METADATA_ENDPOINT #Required: common metadata endpoint
+        endpoint: http://estadisticas.arte-consultores.com/cmetadata/v1.0
     categoriesSchemes:
-        schemePrefix: FILL_CATEGORY_SCHEME_PREFIX
+        schemePrefix: ISTAC:SDMXStatSubMatDomainsWD1(01.000)
         categories:
-            # FILL ARRAY CATEGORIES
             -
-                key: FILL_CATEGORY_KEY
-                nestedId: FILL_CATEGORY_NESTED_ID #betweem "" for numeric
-                iconSrc: FILL_CATEGORY_ICON_SRC
+                key: TTMM_TerritorioYUsosDelSuelo
+                nestedId: "010.010_010"
+                color: "#67A23F"
+            -
+                key: TTMM_MedioAmbiente
+                nestedId: "010.010_020"
+                color: "#67A23F"
+            -
+                key: Demo_Poblacion
+                nestedId: "020.020_010"
+                color: "#8C5C1D"
+            -
+                key: Demo_MovimientoNatural
+                nestedId: "020.020_020"
+                color: "#8C5C1D"
+            -
+                key: Demo_MovimientosMigratorios
+                nestedId: "020.020_030"
+                color: "#8C5C1D"
+            -
+                key: Sociedad_CalidadDeVida
+                nestedId: "030.030_010"
+                color: "#7F5B97"
+            -
+                key: Sociedad_Salud
+                nestedId: "030.030_020"
+                color: "#7F5B97"
+            -
+                key: Sociedad_Educacion
+                nestedId: "030.030_030"
+                color: "#7F5B97"
+            -
+                key: Sociedad_Cultura_DeporteYOcio
+                nestedId: "030.030_040"
+                color: "#7F5B97"
+            -
+                key: Sociedad_EleccionesYParticipacionCiudadana
+                nestedId: "030.030_050"
+                color: "#7F5B97"
+            -
+                key: Sociedad_JusticiaYSeguridad
+                nestedId: "030.030_060"
+                color: "#7F5B97"
+            -
+                key: Sociedad_ProteccionSocial
+                nestedId: "030.030_070"
+                color: "#7F5B97"
+            -
+                key: Economia_CuentasEconomicas
+                nestedId: "040.040_010"
+                color: "#E5772D"
+            -
+                key: Economia_Precios_ConsumoEInversion
+                nestedId: "040.040_020"
+                color: "#E5772D"
+            -
+                key: Economia_EmpresasYCentrosDeTrabajo
+                nestedId: "040.040_030"
+                color: "#E5772D"
+            -
+                key: Empleo
+                nestedId: "050.050_010"
+                color: "#C01A41"
+            -
+                key: SectorPrimario_Agricultura_Ganaderia_PescaYCaza
+                nestedId: "060.060_010"
+                color: "#E5772D"
+            -
+                key: SectorSecundario_Industria_EnergiaYAgua
+                nestedId: "070.070_010"
+                color: "#E5772D"
+            -
+                key: SectorSecundario_ConstruccionYVivienda
+                nestedId: "070.070_020"
+                color: "#E5772D"
+            -
+                key: SectorServicios_Comercio
+                nestedId: "080.080_010"
+                color: "#E5772D"
+            -
+                key: SectorServicios_HosteleriaYTurismo
+                nestedId: "080.080_020"
+                color: "#E5772D"
+            -
+                key: SectorServicios_TransporteYComunicaciones
+                nestedId: "080.080_030"
+                color: "#E5772D"
+            -
+                key: SectorServicios_ServiciosFinancieros_MonetariosYSeguros
+                nestedId: "080.080_040"
+                color: "#E5772D"
+            -
+                key: AdministracionPublica
+                nestedId: "090.090_010"
+                color: "#E5772D"
+            -
+                key: CienciaYTecnologia
+                nestedId: "100.100_010"
+                color: "#8C9BA3"

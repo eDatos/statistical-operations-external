@@ -4,13 +4,15 @@
     layout:decorate="~{layouts/base}">
 
     <head>
-        <title th:text="#{title.instance}"></title>
+        <title th:text="#{title.instance(${@languageUtil.getTraduction(instance.name)})}"></title>
+        <meta th:if="${instance.dataDescription != null}" name="description" th:attr="content=${@languageUtil.getTraduction(instance.dataDescription)}" />
+        <meta name="keywords" th:attr="content=${@htmlService.getMetaKeywords(instance)}">
     </head>
     <body>
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <h1 class="title title1 main-title">
-                    <span>Instancia</span>
+                    <span th:text="#{instance.title}"></span>
                     <span th:text="${@languageUtil.getTraduction(instance.name)}"></span>
                 </h1>
                 <table class="table-metadatas text-align-left links">

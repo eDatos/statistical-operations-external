@@ -3,13 +3,15 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
     layout:decorate="~{layouts/base}">
     <head>
-        <title th:text="#{title.operation}"></title>
+        <title th:text="#{title.operation(${@languageUtil.getTraduction(operation.name)})}"></title>
+        <meta th:if="${operation.description != null}" name="description" th:attr="content=${@languageUtil.getTraduction(operation.description)}" />
+        <meta name="keywords" th:attr="content=${@htmlService.getMetaKeywords(operation)}">
     </head>
     <body>
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <h1 class="title title1 main-title">
-                    <span th:text="#{global.operation}"></span>
+                    <span th:text="#{operation.title}"></span>
                     <span th:text="${@languageUtil.getTraduction(operation.name)}"></span>
                 </h1>
                 <table class="table-metadatas text-align-left links">
