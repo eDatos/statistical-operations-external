@@ -188,8 +188,8 @@
                             <th th:text="#{operationField.legalActs}"></th>
                             <td>
                                 <ul>
-                                    <li th:each="tmp: ${operation.legalActs.legalActs}">
-                                        <p th:utext="${@languageUtil.getTranslation(tmp)}"></p>
+                                    <li th:each="legalAct: ${operation.legalActs.legalActs}">
+                                        <p th:utext="${@languageUtil.getTranslation(legalAct)}"></p>
                                     </li>
                                 </ul>
                             </td>
@@ -198,8 +198,8 @@
                             <th th:text="#{operationField.dataSharings}"></th>
                             <td>
                                 <ul>
-                                    <li th:each="tmp: ${operation.dataSharings.dataSharings}">
-                                        <p th:utext="${@languageUtil.getTranslation(tmp)}"></p>
+                                    <li th:each="dataSharing: ${operation.dataSharings.dataSharings}">
+                                        <p th:utext="${@languageUtil.getTranslation(dataSharing)}"></p>
                                     </li>
                                 </ul>
                             </td>

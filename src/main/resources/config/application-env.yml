@@ -24,6 +24,6 @@ application:
         categories:
             # FILL ARRAY CATEGORIES
             -
-                key: FILL_CATEGORY_KEY                  # Used to find the category icon (subject-area-icons.css) and the translated category name (messages.properties)
-                nestedId: FILL_CATEGORY_NESTED_ID       # Betweem "" for numeric
+                key: FILL_CATEGORY_KEY                  # Used to find the category icon (subject-area-icons.css) and the translated category name (messages.properties). Example AdministracionPublica
+                nestedId: FILL_CATEGORY_NESTED_ID       # Betweem "" for numeric. Example "020.020_010"
                 color: FILL_CATEGORY_ICON_COLOR         # Example "#8C5C1D"
