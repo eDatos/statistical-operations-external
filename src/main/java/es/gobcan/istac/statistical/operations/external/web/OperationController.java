@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties;
 import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties.CategoriesSchemes.Category;
+import es.gobcan.istac.statistical.operations.external.service.HtmlService;
 import es.gobcan.istac.statistical.operations.external.service.OperationService;
 
 @Controller
@@ -31,10 +32,17 @@ public class OperationController {
     @Autowired
     private ApplicationProperties applicationProperties;
 
+    @Autowired
+    private HtmlService htmlService;
+
     @GetMapping(value = {"", "/index.html"})
     public ModelAndView index() {
         log.debug("Operaciones");
-        return new ModelAndView("pages/operations");
+
+        ModelAndView model = new ModelAndView("pages/operations");
+        model.addObject("headerHtml", htmlService.getHeaderHtml());
+        model.addObject("footerHtml", htmlService.getFooterHtml());
+        return model;
     }
 
     @GetMapping("/operations/{operationId}")
@@ -46,6 +54,9 @@ public class OperationController {
         ModelAndView model = new ModelAndView("pages/operation");
         model.addObject("operation", operation);
         model.addObject("instances", operationInstances);
+        model.addObject("keywords", htmlService.getMetaKeywords(operation));
+        model.addObject("headerHtml", htmlService.getHeaderHtml());
+        model.addObject("footerHtml", htmlService.getFooterHtml());
         return model;
     }
 
@@ -56,8 +67,11 @@ public class OperationController {
 
         List<Category> categories = applicationProperties.getCategoriesSchemes().getCategories();
         Optional<Category> category = categories.stream().filter(c -> c.getNestedId().equals(subjectNestedId)).findFirst();
+
         ModelAndView model = new ModelAndView("pages/subject-area-operations", "operations", operations);
         model.addObject("category", category.isPresent() ? category.get() : null);
+        model.addObject("headerHtml", htmlService.getHeaderHtml());
+        model.addObject("footerHtml", htmlService.getFooterHtml());
         return model;
     }
 
@@ -65,6 +79,12 @@ public class OperationController {
     public ModelAndView operationInstance(@PathVariable String operationId, @PathVariable String instanceId) {
         log.debug("Instancia {} de la operación {}", instanceId, operationId);
         Instance operationInstance = operationService.findOperationInstance(operationId, instanceId);
-        return new ModelAndView("pages/instance", "instance", operationInstance);
+
+        ModelAndView model = new ModelAndView("pages/instance");
+        model.addObject("instance", operationInstance);
+        model.addObject("keywords", htmlService.getMetaKeywords(operationInstance));
+        model.addObject("headerHtml", htmlService.getHeaderHtml());
+        model.addObject("footerHtml", htmlService.getFooterHtml());
+        return model;
     }
 }

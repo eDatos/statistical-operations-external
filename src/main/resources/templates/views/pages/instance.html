@@ -1,12 +1,13 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-    layout:decorate="~{layouts/base}">
+    layout:decorate="~{layouts/base}"
+    th:with="headerHtml = ${headerHtml}, footerHtml = ${footerHtml}">
 
     <head>
         <title th:text="#{title.instance(${@languageUtil.getTranslation(instance.name)})}"></title>
         <meta th:if="${instance.dataDescription != null}" name="description" th:attr="content=${@languageUtil.getTranslation(instance.dataDescription)}" />
-        <meta name="keywords" th:attr="content=${@htmlService.getMetaKeywords(instance)}">
+        <meta name="keywords" th:attr="content=${keywords}">
     </head>
     <body>
         <th:block layout:fragment="principal_content">

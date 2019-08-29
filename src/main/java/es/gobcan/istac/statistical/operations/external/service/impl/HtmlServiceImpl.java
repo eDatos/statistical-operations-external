@@ -18,7 +18,7 @@ import es.gobcan.istac.statistical.operations.external.service.HtmlService;
 import es.gobcan.istac.statistical.operations.external.service.MetadataService;
 import es.gobcan.istac.statistical.operations.external.web.util.LanguageUtil;
 
-@Service("htmlService")
+@Service
 @NotLogging
 public class HtmlServiceImpl implements HtmlService {
 
@@ -43,6 +43,7 @@ public class HtmlServiceImpl implements HtmlService {
     @Override
     public String getMetaKeywords(Operation operation) {
         List<String> keywords = new ArrayList<>();
+        keywords.add(operation.getId());
         keywords.add(languageUtil.getTranslation(operation.getSubjectArea().getName()));
 
         if (operation.getAcronym() != null) {
@@ -61,9 +62,12 @@ public class HtmlServiceImpl implements HtmlService {
     @Override
     public String getMetaKeywords(Instance instance) {
         List<String> keywords = new ArrayList<>();
-
+        keywords.add(instance.getId());
         keywords.add(languageUtil.getTranslation(instance.getStatisticalOperation().getName()));
 
+        if (instance.getAcronym() != null) {
+            keywords.add(languageUtil.getTranslation(instance.getAcronym()));
+        }
         return String.join(",", keywords);
     }
 

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
     layout:decorate="~{layouts/base}"
-    th:with="hideSearchHeader = true">
+    th:with="hideSearchHeader = true, headerHtml = ${headerHtml}, footerHtml = ${footerHtml}">
 
     <head>
         <title th:text="#{title.operations}"></title>
