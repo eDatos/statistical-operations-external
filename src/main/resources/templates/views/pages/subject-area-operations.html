@@ -15,7 +15,7 @@
                 </h1>
                 <ul class="links" th:if="${operations.total > 0}">
                     <li th:each="operation: ${operations.operations}">
-                        <a th:href="@{/operations/{operationId}(operationId=${operation.id})}" th:text="${@languageUtil.getTraduction(operation.name)}"></a>
+                        <a th:href="@{/operations/{operationId}(operationId=${operation.id})}" th:text="${@languageUtil.getTranslation(operation.name)}"></a>
                     </li>
                 </ul>
                 <span th:if="${operations.total == 0}" th:text="#{message.emptySubjectAreaOperations}"></span>

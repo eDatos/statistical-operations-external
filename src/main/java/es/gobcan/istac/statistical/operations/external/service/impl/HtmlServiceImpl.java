@@ -43,16 +43,16 @@ public class HtmlServiceImpl implements HtmlService {
     @Override
     public String getMetaKeywords(Operation operation) {
         List<String> keywords = new ArrayList<>();
-        keywords.add(languageUtil.getTraduction(operation.getSubjectArea().getName()));
+        keywords.add(languageUtil.getTranslation(operation.getSubjectArea().getName()));
 
         if (operation.getAcronym() != null) {
-            keywords.add(languageUtil.getTraduction(operation.getAcronym()));
+            keywords.add(languageUtil.getTranslation(operation.getAcronym()));
         }
 
         SecondarySubjectAreas secondarySubjectAreas = operation.getSecondarySubjectAreas();
         if (secondarySubjectAreas != null) {
             for (Resource resource : secondarySubjectAreas.getSecondarySubjectAreas()) {
-                keywords.add(languageUtil.getTraduction(resource.getName()));
+                keywords.add(languageUtil.getTranslation(resource.getName()));
             }
         }
         return String.join(",", keywords);
@@ -62,7 +62,7 @@ public class HtmlServiceImpl implements HtmlService {
     public String getMetaKeywords(Instance instance) {
         List<String> keywords = new ArrayList<>();
 
-        keywords.add(languageUtil.getTraduction(instance.getStatisticalOperation().getName()));
+        keywords.add(languageUtil.getTranslation(instance.getStatisticalOperation().getName()));
 
         return String.join(",", keywords);
     }

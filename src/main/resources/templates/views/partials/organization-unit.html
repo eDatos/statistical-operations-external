@@ -5,7 +5,7 @@
     <div class="resource-data" th:fragment="organization_unit">
         <ul class="resource-items">
             <li class="resource-item" th:each="resource: ${elements}">
-                <div th:text="${@languageUtil.getTraduction(resource.name)}"></div>
+                <div th:text="${@languageUtil.getTranslation(resource.name)}"></div>
                 <div class="big-word" th:text="${resource.urn}"></div>
             </li>
         </ul>

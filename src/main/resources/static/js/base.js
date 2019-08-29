@@ -8,8 +8,8 @@ function getLang() {
     return CONFIGURATION.DEFAULT_LANG;
 }
 
-function getTranslatedText(traductions) {
-    var texts = traductions.text;
+function getTranslatedText(translations) {
+    var texts = translations.text;
     var lang = getLang();
     var defaultLangIndex = -1;
     if (Array.isArray(texts)) {

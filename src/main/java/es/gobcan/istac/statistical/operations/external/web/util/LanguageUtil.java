@@ -13,20 +13,20 @@ import es.gobcan.istac.statistical.operations.external.config.Constants;
 @Component("languageUtil")
 public class LanguageUtil {
 
-    public String getTraduction(InternationalString traductions) {
+    public String getTranslation(InternationalString translations) {
         Locale locale = LocaleContextHolder.getLocale();
 
-        List<LocalisedString> textTraductions = traductions.getTexts();
+        List<LocalisedString> textTranslations = translations.getTexts();
         int i = 0;
         int defaultLangIndex = -1;
 
-        for (LocalisedString traduction : textTraductions) {
+        for (LocalisedString translation : textTranslations) {
 
-            if (traduction.getLang().equals(locale.toString())) {
-                return traduction.getValue();
+            if (translation.getLang().equals(locale.toString())) {
+                return translation.getValue();
             }
 
-            if (traduction.getLang().equals(Constants.DEFAULT_LANG)) {
+            if (translation.getLang().equals(Constants.DEFAULT_LANG)) {
                 defaultLangIndex = i;
             }
 
@@ -34,8 +34,8 @@ public class LanguageUtil {
         }
 
         if (defaultLangIndex == -1) {
-            return "No traduction";
+            return "No translation";
         }
-        return textTraductions.get(defaultLangIndex).getValue();
+        return textTranslations.get(defaultLangIndex).getValue();
     }
 }
