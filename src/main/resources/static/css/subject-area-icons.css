@@ -13,6 +13,9 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
+
+/* .icon-<CATEGORY_KEY> => CATEGORY_KEY corresponds 'key' of 'category' in 'categories' array in application-env.yml */
+
 .icon-AdministracionPublica:before {content: '\0059'}
 .icon-CienciaYTecnologia:before {content: '\0058'}
 .icon-Demo_MovimientoNatural:before {content: '\0051'}

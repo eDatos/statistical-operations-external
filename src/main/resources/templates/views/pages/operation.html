@@ -1,16 +1,19 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-    layout:decorate="~{layouts/base}">
+    layout:decorate="~{layouts/base}"
+    th:with="headerHtml = ${headerHtml}, footerHtml = ${footerHtml}">
     <head>
-        <title th:text="#{title.operation}"></title>
+        <title th:text="#{title.operation(${@languageUtil.getTranslation(operation.name)})}"></title>
+        <meta th:if="${operation.description != null}" name="description" th:attr="content=${@languageUtil.getTranslation(operation.description)}" />
+        <meta name="keywords" th:attr="content=${keywords}">
     </head>
     <body>
         <th:block layout:fragment="principal_content">
             <div class="container main-content">
                 <h1 class="title title1 main-title">
-                    <span th:text="#{global.operation}"></span>
-                    <span th:text="${@languageUtil.getTraduction(operation.name)}"></span>
+                    <span th:text="#{operation.title}"></span>
+                    <span th:text="${@languageUtil.getTranslation(operation.name)}"></span>
                 </h1>
                 <table class="table-metadatas text-align-left links">
 
@@ -23,7 +26,7 @@
                     </tr>
                     <tr>
                         <th th:text="#{operationField.name}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.name)}"></td>
+                        <td th:text="${@languageUtil.getTranslation(operation.name)}"></td>
                     </tr>
                     <tr>
                         <th th:text="#{operationField.urn}"></th>
@@ -31,7 +34,7 @@
                     </tr>
                     <tr th:if="${operation.acronym != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.acronym}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.acronym)}"></td>
+                        <td th:text="${@languageUtil.getTranslation(operation.acronym)}"></td>
                     </tr>
 
 
@@ -44,7 +47,7 @@
                     <tr>
                         <th th:text="#{operationField.subjectArea}"></th>
                         <td >
-                            <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${operation.subjectArea.nestedId != null? operation.subjectArea.nestedId: operation.subjectArea.id})}" th:text="${@languageUtil.getTraduction(operation.subjectArea.name)}"></a>
+                            <a th:href="@{/operations/subject-area/{nestedId}(nestedId=${operation.subjectArea.nestedId != null? operation.subjectArea.nestedId: operation.subjectArea.id})}" th:text="${@languageUtil.getTranslation(operation.subjectArea.name)}"></a>
                         </td>
                     </tr>
                     <tr th:if="${operation.secondarySubjectAreas != null}"> <!-- Opcional -->
@@ -61,11 +64,11 @@
                     </tr>
                     <tr>
                         <th th:text="#{operationField.objetive}"></th>
-                        <td th:utext="${@languageUtil.getTraduction(operation.objective)}"></td>
+                        <td th:utext="${@languageUtil.getTranslation(operation.objective)}"></td>
                     </tr>
                     <tr th:if="${operation.description != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.description}"></th>
-                        <td th:utext="${@languageUtil.getTraduction(operation.description)}"></td>
+                        <td th:utext="${@languageUtil.getTranslation(operation.description)}"></td>
                     </tr>
 
 
@@ -132,7 +135,7 @@
                     </tr>
                     <tr th:if="${operation.relPolUsAc != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.relPolUsAc}"></th>
-                        <td th:utext="${@languageUtil.getTraduction(operation.relPolUsAc)}"></td>
+                        <td th:utext="${@languageUtil.getTranslation(operation.relPolUsAc)}"></td>
                     </tr>
                     <tr th:if="${operation.releaseCalendar != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.releaseCalendar}"></th>
@@ -149,7 +152,7 @@
                     </tr>
                     <tr th:if="${operation.currentInstance != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.currentInstance}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.currentInstance.name)}"></td>
+                        <td th:text="${@languageUtil.getTranslation(operation.currentInstance.name)}"></td>
                     </tr>
                     <tr>
                         <th th:text="#{operationField.inventoryDate}"></th>
@@ -157,15 +160,15 @@
                     </tr>
                     <tr th:if="${operation.revPolicy != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.revPolicy}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.revPolicy)}"></td>
+                        <td th:text="${@languageUtil.getTranslation(operation.revPolicy)}"></td>
                     </tr>
                     <tr th:if="${operation.revPractice != null}"> <!-- Opcional -->
                         <th th:text="#{operationField.revPractice}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.revPractice)}"></td>
+                        <td th:text="${@languageUtil.getTranslation(operation.revPractice)}"></td>
                     </tr>
                     <tr>
                         <th th:text="#{operationField.contact}"></th>
-                        <td th:text="${@languageUtil.getTraduction(operation.contact.name)}"></td>
+                        <td th:text="${@languageUtil.getTranslation(operation.contact.name)}"></td>
                     </tr>
 
 
@@ -186,8 +189,8 @@
                             <th th:text="#{operationField.legalActs}"></th>
                             <td>
                                 <ul>
-                                    <li th:each="tmp: ${operation.legalActs.legalActs}">
-                                        <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                    <li th:each="legalAct: ${operation.legalActs.legalActs}">
+                                        <p th:utext="${@languageUtil.getTranslation(legalAct)}"></p>
                                     </li>
                                 </ul>
                             </td>
@@ -196,19 +199,19 @@
                             <th th:text="#{operationField.dataSharings}"></th>
                             <td>
                                 <ul>
-                                    <li th:each="tmp: ${operation.dataSharings.dataSharings}">
-                                        <p th:utext="${@languageUtil.getTraduction(tmp)}"></p>
+                                    <li th:each="dataSharing: ${operation.dataSharings.dataSharings}">
+                                        <p th:utext="${@languageUtil.getTranslation(dataSharing)}"></p>
                                     </li>
                                 </ul>
                             </td>
                         </tr>
                         <tr th:if="${operation.confidentialityPolicy != null}"> <!-- Opcional -->
                             <th th:text="#{operationField.confidentialityPolicy}"></th>
-                            <td th:utext="${@languageUtil.getTraduction(operation.confidentialityPolicy)}"></td>
+                            <td th:utext="${@languageUtil.getTranslation(operation.confidentialityPolicy)}"></td>
                         </tr>
                         <tr th:if="${operation.confidentialityDataTreatment != null}"> <!-- Opcional -->
                             <th th:text="#{operationField.confidentialityDataTreatment}"></th>
-                            <td th:utext="${@languageUtil.getTraduction(operation.confidentialityDataTreatment)}"></td>
+                            <td th:utext="${@languageUtil.getTranslation(operation.confidentialityDataTreatment)}"></td>
                         </tr>
                     </th:block>
 
@@ -218,7 +221,7 @@
                         </tr>
                         <tr th:if="${operation.comment != null}"> <!-- Opcional -->
                             <th th:text="#{operationField.comment}"></th>
-                            <td th:utext="${@languageUtil.getTraduction(operation.comment)}"></td>
+                            <td th:utext="${@languageUtil.getTranslation(operation.comment)}"></td>
                         </tr>
                     </th:block>
 
@@ -231,7 +234,7 @@
                             <td>
                                 <ul class="list">
                                     <li th:each="instance: ${instances.instances}">
-                                        <a th:href="@{/operations/{operationId}/instances/{instanceId}(operationId=${operation.id}, instanceId=${instance.id})}" th:text="${@languageUtil.getTraduction(instance.name)}"></a>
+                                        <a th:href="@{/operations/{operationId}/instances/{instanceId}(operationId=${operation.id}, instanceId=${instance.id})}" th:text="${@languageUtil.getTranslation(instance.name)}"></a>
                                     </li>
                                 </ul>
                             </td>

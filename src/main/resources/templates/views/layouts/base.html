@@ -7,7 +7,6 @@
 
         <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE" th:text="#{global.title}"></title>
 
-        <meta name="description" content="" />
         <meta name="google" value="notranslate" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
@@ -19,7 +18,7 @@
         <th:block layout:fragment="styles"></th:block> 
     </head>
     <body>
-        <div th:utext="${@htmlService.getHeaderHtml()}"></div>
+        <div th:utext="${headerHtml}"></div>
         <div class="statistical-operations-external-content header-module">
             <a class="header-link-root" href="">
                 <h1 class="header-module-title">
@@ -47,7 +46,7 @@
         <div class="statistical-operations-external-content">
             <th:block layout:fragment="principal_content"></th:block> 
         </div>
-        <div th:utext="${@htmlService.getFooterHtml()}"></div>
+        <div th:utext="${footerHtml}"></div>
 
 
         <script th:inline="javascript">
