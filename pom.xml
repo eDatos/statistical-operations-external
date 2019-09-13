@@ -90,6 +90,8 @@
 		
 		<!-- Metamac -->
 		<metamac-statistical-operations-rest-external-api.version>3.2.0</metamac-statistical-operations-rest-external-api.version>
+		
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 
     <scm>
@@ -425,6 +427,14 @@
         </plugins>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                    <configuration>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <tagNameFormat>${maven.build.timestamp}-v@{project.version}</tagNameFormat>
+                    </configuration>
+                </plugin>
                 <!-- This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself. Remove when 
                     the m2e plugin can correctly bind to Maven lifecycle -->
                 <plugin>
