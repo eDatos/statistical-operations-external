@@ -76,7 +76,7 @@ public class HtmlServiceImpl implements HtmlService {
             RestTemplate restTemplate = new RestTemplate();
             return restTemplate.getForObject(urlToRead, String.class);
         } catch (Exception e) {
-            log.error("Error to obtain HTML of the URL: {}", urlToRead);
+            log.error("Error when obtaining HTML from URL: {}", urlToRead);
             return null;
         }
     }
