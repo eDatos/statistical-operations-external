@@ -35,7 +35,10 @@ function getTranslatedText(translations) {
 }
 
 (function() {
-    document.getElementById(APP_LINK) && setActiveLink(APP_LINK);
+    if (document.getElementById(APP_LINK)) {
+        setActiveLink(APP_LINK);
+    }
+    
     $('.dropwdown-toggle').on('click', function() {
         $(this).closest('.dropdown').toggleClass('active');
     })
