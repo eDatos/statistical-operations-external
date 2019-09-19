@@ -176,7 +176,7 @@ ul.list li:before {
     border: 0;
 }
 
-.searcher .search-results-panel {
+.searcher .search-results-container {
     position: absolute;
     top: 100%;
     left: 0;

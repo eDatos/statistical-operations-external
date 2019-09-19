@@ -1,9 +1,39 @@
 'use strict';
 
-function initSearch($searcher) {
+var NORMALIZED_REGEXPS = {
+    a: /[àáâãäå]/g,
+    e: /[èéêë]/g,
+    i: /[ìíîï]/g,
+    o: /[òóôõö]/g,
+    u: /[ùúûü]/g
+}
+
+function parseString(rawString) {
+    return rawString.toLowerCase()
+            .replace(new RegExp(NORMALIZED_REGEXPS.a),"a")
+            .replace(new RegExp(NORMALIZED_REGEXPS.e),"e")
+            .replace(new RegExp(NORMALIZED_REGEXPS.i),"i")
+            .replace(new RegExp(NORMALIZED_REGEXPS.o),"o")
+            .replace(new RegExp(NORMALIZED_REGEXPS.u),"u");
+}
+
+function getOperations(succesCallback, errorCallback) {
+    $.ajax({
+        method: 'GET',
+        url: CONFIGURATION.OPERATIONS_API_URL + '.json',
+        success: function(response) {
+            succesCallback(response);
+        },
+        error: function(err) {
+            errorCallback(err);
+        }
+    });
+}
+
+function initSearch($searcher, operations) {
     var $searchResultFocused;
     var $searchInput = $searcher.find('.search-input');
-    var $searchResultsPanel = $searcher.find('.search-results-panel');
+    var $searchResultsContainer = $searcher.find('.search-results-container');
 
     var totalSearchResult = 0;
     var isfocusing = false;
@@ -17,7 +47,7 @@ function initSearch($searcher) {
 
     function clickOutsideSearchHandler() {
         if (isfocusing) isfocusing = false;
-        else hideSearchResults();
+        else hideSearchResultsContainer();
     }
 
     function addEventClickOutsideSearch() {
@@ -25,14 +55,14 @@ function initSearch($searcher) {
         $(document).on('click', clickOutsideSearchHandler);
     }
 
-    function hideSearchResults() {
-        $searchResultsPanel.hide();
+    function hideSearchResultsContainer() {
+        $searchResultsContainer.hide();
         $(document).off('click', clickOutsideSearchHandler);
         document.removeEventListener('keydown', arrowKeyPressHandler);
     }
 
-    function showSearchresults() {
-        $searchResultsPanel.show();
+    function showSearchResultsContainer() {
+        $searchResultsContainer.show();
         addEventClickOutsideSearch();
         document.addEventListener('keydown', arrowKeyPressHandler);
     }
@@ -51,10 +81,43 @@ function initSearch($searcher) {
         focusSearchResult($result);
     }
 
+    function filterResults(value) {
+        var results;
+        $searchResultFocused = null;
+        if (!value) {
+            results = operations.map(function(operation, index) {
+                return {
+                    iResult: index,
+                    name: getTranslatedText(operation.name),
+                    id: operation.id
+                }
+            });
+        }
+        else {
+            results = operations.reduce(function(filteredOperations, operation) {
+                var operationName = getTranslatedText(operation.name);
+    
+                if (parseString(operationName).indexOf(value) != -1) {
+                    filteredOperations.push({
+                        iResult: filteredOperations.length,
+                        name: operationName,
+                        id: operation.id
+                    });
+                }
+                
+                return filteredOperations;
+            }, []);
+        }
+        
+        totalSearchResult = results.length;
+
+        var htmlContent = searchResultsTemplate({results: results});
+        $searchResultsContainer.html(htmlContent);
+    }
+
     function arrowKeyPressHandler(e) {
         if (!totalSearchResult || [38 /*UP*/, 40 /*DOWN*/, 13 /*ENTER*/].indexOf(e.keyCode) == -1) return;
 
-        
         if (e.keyCode === 13) {
             $searchResultFocused && $searchResultFocused.find('a')[0].click();
             return;
@@ -81,7 +144,10 @@ function initSearch($searcher) {
 
     $searchInput.on('focus', function() {
         isfocusing = true;
-        showSearchresults();
+        showSearchResultsContainer();
+        if (!$searchInput.val() && totalSearchResult == 0) {
+            filterResults();
+        }
     });
 
     $searcher.on('mouseover', '.search-results-item', function(e) {
@@ -89,7 +155,7 @@ function initSearch($searcher) {
     });
 
     $searcher.on('click', '.search-results-item', function(e) {
-        hideSearchResults();
+        hideSearchResultsContainer();
     });
 
     $searcher.on('click', function(e) {
@@ -99,42 +165,29 @@ function initSearch($searcher) {
     })
 
     $searchInput.on('input', function() {
-        $.ajax({
-            method: 'GET',
-            url: CONFIGURATION.OPERATIONS_API_URL + '.json',
-            data: {
-                query: this.value? 'TITLE ILIKE "' + this.value + '"': ''
-            },
-            success: function(response) {
-                $searchResultFocused = null;
-                totalSearchResult = response.total;
-                var results;
-                
-                if (totalSearchResult > 0) {
-                    results =  response.operation.map(function(operation, index) {
-                        return {
-                            iResult: index,
-                            name: getTranslatedText(operation.name),
-                            id: operation.id
-                        }
-                    });
-                    
-                }
-
-                var htmlContent = searchResultsTemplate({results: results});
-                $searchResultsPanel.html(htmlContent);
-            },
-            error: function(e) {
-                totalSearchResult = 0;
-                console.log('Error al consultar las operaciones');
-                console.error(e);
-            }
-        })
+        var value = this.value;
+        filterResults(parseString(value));
     });
 }
 
 (function() {
-    $('.searcher').each(function(index) {
-        initSearch($(this));
-    });
+
+    getOperations(
+        function(response) {
+            if (response.total > 0) {
+                var operations = response.operation;
+                $('.searcher').each(function() {
+                    initSearch($(this), operations);
+                });
+            }
+            else {
+                console.warn('No hay operaciones estadísticas para mostrar');
+            }
+        },
+        function(err) {
+            console.log('Error al obtener las operaciones estadísticas');
+            console.error(err);
+        }
+    );
+    
 })()
