@@ -37,7 +37,7 @@ public class OperationController {
 
     @GetMapping(value = {"", "/index.html"})
     public ModelAndView index() {
-        log.debug("Operaciones");
+        log.debug("Operations");
 
         ModelAndView model = new ModelAndView("pages/operations");
         model.addObject("headerHtml", htmlService.getHeaderHtml());
@@ -47,7 +47,7 @@ public class OperationController {
 
     @GetMapping("/operations/{operationId}")
     public ModelAndView operation(@PathVariable String operationId) {
-        log.debug("Operación {}", operationId);
+        log.debug("Operation {}", operationId);
         Operation operation = operationService.findOperation(operationId);
         Instances operationInstances = operationService.findOperationInstances(operationId);
 
@@ -62,7 +62,7 @@ public class OperationController {
 
     @GetMapping("/operations/subject-area/{subjectNestedId:.+}")
     public ModelAndView subjectOperations(@PathVariable String subjectNestedId) {
-        log.debug("Operaciones de la área temática con nestedId: {}", subjectNestedId);
+        log.debug("Operations of subject area with nestedId: {}", subjectNestedId);
         Operations operations = operationService.findBySubjectArea(subjectNestedId);
 
         List<Category> categories = applicationProperties.getCategoriesSchemes().getCategories();
@@ -77,7 +77,7 @@ public class OperationController {
 
     @GetMapping("/operations/{operationId}/instances/{instanceId}")
     public ModelAndView operationInstance(@PathVariable String operationId, @PathVariable String instanceId) {
-        log.debug("Instancia {} de la operación {}", instanceId, operationId);
+        log.debug("Instance {} of operation {}", instanceId, operationId);
         Instance operationInstance = operationService.findOperationInstance(operationId, instanceId);
 
         ModelAndView model = new ModelAndView("pages/instance");

@@ -22,7 +22,7 @@ import es.gobcan.istac.statistical.operations.external.web.util.LanguageUtil;
 @NotLogging
 public class HtmlServiceImpl implements HtmlService {
 
-    private final Logger logs = LoggerFactory.getLogger(HtmlServiceImpl.class);
+    private final Logger log = LoggerFactory.getLogger(HtmlServiceImpl.class);
 
     @Autowired
     private MetadataService metadataService;
@@ -76,7 +76,7 @@ public class HtmlServiceImpl implements HtmlService {
             RestTemplate restTemplate = new RestTemplate();
             return restTemplate.getForObject(urlToRead, String.class);
         } catch (Exception e) {
-            logs.error("Error al obtener el HTML de la dirección: {}", urlToRead);
+            log.error("Error when obtaining HTML from URL: {}", urlToRead);
             return null;
         }
     }
