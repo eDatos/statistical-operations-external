@@ -59,7 +59,7 @@ public class MetadataServiceImpl implements MetadataService {
 
     @Override
     public String getPropertyById(String propertyId) {
-        log.debug("Obteniendo valor de metadata: {}", propertyId);
+        log.debug("Getting value of metadata key: {}", propertyId);
         RestTemplate restTemplate = new RestTemplate();
 
         Map<String, String> res = restTemplate.getForObject(metadataEndpoint.buildAndExpand(propertyId).toUriString(), Map.class);
