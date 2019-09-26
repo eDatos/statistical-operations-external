@@ -12,9 +12,9 @@ En este apartado se especifican los requisitos necesarios, referidos al entorno,
 - Java. 1.8.x
 
 ### Establecer las propiedades de configuación
-Para configurar la aplicación con el perfil de desarrollo será necesario copiar el fichero [applicacion-dev.yml](src/main/resources/config/applicacion-dev.yml) en la ruta `/W:/data/istac/statistical-operations-external/config/` de nuestro sistema de directorio, dicha ruta está establecida en [data-location.properties](src/main/resources/config/data-location.properties).
+Para configurar la aplicación con el perfil de desarrollo será necesario copiar el fichero [applicacion-dev.yml](src/main/resources/config/applicacion-dev.yml) en la ruta `/W:/data/istac/statistical-operations-external/config/` de nuestro sistema de directorio. Podemos modificar dicha ruta modificando la propiedad correspondiente dentro de [data-location.properties](src/main/resources/config/data-location.properties).
 
-Alternativamente, en el fichero del proyecto `/etc/data/gobcan/application-env.yml` se puede ver un ejemplo de las propiedades de configuración en ambiente de producción.
+Adicionalmente, en el fichero del proyecto `/etc/data/gobcan/application-env.yml` se puede ver un ejemplo de las propiedades de configuración en ambiente de producción.
 
 #### Descripción de las propiedades de configuración
 
