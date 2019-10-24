@@ -36,6 +36,10 @@ spring:
         cache: true
         mode: HTML
         prefix: classpath:/templates/views/
+    metrics:
+        jmx.enabled: false
+    hikari:
+        pool-name: statisticaloperationsexternalpool
 
 security:
     basic:
