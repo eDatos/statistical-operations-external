@@ -36,8 +36,8 @@ spring:
         cache: true
         mode: HTML
         prefix: classpath:/templates/views/
-    metrics:
-        jmx.enabled: false
+    jmx:
+        default-domain: statisticaloperationsexternal
     hikari:
         pool-name: statisticaloperationsexternalpool
 
