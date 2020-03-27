@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html th:lang="${#locale.language}">
+<html
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    th:lang="${#locale.language}">
     <head>
         <base th:href="@{/}">
         <meta charset="utf-8" />
@@ -15,23 +18,16 @@
         <link rel="stylesheet" th:href="@{/webjars/font-awesome/4.7.0/css/font-awesome.min.css}">
         <link th:href="@{/css/roboto.css}" rel="stylesheet" type="text/css"/>
         <link th:href="@{/css/base.css}" rel="stylesheet" type="text/css"/>
-        <th:block layout:fragment="styles"></th:block> 
+        <th:block layout:fragment="styles"></th:block>
     </head>
     <body>
         <div th:utext="${headerHtml}"></div>
-        <div class="statistical-operations-external-content header-module">
-            <a class="header-link-root" href="">
-                <h1 class="header-module-title">
-                    <span class="title-icon">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                    </span>
-                    <span class="header-title" th:text="#{global.title}"></span>
-                </h1>
-            </a>
-            <div class="header-module-content">
+
+        <script type="text/x-handlebars-template" id="istac-app-header-content-elements">
+            <div class="statistical-operations-external-content header-module-content">
                 <div th:unless="${hideSearchHeader}" class="header-search" th:insert="partials/searcher::searcher"></div>
-                <div class="dropdown dropdown-language">
-                    <button type="button" class="dropwdown-toggle language-flag" th:attr="data-lang=${#locale.language}" th:text="${#messages.msg('language.' + #locale.language)}"></button>
+                <div class="dropdown dropdown-language" id="dropdown-language">
+                    <button type="button" class="dropdown-toggle language-flag" th:attr="data-lang=${#locale.language}" th:text="${#messages.msg('language.' + #locale.language)}"></button>
                     <ul class="dropdown-content languages-list">
                         <li class="language-item">
                             <a class="language-flag" data-lang="es" th:href="@{${#httpServletRequest.servletPath}(lang=es)}" th:text="#{language.es}"></a>
@@ -42,9 +38,22 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </script>
+        <!-- Is removed from partials/searcher to avoid nested handlebars-template scripts -->
+        <script id="search-results-template" type="text/x-handlebars-template">
+            <ul class="search-results">
+                {{#each results}}
+                <li class="search-results-item" data-iresult="{{ iResult }}">
+                    <a href="operations/{{ id }}"> {{ name }} </a>
+                </li>
+                {{ else }}
+                <li th:text="#{message.emptyMessageSearch}"></li>
+                {{/each}}
+            </ul>
+        </script>
+
         <div class="statistical-operations-external-content">
-            <th:block layout:fragment="principal_content"></th:block> 
+            <th:block layout:fragment="principal_content"></th:block>
         </div>
         <div th:utext="${footerHtml}"></div>
 
@@ -59,13 +68,15 @@
             window.CONFIGURATION.AVAILABLE_LANGS = /*[[${@constants.AVAILABLE_LANGS}]]*/ ['es', 'en'];
             /*]]>*/
         </script>
-    
+
         <script th:src="@{/webjars/jquery/3.4.1/dist/jquery.min.js}"></script>
         <script th:src="@{/webjars/handlebars/4.0.14/handlebars.min.js}"></script>
-        <script th:src="@{/js/base.js}"></script>
+        <script th:src="@{/js/utils.js}"></script>
+        <script th:src="@{/js/translation.js}"></script>
         <script th:unless="${hideSearchHeader}" th:src="@{/js/searcher.js}"></script>
+        <script th:src="@{/js/main.js}"></script>
 
-        <th:block layout:fragment="scripts"></th:block> 
+        <th:block layout:fragment="scripts"></th:block>
         <noscript>
             <h1 th:text="#{message.jsDisabled}"></h1>
         </noscript>

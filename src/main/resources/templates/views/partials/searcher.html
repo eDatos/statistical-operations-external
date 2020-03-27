@@ -10,17 +10,6 @@
             </div>
             <div class="search-results-container"></div>
         </div>
-        <script id="search-results-template" type="text/x-handlebars-template">
-            <ul class="search-results">
-                {{#each results}}
-                <li class="search-results-item" data-iresult="{{ iResult }}">
-                    <a href="operations/{{ id }}"> {{ name }} </a>
-                </li>
-                {{ else }}
-                <li th:text="#{message.emptyMessageSearch}"></li>
-                {{/each}}
-            </ul>
-        </script>
     </th:block>
 </body>
 </html>

@@ -2,6 +2,7 @@ package es.gobcan.istac.statistical.operations.external.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.siemac.metamac.rest.common.v1_0.domain.Resource;
 import org.siemac.metamac.rest.statistical_operations.v1_0.domain.Instance;
@@ -10,6 +11,8 @@ import org.siemac.metamac.rest.statistical_operations.v1_0.domain.SecondarySubje
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,9 +33,14 @@ public class HtmlServiceImpl implements HtmlService {
     @Autowired
     private LanguageUtil languageUtil;
 
+    @Autowired
+    private MessageSource messageSource;
+
     @Override
     public String getHeaderHtml() {
-        return getHtml(metadataService.getNavbarUrl());
+        Locale locale = LocaleContextHolder.getLocale();
+        String appName = messageSource.getMessage("global.title", null, locale);
+        return getHtml(String.format("%s?appName=%s", metadataService.getNavbarUrl(), appName));
     }
 
     @Override
