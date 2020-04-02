@@ -84,6 +84,6 @@ server:
 
 application:
     metadata:
-        navbarPathKey: sie.style.header.url
-        footerPathKey: sie.style.footer.url
+        navbarPathKey: metamac.app.style.header.url
+        footerPathKey: metamac.app.style.footer.url
         operationsApiKey: metamac.statistical_operations.rest.external
