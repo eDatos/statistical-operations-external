@@ -10,7 +10,7 @@ function initDropdown(selector) {
 function getOperations(succesCallback, errorCallback) {
     $.ajax({
         method: 'GET',
-        url: CONFIGURATION.OPERATIONS_API_URL + '.json',
+        url: CONFIGURATION.OPERATIONS_API_URL + '.json?limit=500',
         success: function(response) {
             succesCallback(response);
         },
