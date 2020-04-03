@@ -1,8 +1,8 @@
 'use strict';
-var APP_LINK = 'statisticalOperationsExternalLink';
+
 function getLang() {
     var lang = CONFIGURATION.CURRENT_LANG;
-    if (lang && CONFIGURATION.AVAILABLE_LANGS.indexOf(lang) != -1) {
+    if (lang && CONFIGURATION.AVAILABLE_LANGS.indexOf(lang) !== -1) {
         return lang;
     }
     return CONFIGURATION.DEFAULT_LANG;
@@ -14,11 +14,11 @@ function getTranslatedText(translations) {
     var defaultLangIndex = -1;
     if (Array.isArray(texts)) {
         for(var i=0; i<texts.length; i++) {
-            if (texts[i].lang == lang) {
+            if (texts[i].lang === lang) {
                 return texts[i].value;
             }
 
-            if (texts[i].lang == CONFIGURATION.DEFAULT_LANG) {
+            if (texts[i].lang === CONFIGURATION.DEFAULT_LANG) {
                 defaultLangIndex = i;
             }
         }
@@ -33,13 +33,3 @@ function getTranslatedText(translations) {
     }
     return texts[defaultLangIndex].value;
 }
-
-(function() {
-    if (document.getElementById(APP_LINK)) {
-        setActiveLink(APP_LINK);
-    }
-    
-    $('.dropwdown-toggle').on('click', function() {
-        $(this).closest('.dropdown').toggleClass('active');
-    })
-})()

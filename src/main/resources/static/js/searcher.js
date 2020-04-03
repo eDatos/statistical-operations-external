@@ -17,19 +17,6 @@ function parseString(rawString) {
             .replace(new RegExp(NORMALIZED_REGEXPS.u),"u");
 }
 
-function getOperations(succesCallback, errorCallback) {
-    $.ajax({
-        method: 'GET',
-        url: CONFIGURATION.OPERATIONS_API_URL + '.json',
-        success: function(response) {
-            succesCallback(response);
-        },
-        error: function(err) {
-            errorCallback(err);
-        }
-    });
-}
-
 function initSearch($searcher, operations) {
     var $searchResultFocused;
     var $searchInput = $searcher.find('.search-input');
@@ -69,7 +56,7 @@ function initSearch($searcher, operations) {
 
     function select($result) {
         var $searchResults = $searcher.find('.search-results');
-        
+
         var elHeight = $result.height();
         var scrollTop = $searchResults.scrollTop();
         var viewport = scrollTop + $searchResults.height();
@@ -96,7 +83,7 @@ function initSearch($searcher, operations) {
         else {
             results = operations.reduce(function(filteredOperations, operation) {
                 var operationName = getTranslatedText(operation.name);
-    
+
                 if (parseString(operationName).indexOf(value) != -1) {
                     filteredOperations.push({
                         iResult: filteredOperations.length,
@@ -104,11 +91,11 @@ function initSearch($searcher, operations) {
                         id: operation.id
                     });
                 }
-                
+
                 return filteredOperations;
             }, []);
         }
-        
+
         totalSearchResult = results.length;
 
         var htmlContent = searchResultsTemplate({results: results});
@@ -122,7 +109,7 @@ function initSearch($searcher, operations) {
             $searchResultFocused && $searchResultFocused.find('a')[0].click();
             return;
         }
-        
+
         var iFocused = $searchResultFocused && $searchResultFocused.data('iresult');
         if (e.keyCode === 38) { // up
             iFocused = iFocused != null & iFocused != 0? iFocused : totalSearchResult;
@@ -131,13 +118,13 @@ function initSearch($searcher, operations) {
         else if (e.keyCode === 40) { // down
             iFocused = iFocused != null && iFocused < (totalSearchResult -1)? iFocused : - 1;
             iFocused++;
-            
+
         }
         select($searcher.find('.search-results-item[data-iresult="'+ iFocused + '"]'));
 
         e.preventDefault();
     }
-    
+
     $searcher.find('.btn-show-results').on('click', function(e) {
         $searchInput.focus();
     });
@@ -169,25 +156,3 @@ function initSearch($searcher, operations) {
         filterResults(parseString(value));
     });
 }
-
-(function() {
-
-    getOperations(
-        function(response) {
-            if (response.total > 0) {
-                var operations = response.operation;
-                $('.searcher').each(function() {
-                    initSearch($(this), operations);
-                });
-            }
-            else {
-                console.warn('No hay operaciones estadísticas para mostrar');
-            }
-        },
-        function(err) {
-            console.log('Error al obtener las operaciones estadísticas');
-            console.error(err);
-        }
-    );
-    
-})()
