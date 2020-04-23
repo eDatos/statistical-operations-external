@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 HOME_PATH=statistical-operations-external
 TRANSFER_PATH=$HOME_PATH/tmp
