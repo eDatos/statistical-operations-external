@@ -31,15 +31,15 @@ ssh -o ProxyCommand="ssh -W %h:%p deploy@estadisticas.arte-consultores.com" depl
     fi
 
     # Update Process
-    sudo rm -rf $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external
+    sudo rm -rf $DEPLOY_TARGET_PATH_INTERNAL/operations-internal
     sudo cp $TRANSFER_PATH/statistical-operations-external.war $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external.war
-    sudo unzip $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external.war -d $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external
+    sudo unzip $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external.war -d $DEPLOY_TARGET_PATH_INTERNAL/operations-internal
     sudo rm -rf $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external.war
 
     # Restore Configuration
-    sudo cp $DEMO_ENV/logback_internal.xml $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external/$LOGBACK_RELATIVE_PATH_FILE
-    sudo rm -f $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external/WEB-INF/classes/config/application-env.yml
-    sudo cp $DEMO_ENV/data-location_internal.properties $DEPLOY_TARGET_PATH_INTERNAL/statistical-operations-external/$DATA_RELATIVE_PATH_FILE
+    sudo cp $DEMO_ENV/logback_internal.xml $DEPLOY_TARGET_PATH_INTERNAL/operations-internal/$LOGBACK_RELATIVE_PATH_FILE
+    sudo rm -f $DEPLOY_TARGET_PATH_INTERNAL/operations-internal/WEB-INF/classes/config/application-env.yml
+    sudo cp $DEMO_ENV/data-location_internal.properties $DEPLOY_TARGET_PATH_INTERNAL/operations-internal/$DATA_RELATIVE_PATH_FILE
     
     if [ $RESTART -eq 1 ]; then
         sudo chown -R edatos-internal.edatos-internal /servers/edatos-internal     
