@@ -1,7 +1,7 @@
 
 application:
     metadata:
-        endpoint: https://www3.gobiernodecanarias.org/istac/api/cmetadata/v1.0
+        endpoint: https://datos.canarias.es/api/estadisticas/cmetadata/v1.0
     categoriesSchemes:
         schemePrefix: ISTAC:TEMAS_CANARIAS(01.000)
         categories: # nestedId obtained from https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/categoryschemes/ISTAC/TEMAS_CANARIAS/01.000/categories.json
