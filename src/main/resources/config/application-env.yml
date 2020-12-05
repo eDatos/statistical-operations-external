@@ -25,5 +25,5 @@ application:
             # FILL ARRAY CATEGORIES
             -
                 key: FILL_CATEGORY_KEY                  # Used to find the category icon (subject-area-icons.css) and the translated category name (messages.properties). Example AdministracionPublica
-                nestedId: FILL_CATEGORY_NESTED_ID       # Betweem "" for numeric. Example "020.020_010". Get nestedId from https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/categoryschemes/ISTAC/TEMAS_CANARIAS/01.000/categories.json
+                nestedId: FILL_CATEGORY_NESTED_ID       # Betweem "" for numeric. Example "020.020_010". Get nestedId from https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/categoryschemes/ISTAC/TEMAS_CANARIAS/01.000/categories.json
                 color: FILL_CATEGORY_ICON_COLOR         # Example "#8C5C1D"
