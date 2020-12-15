@@ -25,6 +25,7 @@ public class MetadataServiceImpl implements MetadataService {
     private String operationsApi;
     private String navbarUrl;
     private String footerUrl;
+    private String faviconUrl;
 
     private UriComponentsBuilder metadataEndpoint;
 
@@ -55,6 +56,14 @@ public class MetadataServiceImpl implements MetadataService {
             footerUrl = this.getPropertyById(applicationProperties.getMetadata().getFooterPathKey());
         }
         return footerUrl;
+    }
+
+    @Override
+    public String getFaviconUrl() {
+        if (faviconUrl == null) {
+            faviconUrl = this.getPropertyById(applicationProperties.getMetadata().getFaviconPathKey());
+        }
+        return faviconUrl;
     }
 
     @Override

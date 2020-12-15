@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties;
 import es.gobcan.istac.statistical.operations.external.config.ApplicationProperties.CategoriesSchemes.Category;
 import es.gobcan.istac.statistical.operations.external.service.HtmlService;
+import es.gobcan.istac.statistical.operations.external.service.MetadataService;
 import es.gobcan.istac.statistical.operations.external.service.OperationService;
 
 @Controller
@@ -35,6 +36,9 @@ public class OperationController {
     @Autowired
     private HtmlService htmlService;
 
+    @Autowired
+    private MetadataService metadataService;
+
     @GetMapping(value = {"", "/index.html"})
     public ModelAndView index() {
         log.debug("Operations");
@@ -42,6 +46,7 @@ public class OperationController {
         ModelAndView model = new ModelAndView("pages/operations");
         model.addObject("headerHtml", htmlService.getHeaderHtml());
         model.addObject("footerHtml", htmlService.getFooterHtml());
+        model.addObject("faviconUrl", metadataService.getFaviconUrl());
         return model;
     }
 
