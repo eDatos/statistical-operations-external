@@ -86,4 +86,5 @@ application:
     metadata:
         navbarPathKey: metamac.app.style.header.url
         footerPathKey: metamac.app.style.footer.url
+        faviconPathKey: metamac.app.style.favicon.url
         operationsApiKey: metamac.statistical_operations.rest.external

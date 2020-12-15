@@ -29,6 +29,7 @@ public class ApplicationProperties {
         private String endpoint;
         private String navbarPathKey;
         private String footerPathKey;
+        private String faviconPathKey;
         private String operationsApiKey;
 
         public String getEndpoint() {
@@ -63,6 +64,13 @@ public class ApplicationProperties {
             this.operationsApiKey = operationsApiKey;
         }
 
+        public String getFaviconPathKey() {
+            return faviconPathKey;
+        }
+
+        public void setFaviconPathKey(String faviconPathKey) {
+            this.faviconPathKey = faviconPathKey;
+        }
     }
 
     public static class CategoriesSchemes {
