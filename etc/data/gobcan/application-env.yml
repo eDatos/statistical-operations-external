@@ -4,7 +4,7 @@ application:
         endpoint: https://datos.canarias.es/api/estadisticas/cmetadata/v1.0
     categoriesSchemes:
         schemePrefix: ISTAC:TEMAS_CANARIAS(01.000)
-        categories: # nestedId obtained from https://www3.gobiernodecanarias.org/istac/api/structural-resources/v1.0/categoryschemes/ISTAC/TEMAS_CANARIAS/01.000/categories.json
+        categories: # nestedId obtained from https://datos.canarias.es/api/estadisticas/structural-resources/v1.0/categoryschemes/ISTAC/TEMAS_CANARIAS/01.000/categories.json
             -
                 key: TTMM_TerritorioYUsosDelSuelo
                 nestedId: "010.010_010"
