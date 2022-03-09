@@ -11,7 +11,7 @@
 
     <groupId>es.gobcan.istac.statistical-operations</groupId> 
     <artifactId>statistical-operations-external</artifactId> 
-    <version>1.2.1</version>    
+    <version>1.2.2-SNAPSHOT</version>    
     <packaging>war</packaging>    
     <name>Visualizador de operaciones estadísticas</name> 
     <description>Visualizador del Inventario de Operaciones Estadísticas</description>
@@ -97,7 +97,7 @@
     <scm>
 		<connection>scm:git:http://git.arte-consultores.com/istac/statistical-operations-external/</connection>
 		<developerConnection>scm:git:http://git.arte-consultores.com/istac/statistical-operations-external/</developerConnection>
-		<tag>20220309-1251-v1.2.1</tag>
+		<tag>HEAD</tag>
 		<url>http://git.arte-consultores.com/istac/statistical-operations-external</url>
 	</scm>
 
